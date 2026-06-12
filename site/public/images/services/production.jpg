@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#201010"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="light" cx="55%" cy="40%" r="35%">
+      <stop offset="0%" style="stop-color:#f87800;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#f87800;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#g)"/>
+  <rect width="900" height="500" fill="url(#light)"/>
+  <!-- camera body -->
+  <rect x="300" y="170" width="280" height="160" rx="14" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+  <!-- lens -->
+  <circle cx="440" cy="250" r="60" fill="#111" stroke="#444" stroke-width="2"/>
+  <circle cx="440" cy="250" r="42" fill="#0d0d0d" stroke="#333" stroke-width="1"/>
+  <circle cx="440" cy="250" r="25" fill="#080808" stroke="#f87800" stroke-width="1" opacity="0.5"/>
+  <circle cx="440" cy="250" r="8" fill="#f87800" opacity="0.4"/>
+  <!-- viewfinder -->
+  <rect x="530" y="185" width="50" height="35" rx="4" fill="#222" stroke="#444" stroke-width="1"/>
+  <!-- record light -->
+  <circle cx="320" cy="190" r="8" fill="#f87800" opacity="0.8"/>
+</svg>

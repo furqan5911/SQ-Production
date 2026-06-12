@@ -1,0 +1,10 @@
+# Reference and scratch folders
+reference-images/
+scratch/
+
+# Markdown files (all directories)
+*.md
+**/*.md
+
+# Node modules
+node_modules/

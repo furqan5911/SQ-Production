@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a1a2e"/><stop offset="100%" style="stop-color:#0a0a0a"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect x="100" y="180" width="600" height="2" fill="#c8ff00" opacity="0.2"/>
+  <text x="400" y="170" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="4" fill="#c8ff00" text-anchor="middle" opacity="0.8">TIPS</text>
+  <text x="400" y="230" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="white" text-anchor="middle">Pre-Production Insights</text>
+</svg>

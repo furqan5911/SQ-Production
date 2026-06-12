@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1520"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#g)"/>
+  <!-- monitor -->
+  <rect x="200" y="120" width="440" height="260" rx="10" fill="#111" stroke="#333" stroke-width="1.5"/>
+  <rect x="215" y="135" width="410" height="210" rx="6" fill="#0a0a0a"/>
+  <!-- color bars on screen -->
+  <rect x="215" y="135" width="58" height="210" fill="#f87800" opacity="0.3"/>
+  <rect x="273" y="135" width="58" height="210" fill="#ff6040" opacity="0.15"/>
+  <rect x="331" y="135" width="58" height="210" fill="#40a0ff" opacity="0.15"/>
+  <rect x="389" y="135" width="58" height="210" fill="#40ff80" opacity="0.1"/>
+  <rect x="447" y="135" width="58" height="210" fill="#f87800" opacity="0.08"/>
+  <rect x="505" y="135" width="58" height="210" fill="white" opacity="0.04"/>
+  <rect x="563" y="135" width="62" height="210" fill="#f87800" opacity="0.2"/>
+  <!-- timeline bar -->
+  <rect x="215" y="305" width="410" height="8" fill="#1e1e1e" rx="4"/>
+  <rect x="215" y="305" width="180" height="8" fill="#f87800" rx="4" opacity="0.7"/>
+  <!-- stand -->
+  <rect x="400" y="380" width="40" height="30" rx="4" fill="#222"/>
+  <rect x="350" y="405" width="140" height="10" rx="5" fill="#222"/>
+</svg>
