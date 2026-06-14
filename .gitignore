@@ -24,6 +24,9 @@ next-env.d.ts
 # Vercel
 .vercel
 
+# Local tools
+.codegraph/
+
 # Misc
 .DS_Store
 *.pem

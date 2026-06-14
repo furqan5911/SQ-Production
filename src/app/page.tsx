@@ -1,6 +1,6 @@
 ﻿import Navbar       from "@/components/Navbar";
 import Hero         from "@/components/Hero";
-import Showreel     from "@/components/Showreel";
+import Reels        from "@/components/Reels";
 import BrandPartners from "@/components/BrandPartners";
 import Portfolio    from "@/components/Portfolio";
 import Services     from "@/components/Services";
@@ -8,7 +8,6 @@ import Industries   from "@/components/Industries";
 import About        from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import FAQ          from "@/components/FAQ";
-import Blog         from "@/components/Blog";
 import SkillsStrip  from "@/components/SkillsStrip";
 import Footer       from "@/components/Footer";
 
@@ -18,7 +17,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Showreel />
+        <Reels />
         <BrandPartners />
         <Portfolio />
         <Services />
@@ -26,8 +25,7 @@ export default function Home() {
         <About />
         <Testimonials />
         <FAQ />
-        <Blog />
-        <SkillsStrip />
+<SkillsStrip />
       </main>
       <Footer />
     </>

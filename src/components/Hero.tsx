@@ -71,13 +71,13 @@ export default function Hero() {
         >
           <Link
             href="/contact"
-            className="bg-[#f87800] text-black font-bold px-8 py-3.5 rounded-full text-sm hover:bg-white transition-colors duration-200"
+            className="w-full sm:w-auto text-center bg-[#f87800] text-black font-bold px-8 py-3.5 rounded-full text-sm hover:bg-white transition-colors duration-200"
           >
             {SITE.ctaPrimary}
           </Link>
           <a
             href="#showreel"
-            className="flex items-center gap-3 border border-white/30 text-white font-bold px-8 py-3.5 rounded-full text-sm hover:border-white transition-colors duration-200"
+            className="w-full sm:w-auto justify-center flex items-center gap-3 border border-white/30 text-white font-bold px-8 py-3.5 rounded-full text-sm hover:border-white transition-colors duration-200"
           >
             <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
               <svg className="w-3 h-3 fill-white ml-0.5" viewBox="0 0 12 12">

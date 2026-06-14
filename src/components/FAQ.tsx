@@ -23,7 +23,7 @@ export default function FAQ() {
           className="text-center mb-16"
         >
           <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">FAQ</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
             Curious? Check Out the Scoop!
           </h2>
         </motion.div>

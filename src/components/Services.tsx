@@ -156,7 +156,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-6 md:mb-8">
                 From Concept To Completion:<br />
                 We&apos;ve Got You Covered!
               </h2>
@@ -174,7 +174,7 @@ export default function Services() {
           </div>
 
           {/* Right — borderless cards with accordion */}
-          <div className="flex flex-col pt-28 border-t border-[#1e1e1e]">
+          <div className="flex flex-col pt-8 md:pt-28 border-t border-[#1e1e1e]">
             {SERVICES.map((service, i) => (
               <ServiceCard key={service.title} service={service} index={i} />
             ))}

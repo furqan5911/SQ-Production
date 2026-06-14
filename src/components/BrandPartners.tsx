@@ -18,7 +18,7 @@ export default function BrandPartners() {
         <p className="text-[#555] text-xs tracking-[0.25em] uppercase mb-3">
           Trusted by leading brands
         </p>
-        <h2 className="text-white text-2xl md:text-3xl font-bold tracking-tight">
+        <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
           Standing Tall with Our Esteemed{" "}
           <span className="text-[#f87800]">Brand Partners</span>
         </h2>

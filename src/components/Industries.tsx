@@ -59,7 +59,7 @@ export default function Industries() {
         >
           <div>
             <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">Industries</span>
-            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
               We&apos;re Video Pros in<br />Many Industries!
             </h2>
           </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Syne, Space_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import LoadingScreen from "@/components/LoadingScreen";
+import ChatBubble from "@/components/ChatBubble";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -25,7 +27,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SQ Production — Video Production Agency",
+  title: "SQ Productions — Video Production Agency",
   description:
     "We craft commercials, corporate videos, and social ads that spark engagement. From concept to final cut.",
 };
@@ -36,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${spaceMono.variable} ${poppins.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-bg text-text antialiased">
+        <LoadingScreen />
         <LenisProvider>{children}</LenisProvider>
+        <ChatBubble />
       </body>
     </html>
   );

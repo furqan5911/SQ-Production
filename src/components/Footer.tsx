@@ -51,19 +51,20 @@ export default function Footer() {
             <p className="text-[#888] text-sm leading-relaxed max-w-sm mb-6">
               {SITE.subtagline}
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3">
               {[
-                { icon: <FacebookIcon />,  href: FOOTER.socials.facebook },
-                { icon: <GmailIcon />,     href: FOOTER.socials.email },
-                { icon: <LinkedInIcon />,  href: FOOTER.socials.linkedin },
-                { icon: <YouTubeIcon />,   href: FOOTER.socials.youtube },
-                { icon: <InstagramIcon />, href: FOOTER.socials.instagram },
-                { icon: <BehanceIcon />,   href: FOOTER.socials.behance },
+                { icon: <FacebookIcon />,  href: FOOTER.socials.facebook,  color: "#1877F2" },
+                { icon: <GmailIcon />,     href: FOOTER.socials.email,     color: "#EA4335" },
+                { icon: <LinkedInIcon />,  href: FOOTER.socials.linkedin,  color: "#0A66C2" },
+                { icon: <YouTubeIcon />,   href: FOOTER.socials.youtube,   color: "#FF0000" },
+                { icon: <InstagramIcon />, href: FOOTER.socials.instagram, color: "#E4405F" },
+                { icon: <BehanceIcon />,   href: FOOTER.socials.behance,   color: "#1769FF" },
               ].map((s, i) => (
                 <a
                   key={i}
                   href={s.href}
-                  className="w-9 h-9 rounded-full border border-[#333] flex items-center justify-center text-[#888] hover:text-[#f87800] hover:border-[#f87800] transition-colors duration-200"
+                  className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-125"
+                  style={{ color: s.color, borderColor: s.color + "55" }}
                 >
                   {s.icon}
                 </a>

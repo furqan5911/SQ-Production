@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ABOUT } from "@/lib/constants";
+import CountUp from "react-countup";
+import { ABOUT, STATS } from "@/lib/constants";
 
 export default function About() {
   const [imgError, setImgError] = useState(false);
@@ -20,14 +21,14 @@ export default function About() {
       />
 
       {/* Watermark — centered, full viewport width */}
-      <div className="w-full overflow-hidden text-center">
+      <div className="w-full text-center">
         <motion.p
           initial={{ opacity: 0, y: -80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-[9.5vw] leading-none select-none pointer-events-none whitespace-nowrap"
-          style={{ color: "rgba(248,120,0,0.20)", fontFamily: "var(--font-poppins)", fontWeight: 900 }}
+          className="text-[12vw] sm:text-[10vw] md:text-[9.5vw] leading-none select-none pointer-events-none whitespace-nowrap uppercase"
+          style={{ color: "rgba(248,120,0,0.25)", fontFamily: "var(--font-poppins)", fontWeight: 900, letterSpacing: "-0.05em" }}
         >
           Meet Sheraz
         </motion.p>
@@ -54,7 +55,7 @@ export default function About() {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={ABOUT.founderImage}
-                  alt="Sheraz — Founder of SQ Production"
+                  alt="Sheraz — Founder of SQ Productions"
                   onError={() => setImgError(true)}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -120,11 +121,11 @@ export default function About() {
             className="flex flex-col justify-center pt-6 md:pt-20"
           >
             <div className="mb-6">
-              <h3 className="text-3xl md:text-[2.75rem] font-black text-white leading-tight mb-1">
+              <h3 className="text-2xl sm:text-3xl md:text-[2.75rem] font-black text-white leading-tight mb-1">
                 {ABOUT.founderTitle}
               </h3>
               <p className="text-[#f87800] text-sm font-medium">
-                Founder &amp; Director at SQ Production — 2018–Now
+                Founder &amp; Director at SQ Productions — 2018–Now
               </p>
             </div>
 
@@ -134,6 +135,41 @@ export default function About() {
           </motion.div>
 
         </div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          className="mt-16 md:mt-20 border-t border-[#1e1e1e] pt-12"
+        >
+          <div className="mb-10">
+            <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
+              By the numbers
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
+              Results that speak<br />for themselves.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {STATS.map((stat, i) => (
+            <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
+              <span className="text-4xl md:text-5xl font-black text-[#f87800] leading-none tabular-nums">
+                <CountUp
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  duration={2.4}
+                  enableScrollSpy
+                  scrollSpyOnce={false}
+                />
+              </span>
+              <span className="mt-2 text-[#888] text-sm font-medium tracking-wide">{stat.label}</span>
+            </div>
+          ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

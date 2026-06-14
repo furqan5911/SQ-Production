@@ -49,7 +49,7 @@ export default function Testimonials() {
         >
           <div>
             <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">Clients</span>
-            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
               What Our Clients Say
             </h2>
           </div>
