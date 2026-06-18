@@ -1,9 +1,82 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import Link from "next/link";
 import CountUp from "react-countup";
+import { motion } from "motion/react";
 import { ABOUT, STATS } from "@/lib/constants";
+
+function KnowMoreBtn() {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Link
+      href="/about"
+      className="shrink-0 inline-flex items-center overflow-hidden"
+      style={{
+        height: 60,
+        padding: 5,
+        backdropFilter: "blur(15px)",
+        WebkitBackdropFilter: "blur(15px)",
+        background: "linear-gradient(112deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.11) 100%)",
+        borderRadius: 40,
+        borderTop: "2px solid rgba(255,255,255,0.5)",
+        borderLeft: "2px solid rgba(255,255,255,0.5)",
+        borderBottom: "2px solid transparent",
+        borderRight: "2px solid transparent",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div
+        className="relative overflow-hidden flex items-center h-full"
+        style={{
+          paddingTop: 17,
+          paddingRight: 33,
+          paddingBottom: 17,
+          paddingLeft: hovered ? 20 : 0,
+          transition: "padding-left 0.35s ease-out",
+          backdropFilter: "blur(13px)",
+          WebkitBackdropFilter: "blur(13px)",
+          backgroundColor: "rgba(0,0,0,0.55)",
+          borderRadius: 30,
+        }}
+      >
+        {/* Orb */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(201,145,109) 75.4%, rgb(255,99,111) 100%)",
+            borderRadius: 103,
+            zIndex: 0,
+            transition: "all 0.35s ease-out",
+            ...(hovered
+              ? { width: "9px", height: "8px", top: "21px", left: "34px" }
+              : { width: "100%", height: "100%", top: 0, left: 0 }
+            ),
+          }}
+        />
+        {/* Spotlight heartbeat */}
+        <div
+          className="relative shrink-0 rounded-full overflow-hidden"
+          style={{ width: 36, height: 36, zIndex: 1, opacity: hovered ? 1 : 0, transition: "opacity 0.25s ease" }}
+        >
+          <motion.div
+            className="absolute rounded-full"
+            animate={hovered ? { scale: [0.5, 1.0, 0.6, 0.85, 0.5] } : { scale: 0.15 }}
+            transition={hovered
+              ? { duration: 0.9, repeat: Infinity, times: [0, 0.15, 0.35, 0.5, 1.0], ease: "easeInOut" }
+              : { duration: 0.3, ease: "easeOut" }
+            }
+            style={{ width: 18, height: 18, top: "calc(50% - 9px)", left: "calc(50% - 9px)", backgroundColor: "rgb(255,0,13)", mixBlendMode: "screen" }}
+          />
+        </div>
+        <span className="relative text-white text-sm font-bold whitespace-nowrap" style={{ zIndex: 1 }}>
+          {ABOUT.cta}
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export default function About() {
   const [imgError, setImgError] = useState(false);
@@ -20,8 +93,91 @@ export default function About() {
         }}
       />
 
-      {/* Watermark — centered, full viewport width */}
-      <div className="w-full text-center">
+      {/* About intro + stats — two-column layout */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
+        <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 items-start">
+
+          {/* LEFT — Heading + button pinned to bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col justify-between md:min-h-[290px]"
+          >
+            <h2 className="text-4xl sm:text-5xl md:text-[3.5rem] font-black text-white leading-tight tracking-tight">
+              {ABOUT.heading}
+            </h2>
+            <div className="mt-10 md:mt-0">
+              <KnowMoreBtn />
+            </div>
+          </motion.div>
+
+          {/* RIGHT — Body text + 2×2 stats grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="flex flex-col gap-10"
+          >
+            {/* Body text */}
+            <p className="text-white/50 leading-relaxed text-[15px]">
+              {ABOUT.body}
+            </p>
+
+            {/* 2×2 stats grid */}
+            <div className="relative grid grid-cols-2">
+              {/* Cross lines */}
+              <div className="pointer-events-none absolute inset-0 z-10">
+                {/* Vertical center line */}
+                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/10" />
+                {/* Horizontal center line */}
+                <div className="absolute left-0 right-0 top-1/2 h-px bg-white/10" />
+              </div>
+
+              {STATS.map((stat, i) => (
+                <div
+                  key={i}
+                  className="relative overflow-hidden h-24 md:h-28"
+                >
+                  {/* Large gradient watermark number with CountUp */}
+                  <span
+                    className="absolute inset-0 flex items-center justify-center font-black leading-none select-none pointer-events-none tabular-nums"
+                    style={{
+                      fontSize: "clamp(2.8rem, 5vw, 62px)",
+                      opacity: 0.31,
+                      backgroundImage: "linear-gradient(289deg, hsla(0,0%,100%,0) -42%, rgb(255,255,255) 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    <CountUp
+                      end={stat.value}
+                      suffix={stat.suffix}
+                      duration={2.4}
+                      enableScrollSpy
+                      scrollSpyOnce={false}
+                    />
+                  </span>
+                  {/* Label — centered on top */}
+                  <span
+                    className="absolute top-1/2 left-1/2 z-20 text-white text-[10px] md:text-[12px] font-bold tracking-[0.15em] uppercase text-center leading-tight whitespace-nowrap"
+                    style={{ transform: "translate(-50%, -50%)" }}
+                  >
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+
+      {/* Watermark — centered, full viewport width — now BELOW stats */}
+      <div className="w-full text-center mt-20 md:mt-28">
         <motion.p
           initial={{ opacity: 0, y: -80 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +190,7 @@ export default function About() {
         </motion.p>
       </div>
 
-      {/* Main content */}
+      {/* Main content — portrait + bio */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative mt-4">
 
         {/* Two-column grid */}
@@ -135,40 +291,6 @@ export default function About() {
           </motion.div>
 
         </div>
-
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="mt-16 md:mt-20 border-t border-[#1e1e1e] pt-12"
-        >
-          <div className="mb-10">
-            <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
-              By the numbers
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
-              Results that speak<br />for themselves.
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {STATS.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
-              <span className="text-4xl md:text-5xl font-black text-[#f87800] leading-none tabular-nums">
-                <CountUp
-                  end={stat.value}
-                  suffix={stat.suffix}
-                  duration={2.4}
-                  enableScrollSpy
-                  scrollSpyOnce={false}
-                />
-              </span>
-              <span className="mt-2 text-[#888] text-sm font-medium tracking-wide">{stat.label}</span>
-            </div>
-          ))}
-          </div>
-        </motion.div>
 
       </div>
     </section>

@@ -24,6 +24,12 @@ html {
   background: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE / Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;               /* Chrome / Safari */
 }
 
 body {
@@ -36,4 +42,14 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Hide scrollbar inside react-fast-marquee */
+.rfm-marquee-container {
+  overflow: hidden !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.rfm-marquee-container::-webkit-scrollbar {
+  display: none;
 }

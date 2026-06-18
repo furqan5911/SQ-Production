@@ -9,6 +9,7 @@ import About        from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import FAQ          from "@/components/FAQ";
 import SkillsStrip  from "@/components/SkillsStrip";
+import Collaborate  from "@/components/Collaborate";
 import Footer       from "@/components/Footer";
 
 export default function Home() {
@@ -25,7 +26,8 @@ export default function Home() {
         <About />
         <Testimonials />
         <FAQ />
-<SkillsStrip />
+        <SkillsStrip />
+        <Collaborate />
       </main>
       <Footer />
     </>

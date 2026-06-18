@@ -1,4 +1,8 @@
-﻿import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
 import { SITE, FOOTER } from "@/lib/constants";
 
 const FacebookIcon = () => (
@@ -35,6 +39,120 @@ const InstagramIcon = () => (
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 );
+const ArrowUp = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style={{ width: "100%", height: "100%", display: "block", fill: "#fff" }}>
+    <path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z" />
+  </svg>
+);
+
+const SOCIAL_ICONS: Record<string, React.ReactNode> = {
+  Facebook: <FacebookIcon />,
+  LinkedIn: <LinkedInIcon />,
+  YouTube: <YouTubeIcon />,
+  Instagram: <InstagramIcon />,
+  Behance: <BehanceIcon />,
+};
+
+const cardStyle: React.CSSProperties = {
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.3)",
+};
+
+function FooterLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="inline-block -mx-3 px-3 py-1.5 rounded-full text-[#888] text-sm transition-all duration-300 hover:text-white hover:bg-white/[0.06] hover:backdrop-blur-md hover:border hover:border-white/15"
+    >
+      {label}
+    </Link>
+  );
+}
+
+function SocialCircleIcon({ icon, href }: { icon: React.ReactNode; href: string }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.a
+      href={href}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.12 : 1 }}
+      transition={{ type: "spring", stiffness: 260, damping: 16 }}
+      className="relative w-9 h-9 rounded-full overflow-hidden flex items-center justify-center text-[#f87800]"
+      style={{
+        transformOrigin: "center",
+        border: hovered ? "1px solid rgba(248,120,0,0.7)" : "1px solid rgba(248,120,0,0.35)",
+        transition: "border-color 0.3s ease",
+      }}
+    >
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(255,255,255,0.05)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+      />
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        style={{
+          background:
+            "radial-gradient(65% 65% at 50% 50%, var(--accent) 0%, rgba(255,171,66,0.35) 45%, transparent 80%)",
+        }}
+      />
+      <span className="relative z-10">{icon}</span>
+    </motion.a>
+  );
+}
+
+function SocialPillLink({ label, href }: { label: string; href: string }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.02 : 1 }}
+      transition={{ type: "spring", stiffness: 220, damping: 16 }}
+      className="relative flex items-center justify-between w-full pl-2 pr-2 py-2 rounded-full overflow-hidden border border-white/30"
+      style={{ transformOrigin: "center" }}
+    >
+      {/* Base resting tint */}
+      <div className="absolute inset-0" style={cardStyle} />
+      {/* Hover glow — fades in from the center */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        style={{
+          background:
+            "radial-gradient(65% 65% at 50% 50%, var(--accent) 0%, rgba(255,171,66,0.3) 45%, transparent 80%)",
+        }}
+      />
+
+      <span className="relative z-10 flex items-center gap-3 pl-4 text-white text-xs font-bold tracking-[0.15em] uppercase">
+        <span className="text-[#f87800] shrink-0 [&>svg]:w-5 [&>svg]:h-5">
+          {SOCIAL_ICONS[label]}
+        </span>
+        {label}
+      </span>
+
+      <motion.div
+        animate={{
+          rotate: hovered ? 0 : 90,
+          backgroundColor: hovered ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.12)",
+        }}
+        transition={{ type: "spring", stiffness: 240, damping: 20 }}
+        className="relative z-10 rounded-full flex items-center justify-center shrink-0"
+        style={{ width: 36, height: 36, padding: 8 }}
+      >
+        <ArrowUp />
+      </motion.div>
+    </motion.a>
+  );
+}
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -42,63 +160,79 @@ export default function Footer() {
   return (
     <footer id="footer" className="bg-[#0a0a0a] border-t border-[#222]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <Link href="/" className="text-2xl font-black tracking-tight text-white block mb-4">
-              {SITE.name}
-            </Link>
-            <p className="text-[#888] text-sm leading-relaxed max-w-sm mb-6">
-              {SITE.subtagline}
+        {/* Brand */}
+        <div className="rounded-[40px] px-8 py-8 mb-6" style={cardStyle}>
+          <Link href="/" className="text-2xl font-black tracking-tight text-white block mb-4">
+            {SITE.name}
+          </Link>
+          <p className="text-[#888] text-sm leading-relaxed max-w-sm mb-6">
+            {SITE.subtagline}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { icon: <FacebookIcon />,  href: FOOTER.socials.facebook },
+              { icon: <GmailIcon />,     href: FOOTER.socials.email },
+              { icon: <LinkedInIcon />,  href: FOOTER.socials.linkedin },
+              { icon: <YouTubeIcon />,   href: FOOTER.socials.youtube },
+              { icon: <InstagramIcon />, href: FOOTER.socials.instagram },
+              { icon: <BehanceIcon />,   href: FOOTER.socials.behance },
+            ].map((s, i) => (
+              <SocialCircleIcon key={i} icon={s.icon} href={s.href} />
+            ))}
+          </div>
+        </div>
+
+        {/* Contact card + Quick Links / Legal / Social Medias card */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="rounded-[40px] px-7 py-7 space-y-3" style={cardStyle}>
+            <p className="text-white text-sm leading-relaxed">
+              <strong className="font-bold">Address:</strong> {FOOTER.address}
             </p>
-            <div className="flex flex-wrap gap-3">
-              {[
-                { icon: <FacebookIcon />,  href: FOOTER.socials.facebook,  color: "#1877F2" },
-                { icon: <GmailIcon />,     href: FOOTER.socials.email,     color: "#EA4335" },
-                { icon: <LinkedInIcon />,  href: FOOTER.socials.linkedin,  color: "#0A66C2" },
-                { icon: <YouTubeIcon />,   href: FOOTER.socials.youtube,   color: "#FF0000" },
-                { icon: <InstagramIcon />, href: FOOTER.socials.instagram, color: "#E4405F" },
-                { icon: <BehanceIcon />,   href: FOOTER.socials.behance,   color: "#1769FF" },
-              ].map((s, i) => (
-                <a
-                  key={i}
-                  href={s.href}
-                  className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-125"
-                  style={{ color: s.color, borderColor: s.color + "55" }}
-                >
-                  {s.icon}
-                </a>
-              ))}
+            <p className="text-white text-sm leading-relaxed">
+              <strong className="font-bold">Email:</strong>{" "}
+              <a href={`mailto:${FOOTER.email}`} className="hover:text-[#f87800] transition-colors">
+                {FOOTER.email}
+              </a>
+            </p>
+            <p className="text-white text-sm leading-relaxed">
+              <strong className="font-bold">Phone:</strong> {FOOTER.phone}
+            </p>
+            <p className="text-white text-sm leading-relaxed">
+              <strong className="font-bold">Business Hours:</strong> {FOOTER.hours}
+            </p>
+          </div>
+
+          <div className="rounded-[40px] px-8 py-8 grid grid-cols-2 gap-8" style={cardStyle}>
+            <div>
+              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Quick Links</h4>
+              <ul className="space-y-3">
+                {FOOTER.links.company.map((l) => (
+                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Legal</h4>
+              <ul className="space-y-3 mb-6">
+                {FOOTER.links.legal.map((l) => (
+                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
+                ))}
+              </ul>
+              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Social Medias</h4>
+              <ul className="space-y-3">
+                {FOOTER.links.social.map((l) => (
+                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Company</h4>
-            <ul className="space-y-3">
-              {FOOTER.links.company.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className="text-[#888] text-sm hover:text-white transition-colors">{l.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal + Contact */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Legal</h4>
-            <ul className="space-y-3 mb-6">
-              {FOOTER.links.legal.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="text-[#888] text-sm hover:text-white transition-colors">{l.label}</a>
-                </li>
-              ))}
-            </ul>
-            <h4 className="text-white font-semibold mb-3 text-sm tracking-widest uppercase">Contact</h4>
-            <a href={`mailto:${FOOTER.email}`} className="text-[#888] text-sm hover:text-[#f87800] transition-colors block">
-              {FOOTER.email}
-            </a>
-          </div>
+        {/* Social pill links */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+          {FOOTER.links.social.map((s) => (
+            <SocialPillLink key={s.label} label={s.label} href={s.href} />
+          ))}
         </div>
 
         <div className="border-t border-[#222] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">

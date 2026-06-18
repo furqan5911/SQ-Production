@@ -118,41 +118,133 @@ export const PROJECTS = [
     clientInstagram: "",
   },
   {
-    slug: "placeholder-3",
-    title: "Coming Soon",
-    subtitle: "Project placeholder.",
+    slug: "fit-like-farah",
+    title: "Fit Like Farah",
+    subtitle: "High-energy fitness content built to move.",
     category: "Fitness",
-    client: "TBD",
+    client: "Fit Like Farah",
     year: "2025",
-    services: ["Cinematography", "Post Production"],
-    description: "Project details coming soon.",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A dynamic fitness content series for Fit Like Farah, capturing real training sessions with fast-paced, high-energy edits built for social-first audiences.",
     image: "/images/portfolio/placeholder.png",
-    videos: [],
-    snaps: ["/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png"],
-    scopeOverview: "Coming soon.",
-    scopePhases: [],
-    timeline: "TBD",
-    budget: "TBD",
-    outcomes: [],
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fitlikefarah/fitlikefarah.mp4", label: "FIT LIKE FARAH — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fitlikefarah/fitlikefarha2.mp4", label: "FIT LIKE FARAH — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "This project covered the full production of two fitness-focused films for Fit Like Farah, built to capture the energy and intensity of real training sessions for social media.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a high-energy, fast-cut visual style suited to training content.",
+          "Identified key exercises and moments to highlight on camera.",
+          "Set the tone — bold, motivating, and authentic — to match the brand.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Training session scheduling and location planning.",
+          "Shot list preparation for dynamic movement coverage.",
+          "Lighting and camera setup planning for gym environments.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming of live training sessions.",
+          "Close-up and tracking shots to capture movement and intensity.",
+          "On-location audio capture for authentic energy.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Fast-paced editing into two short-form fitness films.",
+          "Colour grading for a bold, high-contrast look.",
+          "Sound design, music sync, and motion graphics for titles.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production planning, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished fitness films ready for social media.",
+      "Gave Fit Like Farah a consistent, high-energy visual identity.",
+      "Content built for reuse across reels, ads, and social platforms.",
+    ],
     clientInstagram: "",
   },
   {
-    slug: "placeholder-4",
-    title: "Coming Soon",
-    subtitle: "Project placeholder.",
-    category: "Commercial",
-    client: "TBD",
+    slug: "moxie",
+    title: "Moxie",
+    subtitle: "Giving everyday stationery a story worth telling.",
+    category: "Stationery",
+    client: "Moxie",
     year: "2025",
-    services: ["Cinematography", "Post Production"],
-    description: "Project details coming soon.",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A product-focused campaign for Moxie, spotlighting their range of pens and stationery essentials with clean, detail-driven visuals built to perform across social and retail platforms.",
     image: "/images/portfolio/placeholder.png",
-    videos: [],
-    snaps: ["/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png"],
-    scopeOverview: "Coming soon.",
-    scopePhases: [],
-    timeline: "TBD",
-    budget: "TBD",
-    outcomes: [],
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/moxie/moxie1.mp4", label: "MOXIE — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/moxie/moxie2.mp4", label: "MOXIE — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "This project covered the full production of two product-driven films for Moxie, designed to highlight the everyday craftsmanship of their stationery line in a clean, premium light.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a simple, product-first visual style suited to stationery close-ups.",
+          "Identified key products and details to feature on camera.",
+          "Set the tone — clean, tactile, and minimal — to match the brand.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling planning for product shots.",
+          "Shot list preparation for macro and lifestyle angles.",
+          "Lighting setup planning for tabletop product filming.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Macro filming of product textures, materials, and finishes.",
+          "Lifestyle shots showing the products in everyday use.",
+          "Multiple angle coverage for flexible edit options.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two distinct short-form product films.",
+          "Colour grading for a clean, consistent brand look.",
+          "Sound design and motion graphics for titles and product call-outs.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production planning, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and retail use.",
+      "Gave Moxie a consistent visual identity across its stationery range.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
     clientInstagram: "",
   },
   {
@@ -200,7 +292,7 @@ export const SERVICES = [
     description:
       "Pre-production serves as the pivotal phase in any creative endeavor — where ideas become actionable plans through scripting, storyboarding, and careful planning.",
     href: "/services",
-    image: "/images/services/pre-production.jpg",
+    image: "/images/portfolio/placeholder.png",
     details: [
       "Concept Development",
       "Script Writing",
@@ -215,7 +307,7 @@ export const SERVICES = [
     description:
       "The dynamic phase where creative vision materialises — cameras roll, stories unfold, and magic happens on set with our expert crew.",
     href: "/services",
-    image: "/images/services/production.jpg",
+    image: "/images/portfolio/alpha-thumb.jpg",
     details: [
       "Camera & Lighting Setup",
       "Direction & Cinematography",
@@ -230,7 +322,7 @@ export const SERVICES = [
     description:
       "Raw footage transforms into a polished, audience-ready final product through editing, colour grading, sound design, and motion graphics.",
     href: "/services",
-    image: "/images/services/post-production.jpg",
+    image: "/images/portfolio/beta-thumb.jpg",
     details: [
       "Video Editing & Assembly",
       "Colour Grading & LUTs",
@@ -243,13 +335,13 @@ export const SERVICES = [
 ];
 
 export const INDUSTRIES = [
-  { title: "Corporate Videos",          image: "/images/industries/corporate.jpg" },
-  { title: "Documentaries",             image: "/images/industries/documentaries.jpg" },
-  { title: "Entertainment & Narrative", image: "/images/industries/narrative.jpg" },
-  { title: "Commercials & Ads",         image: "/images/industries/commercials.jpg" },
-  { title: "Shorts & Reels",            image: "/images/industries/reels.jpg" },
-  { title: "Event & Live Streaming",    image: "/images/industries/events.jpg" },
-  { title: "Animation & VFX",           image: "/images/industries/vfx.jpg" },
+  { title: "Corporate Videos",          image: "/images/industries/corporate.jpg",   description: "Enhance your brand's impact with our corporate video expertise. We create engaging content for businesses, from promotions to training materials." },
+  { title: "Documentaries",             image: "/images/industries/documentaries.jpg", description: "We bring real-life stories to life. Our documentaries inform, entertain, and educate on diverse subjects, ensuring your message is captivatingly conveyed." },
+  { title: "Entertainment & Narrative", image: "/images/industries/narrative.jpg",   description: "Immerse your audience in captivating stories. Our creative team brings your visions to life, whether it's a short film or a full-length feature." },
+  { title: "Commercials & Ads",         image: "/images/industries/commercials.jpg", description: "Make a memorable impression. Our short, attention-grabbing videos showcase your products, services, or brand identity effectively." },
+  { title: "Shorts & Reels",            image: "/images/industries/reels.jpg",       description: "Stay on-trend and engage your audience with our dynamic social media content designed for maximum impact and shareability on popular platforms." },
+  { title: "Event & Live Streaming",    image: "/images/industries/events.jpg",      description: "Capture and share the excitement of live events. We provide multi-camera setups, live streaming, and post-event editing for unforgettable experiences." },
+  { title: "Animation & VFX",           image: "/images/industries/vfx.jpg",         description: "Elevate your content with stunning visuals. Our animation and VFX artists use cutting-edge tech for breathtaking effects in films, commercials, and more." },
 ];
 
 export const STATS = [
@@ -275,30 +367,32 @@ export const ABOUT = {
   career: [],
 };
 
+export const TESTIMONIALS_BG = "";
+
 export const TESTIMONIALS = [
   {
     quote: "Working with this team completely transformed our brand presence. The video quality and storytelling was beyond what we imagined.",
     name: "Sarah Adams",
     title: "CMO, HorizonTech Solutions",
-    avatar: "/images/testimonials/sarah.jpg",
+    logo: "/images/logos/greenwaves.svg",
   },
   {
     quote: "Professional, creative, and delivered on time. The team understood our vision perfectly and brought it to life.",
     name: "Michael Lee",
     title: "Director of Sales, EcoGrowth",
-    avatar: "/images/testimonials/michael.jpg",
+    logo: "/images/logos/eco-warriors.svg",
   },
   {
     quote: "Our brand film went viral — 2M views in the first week. The storytelling and production quality was exceptional.",
     name: "Emily Rodriguez",
     title: "Creative Director, BrightSights",
-    avatar: "/images/testimonials/emily.jpg",
+    logo: "/images/logos/pixelfusion.svg",
   },
   {
     quote: "Deadline-conscious, creative, and a genuine pleasure to collaborate with. Highly recommend for any video production needs.",
     name: "David Chen",
     title: "CEO, Nexus Innovations",
-    avatar: "/images/testimonials/david.jpg",
+    logo: "/images/logos/techno.svg",
   },
 ];
 
@@ -374,14 +468,28 @@ export const CLIENT_MARQUEE = [
 ];
 
 export const SKILLS_STRIP = [
-  "VFX", "Filming", "Scriptwriting", "Sound Design",
-  "Color Grading", "Motion Graphics", "Editing", "Storyboarding",
+  { label: "VFX",             image: "/images/portfolio/placeholder.png" },
+  { label: "Filming",         image: "/images/portfolio/placeholder.png" },
+  { label: "Scriptwriting",   image: "/images/portfolio/placeholder.png" },
+  { label: "Sound Design",    image: "/images/portfolio/placeholder.png" },
+  { label: "Color Grading",   image: "/images/portfolio/placeholder.png" },
+  { label: "Motion Graphics", image: "/images/portfolio/placeholder.png" },
+  { label: "Editing",         image: "/images/portfolio/placeholder.png" },
+  { label: "Storyboarding",   image: "/images/portfolio/placeholder.png" },
 ];
+
+export const COLLABORATE = {
+  heading: ["Got a vision?", "Let's bring it to life on screen."],
+  subtext: "From concept to final cut — tell us about your project and let's start creating something great together.",
+  ctaLabel: "Let's Collaborate",
+  ctaHref: "/contact",
+};
 
 export const FOOTER = {
   email: "teamsq.business@gmail.com",
   phone: "+1 (555) 000-0000",
   address: "123 Studio Lane, Los Angeles, CA",
+  hours: "Monday - Friday : 9am to 6pm",
   socials: {
     facebook:  "https://www.facebook.com/profile.php?id=61589987776707",
     email:     "mailto:teamsq.business@gmail.com",
@@ -392,6 +500,7 @@ export const FOOTER = {
   },
   links: {
     company: [
+      { label: "Home",           href: "/" },
       { label: "Projects",       href: "/projects" },
       { label: "About",          href: "/about" },
       { label: "Services",       href: "/services" },
@@ -402,6 +511,13 @@ export const FOOTER = {
       { label: "Privacy Policy",    href: "#" },
       { label: "Terms & Conditions",href: "#" },
       { label: "Refund Policy",     href: "#" },
+    ],
+    social: [
+      { label: "Facebook",  href: "https://www.facebook.com/profile.php?id=61589987776707" },
+      { label: "LinkedIn",  href: "https://www.linkedin.com/in/sheraz-qureshi410/" },
+      { label: "YouTube",   href: "https://www.youtube.com/@SherazQureshiOfficial" },
+      { label: "Instagram", href: "https://www.instagram.com/sq.productions.co/" },
+      { label: "Behance",   href: "https://www.behance.net/sqproductions" },
     ],
   },
 };

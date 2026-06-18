@@ -175,7 +175,7 @@ export default function Reels() {
       </motion.div>
 
       {/* Continuous marquee strip */}
-      <Marquee gradient={false} speed={55} pauseOnHover>
+      <Marquee gradient={false} speed={70} pauseOnHover>
         {REELS.map((reel) => (
           <div
             key={reel.id}

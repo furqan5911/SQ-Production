@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { PROJECTS } from "@/lib/constants";
@@ -78,6 +78,8 @@ function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
 export default function Portfolio() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const [btnHovered, setBtnHovered] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
@@ -113,14 +115,90 @@ export default function Portfolio() {
                 Our Handpicked<br />Featured Portfolio
               </h2>
             </div>
+            {/* Outer glass pill */}
             <Link
               href="/projects"
-              className="shrink-0 inline-flex items-center gap-2 border border-[#333] text-white text-sm font-semibold px-6 py-3 rounded-full hover:border-[#f87800] hover:text-[#f87800] transition-colors duration-200"
+              className="shrink-0 inline-flex items-center overflow-hidden"
+              style={{
+                height: 60,
+                padding: 5,
+                backdropFilter: "blur(15px)",
+                WebkitBackdropFilter: "blur(15px)",
+                background: "linear-gradient(112deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.11) 100%)",
+                borderRadius: 40,
+                borderTop: "2px solid rgba(255,255,255,0.5)",
+                borderLeft: "2px solid rgba(255,255,255,0.5)",
+                borderBottom: "2px solid transparent",
+                borderRight: "2px solid transparent",
+              }}
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
             >
-              See All Projects
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 8h10M9 4l4 4-4 4"/>
-              </svg>
+              {/* Inner dark pill — padding-left animates 0→20px on hover */}
+              <div
+                className="relative overflow-hidden flex items-center h-full"
+                style={{
+                  paddingTop: 17,
+                  paddingRight: 33,
+                  paddingBottom: 17,
+                  paddingLeft: btnHovered ? 20 : 0,
+                  transition: "padding-left 0.35s ease-out",
+                  backdropFilter: "blur(13px)",
+                  WebkitBackdropFilter: "blur(13px)",
+                  backgroundColor: "rgba(0,0,0,0.55)",
+                  borderRadius: 30,
+                }}
+              >
+                {/* Orb — default: fills button fully; hover: shrinks to tiny 4% strip at left:34px */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(201,145,109) 75.4%, rgb(255,99,111) 100%)",
+                    borderRadius: 103,
+                    zIndex: 0,
+                    transition: "all 0.35s ease-out",
+                    ...(btnHovered
+                      ? { width: "9px", height: "8px", top: "21px", left: "34px" }
+                      : { width: "100%", height: "100%", top: 0, left: 0 }
+                    ),
+                  }}
+                />
+                {/* Spotlight circle — 36×36 circular container clips the dot */}
+                <div
+                  className="relative shrink-0 rounded-full overflow-hidden"
+                  style={{
+                    width: 36,
+                    height: 36,
+                    zIndex: 1,
+                    opacity: btnHovered ? 1 : 0,
+                    transition: "opacity 0.25s ease",
+                  }}
+                >
+                  <motion.div
+                    className="absolute rounded-full"
+                    animate={btnHovered
+                      ? { scale: [0.5, 1.0, 0.6, 0.85, 0.5] }
+                      : { scale: 0.15 }
+                    }
+                    transition={btnHovered
+                      ? { duration: 0.9, repeat: Infinity, times: [0, 0.15, 0.35, 0.5, 1.0], ease: "easeInOut" }
+                      : { duration: 0.3, ease: "easeOut" }
+                    }
+                    style={{
+                      width: 18,
+                      height: 18,
+                      top: "calc(50% - 9px)",
+                      left: "calc(50% - 9px)",
+                      backgroundColor: "rgb(255,0,13)",
+                      mixBlendMode: "screen",
+                    }}
+                  />
+                </div>
+                {/* Text */}
+                <span className="relative text-white text-sm font-bold whitespace-nowrap" style={{ zIndex: 1 }}>
+                  See All Projects
+                </span>
+              </div>
             </Link>
           </motion.div>
 

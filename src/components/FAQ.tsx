@@ -1,80 +1,126 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FAQS } from "@/lib/constants";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
+const GLOW_REST = "radial-gradient(25% 75% at 0% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%)";
+const GLOW_HOVER = "radial-gradient(35% 85% at 22% 18%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)";
 
-export default function FAQ() {
-  const [open, setOpen] = useState<number | null>(null);
+const GRID_BG = `
+  linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
+`;
+
+function ChevronIcon() {
+  return (
+    <svg width={25} height={25} viewBox="0 0 256 256" fill="currentColor">
+      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z" />
+    </svg>
+  );
+}
+
+function FAQItem({
+  faq,
+  isOpen,
+  onToggle,
+}: {
+  faq: typeof FAQS[0];
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <section id="faq" className="bg-[#0a0a0a] py-24 md:py-32">
-      <div className="max-w-3xl mx-auto px-6 md:px-10">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="text-center mb-16"
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative overflow-hidden"
+      style={{
+        borderRadius: 20,
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        border: "1px solid rgba(255,255,255,0.3)",
+      }}
+    >
+      <div className="absolute inset-0 pointer-events-none" style={{ background: GLOW_REST }} />
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: GLOW_HOVER }}
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      />
+
+      <button
+        className="relative w-full text-left flex items-center justify-between gap-4 px-6 py-5"
+        onClick={onToggle}
+      >
+        <motion.span
+          animate={{ x: hovered ? 6 : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="font-semibold text-sm md:text-base text-white"
         >
-          <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">FAQ</span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
-            Curious? Check Out the Scoop!
-          </h2>
-        </motion.div>
+          {faq.question}
+        </motion.span>
+        <motion.span
+          animate={{
+            rotate: isOpen ? 180 : 0,
+            color: hovered ? "#f87800" : "rgba(255,255,255,0.9)",
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="shrink-0 flex items-center justify-center"
+        >
+          <ChevronIcon />
+        </motion.span>
+      </button>
 
-        <div className="space-y-3">
-          {FAQS.map((faq, i) => {
-            const isOpen = open === i;
-            return (
-              <motion.div
-                key={faq.question}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`bg-[#111] border rounded-2xl overflow-hidden transition-colors duration-200 ${
-                  isOpen ? "border-[#f87800]/30" : "border-[#222]"
-                }`}
-              >
-                <button
-                  className="w-full text-left flex items-center justify-between gap-4 px-6 py-5"
-                  onClick={() => setOpen(isOpen ? null : i)}
-                >
-                  <span className={`font-semibold text-sm md:text-base transition-colors ${isOpen ? "text-[#f87800]" : "text-white"}`}>
-                    {faq.question}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="shrink-0 w-7 h-7 rounded-full border border-[#333] flex items-center justify-center text-[#888] text-lg leading-none"
-                  >
-                    +
-                  </motion.span>
-                </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="relative overflow-hidden"
+          >
+            <p className="px-6 pb-6 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>
+              {faq.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-6 pb-6 text-[#888] text-sm leading-relaxed">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+export default function FAQ() {
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set());
+
+  const toggle = (i: number) => {
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
+
+  return (
+    <section id="faq" className="relative overflow-hidden bg-[#0a0a0a] py-24 md:py-32">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ backgroundImage: GRID_BG, backgroundSize: "48px 48px" }}
+      />
+
+      <div className="relative max-w-3xl mx-auto px-6 md:px-10">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white text-center leading-tight mb-16">
+          Curious? Check Out the Scoop!
+        </h2>
+
+        <div className="flex flex-col gap-2.5">
+          {FAQS.map((faq, i) => (
+            <FAQItem key={faq.question} faq={faq} isOpen={openSet.has(i)} onToggle={() => toggle(i)} />
+          ))}
         </div>
       </div>
     </section>
