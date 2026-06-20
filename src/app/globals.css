@@ -24,6 +24,7 @@ html {
   background: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
+  overflow-x: hidden;
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE / Edge */
 }
@@ -42,6 +43,11 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
 }
 
 /* Hide scrollbar inside react-fast-marquee */

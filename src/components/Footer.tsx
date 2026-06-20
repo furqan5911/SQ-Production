@@ -202,7 +202,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="rounded-[40px] px-8 py-8 grid grid-cols-2 gap-8" style={cardStyle}>
+          <div className="rounded-[40px] px-6 py-6 sm:px-8 sm:py-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8" style={cardStyle}>
             <div>
               <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Quick Links</h4>
               <ul className="space-y-3">

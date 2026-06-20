@@ -115,7 +115,7 @@ function ServiceCard({
           borderBottom: "1px solid rgba(255,255,255,0.3)",
           borderRight: "1px solid rgba(255,255,255,0.3)",
         }}
-        className="relative rounded-[30px] p-10 cursor-pointer"
+        className="relative rounded-[30px] p-6 sm:p-8 md:p-10 cursor-pointer"
         onClick={() => { if (!isExpanded) expand(); }}
       >
         <h3 className="text-xl md:text-2xl font-bold mb-5" style={titleStyle}>
@@ -317,7 +317,7 @@ export default function Services() {
           </div>
 
           {/* Right — glass cards */}
-          <div className="flex flex-col gap-2 pt-24 md:pt-0">
+          <div className="flex flex-col gap-2 pt-4 md:pt-0">
             {SERVICES.map((service, i) => (
               <ServiceCard
                 key={service.title}

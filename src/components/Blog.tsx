@@ -70,13 +70,13 @@ export default function Blog() {
         >
           <div>
             <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">Journal</span>
-            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
               Dive into our blogs
             </h2>
           </div>
           <Link
             href="/blogs"
-            className="shrink-0 inline-flex items-center gap-2 border border-[#333] text-white text-sm font-semibold px-6 py-3 rounded-full hover:border-[#f87800] hover:text-[#f87800] transition-colors duration-200"
+            className="shrink-0 self-center md:self-auto inline-flex items-center gap-2 border border-[#333] text-white text-sm font-semibold px-6 py-3 rounded-full hover:border-[#f87800] hover:text-[#f87800] transition-colors duration-200"
           >
             Read All Blogs
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">

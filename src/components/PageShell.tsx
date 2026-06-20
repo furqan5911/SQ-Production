@@ -26,7 +26,7 @@ export default function PageShell({ eyebrow, title, subtitle, children }: Props)
             <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">
               {eyebrow}
             </span>
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-5 max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white leading-tight mb-5 max-w-3xl">
               {title}
             </h1>
             {subtitle && (

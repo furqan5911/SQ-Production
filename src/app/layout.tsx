@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatBubble from "@/components/ChatBubble";
+import CursorTrail from "@/components/CursorTrail";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         <LoadingScreen />
         <LenisProvider>{children}</LenisProvider>
         <ChatBubble />
+        <CursorTrail />
       </body>
     </html>
   );

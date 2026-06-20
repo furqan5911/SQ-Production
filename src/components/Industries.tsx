@@ -86,9 +86,9 @@ function IndustryCard({
       />
 
       {/* Title — white default, orange gradient after glass wipes in */}
-      <div className="relative z-10 p-7 md:p-8">
+      <div className="relative z-10 p-4 sm:p-5 md:p-7 lg:p-8">
         <h3
-          className="font-bold text-lg md:text-xl leading-snug"
+          className="font-bold text-base sm:text-lg md:text-xl leading-snug"
           style={{
             backgroundImage: hovered ? TITLE_GRADIENT : "none",
             WebkitBackgroundClip: hovered ? "text" : "unset",
@@ -104,7 +104,7 @@ function IndustryCard({
 
       {/* Description — fades in after glass finishes wiping */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 p-7 md:p-8"
+        className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5 md:p-7 lg:p-8"
         style={{
           opacity: hovered ? 1 : 0,
           transform: hovered ? "translateY(0px)" : "translateY(8px)",
@@ -212,15 +212,15 @@ export default function Industries() {
 
           {/* Left: 2 rows, alternating wide/narrow */}
           <div className="flex-1 flex flex-col gap-3">
-            {/* Row 1: wide (2fr) + narrow (1fr) */}
-            <div className="grid grid-cols-[2fr_1fr] gap-3">
-              <IndustryCard item={INDUSTRIES[0]} className="min-h-[200px] md:min-h-[340px]" delay={0.05} />
-              <IndustryCard item={INDUSTRIES[1]} className="min-h-[200px] md:min-h-[340px]" delay={0.1} />
+            {/* Row 1: wide (2fr) + narrow (1fr) — equal split on mobile so cards stay readable */}
+            <div className="grid grid-cols-2 md:grid-cols-[2fr_1fr] gap-3">
+              <IndustryCard item={INDUSTRIES[0]} className="min-h-[170px] sm:min-h-[200px] md:min-h-[340px]" delay={0.05} />
+              <IndustryCard item={INDUSTRIES[1]} className="min-h-[170px] sm:min-h-[200px] md:min-h-[340px]" delay={0.1} />
             </div>
-            {/* Row 2: narrow (1fr) + wide (2fr) */}
-            <div className="grid grid-cols-[1fr_2fr] gap-3">
-              <IndustryCard item={INDUSTRIES[2]} className="min-h-[200px] md:min-h-[340px]" delay={0.15} />
-              <IndustryCard item={INDUSTRIES[3]} className="min-h-[200px] md:min-h-[340px]" delay={0.2} />
+            {/* Row 2: narrow (1fr) + wide (2fr) — equal split on mobile so cards stay readable */}
+            <div className="grid grid-cols-2 md:grid-cols-[1fr_2fr] gap-3">
+              <IndustryCard item={INDUSTRIES[2]} className="min-h-[170px] sm:min-h-[200px] md:min-h-[340px]" delay={0.15} />
+              <IndustryCard item={INDUSTRIES[3]} className="min-h-[170px] sm:min-h-[200px] md:min-h-[340px]" delay={0.2} />
             </div>
           </div>
 

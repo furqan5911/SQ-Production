@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
-import Services from "@/components/Services";
-import Industries from "@/components/Industries";
+import StudioGallery from "@/components/StudioGallery";
+import ServiceDetails from "@/components/ServiceDetails";
+import ServiceCategories from "@/components/ServiceCategories";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "Services — VideoHut",
+  title: "Services — SQ Productions",
   description: "End-to-end video production: pre-production, production, and post-production services.",
 };
 
@@ -16,8 +17,9 @@ export default function ServicesPage() {
       title="Our Services"
       subtitle="Join us on a journey where ideas transform into captivating video content, with a dash of creativity and a whole lot of fun."
     >
-      <Services />
-      <Industries />
+      <StudioGallery />
+      <ServiceDetails />
+      <ServiceCategories />
       <FAQ />
     </PageShell>
   );

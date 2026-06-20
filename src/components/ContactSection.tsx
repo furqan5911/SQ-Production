@@ -46,7 +46,7 @@ export default function ContactSection() {
           {/* Social links */}
           <div>
             <p className="text-[#555] text-xs tracking-[0.2em] uppercase mb-4">Follow Us</p>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               {Object.entries(FOOTER.socials).map(([platform, href]) => (
                 <a
                   key={platform}

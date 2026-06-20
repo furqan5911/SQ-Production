@@ -82,7 +82,7 @@ export default function About() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section id="about" className="relative bg-[#0a0a0a] py-20 md:py-28">
+    <section id="about" className="relative overflow-x-hidden bg-[#0a0a0a] py-20 md:py-28">
 
       {/* Warm orange radial glow — echoes portrait */}
       <div

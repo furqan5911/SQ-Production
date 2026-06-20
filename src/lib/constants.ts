@@ -334,14 +334,205 @@ export const SERVICES = [
   },
 ];
 
+export const STUDIO_GALLERY = {
+  heading: "Rent, Shoot, Wow: Our Studio Awaits!",
+  subtext:
+    "We've got the coolest tech and all the resources to bring your ideas to life. Book a tour and come be a part of the excitement — we're eager to show you around with a smile!",
+  ctaLabel: "Book a Tour",
+  ctaHref: "/contact",
+  slides: [
+    { title: "Professional Gears",      image: "/images/portfolio/placeholder.png" },
+    { title: "Recording Facility",      image: "/images/portfolio/placeholder.png" },
+    { title: "Professional Setup",      image: "/images/portfolio/placeholder.png" },
+    { title: "Premium Backdrops",       image: "/images/portfolio/placeholder.png" },
+    { title: "Green Screen",            image: "/images/portfolio/placeholder.png" },
+    { title: "Beautiful Interior",      image: "/images/portfolio/placeholder.png" },
+    { title: "Open Space",              image: "/images/portfolio/placeholder.png" },
+    { title: "Natural Light Source",    image: "/images/portfolio/placeholder.png" },
+    { title: "Rooftop",                 image: "/images/portfolio/placeholder.png" },
+  ],
+};
+
+export const SERVICE_DETAILS = [
+  {
+    title: "Pre-Production",
+    intro1: "Before the cameras roll, the magic of video production begins with pre-production. This is where your ideas take shape, scripts are written, and plans are made.",
+    intro2: "Pre-production is the critical planning phase where we lay the foundation for your video project. This stage involves:",
+    images: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    items: [
+      {
+        title: "Concept Development",
+        description: "We work closely with you to brainstorm ideas, themes, and concepts that align with your goals and vision. This is where the creative magic begins.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M104,188a28,28,0,1,1-28-28A28,28,0,0,1,104,188Z" opacity="0.2"></path><path d="M76,152a36,36,0,1,0,36,36A36,36,0,0,0,76,152Zm0,56a20,20,0,1,1,20-20A20,20,0,0,1,76,208ZM42.34,106.34,56.69,92,42.34,77.66A8,8,0,0,1,53.66,66.34L68,80.69,82.34,66.34A8,8,0,0,1,93.66,77.66L79.31,92l14.35,14.34a8,8,0,0,1-11.32,11.32L68,103.31,53.66,117.66a8,8,0,0,1-11.32-11.32Zm187.32,96a8,8,0,0,1-11.32,11.32L204,199.31l-14.34,14.35a8,8,0,0,1-11.32-11.32L192.69,188l-14.35-14.34a8,8,0,0,1,11.32-11.32L204,176.69l14.34-14.35a8,8,0,0,1,11.32,11.32L215.31,188Zm-45.19-89.51c-6.18,22.33-25.32,41.63-46.53,46.93A8.13,8.13,0,0,1,136,160a8,8,0,0,1-1.93-15.76c15.63-3.91,30.35-18.91,35-35.68,3.19-11.5,3.22-29-14.71-46.9L152,59.31V80a8,8,0,0,1-16,0V40a8,8,0,0,1,8-8h40a8,8,0,0,1,0,16H163.31l2.35,2.34C183.9,68.59,190.58,90.78,184.47,112.83Z"></path></g></svg>',
+      },
+      {
+        title: "Scriptwriting",
+        description: "Our experienced scriptwriters craft compelling narratives that effectively convey your message. Whether it's a commercial, corporate video, or any other format, we ensure that the script resonates with your target audience.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M200,176H104s8,6,8,16a24,24,0,0,1-48,0V64A24,24,0,0,0,40,40H176a24,24,0,0,1,24,24Z" opacity="0.2"></path><path d="M96,104a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H104A8,8,0,0,1,96,104Zm8,40h64a8,8,0,0,0,0-16H104a8,8,0,0,0,0,16Zm128,48a32,32,0,0,1-32,32H88a32,32,0,0,1-32-32V64a16,16,0,0,0-32,0c0,5.74,4.83,9.62,4.88,9.66h0A8,8,0,0,1,24,88a7.89,7.89,0,0,1-4.79-1.61h0C18.05,85.54,8,77.61,8,64A32,32,0,0,1,40,32H176a32,32,0,0,1,32,32V168h8a8,8,0,0,1,4.8,1.6C222,170.46,232,178.39,232,192ZM96.26,173.48A8.07,8.07,0,0,1,104,168h88V64a16,16,0,0,0-16-16H67.69A31.71,31.71,0,0,1,72,64V192a16,16,0,0,0,32,0c0-5.74-4.83-9.62-4.88-9.66A7.82,7.82,0,0,1,96.26,173.48ZM216,192a12.58,12.58,0,0,0-3.23-8h-94a26.92,26.92,0,0,1,1.21,8,31.82,31.82,0,0,1-4.29,16H200A16,16,0,0,0,216,192Z"></path></g></svg>',
+      },
+      {
+        title: "Storyboarding",
+        description: "Visual storytelling is key to engaging your audience. We create storyboards that outline the visual sequence, shot angles, and transitions, providing a blueprint for the shoot.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M232,56V200H160a32,32,0,0,0-32,32,32,32,0,0,0-32-32H24V56H96a32,32,0,0,1,32,32,32,32,0,0,1,32-32Z" opacity="0.2"></path><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"></path></g></svg>',
+      },
+      {
+        title: "Location Scouting",
+        description: "The right location can make or break a video. We scout and select the ideal settings, whether it's a studio, outdoor location, or a unique environment that suits your project.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M160,72V216L96,184V40Z" opacity="0.2"></path><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-5.52-.6l-64,16A8,8,0,0,0,24,56V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,1.94-.24l64-16A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,52.94l48,24V203.06l-48-24ZM40,62.25l48-12v127.5l-48,12Zm176,131.5-48,12V78.25l48-12Z"></path></g></svg>',
+      },
+      {
+        title: "Casting and Talent Management",
+        description: "We handle talent auditions, casting, and management. Our goal is to select the perfect actors, presenters, or hosts who bring your script to life.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M160,112a32,32,0,1,1-32-32A32,32,0,0,1,160,112Z" opacity="0.2"></path><path d="M224,40V76a8,8,0,0,1-16,0V48H180a8,8,0,0,1,0-16h36A8,8,0,0,1,224,40Zm-8,132a8,8,0,0,0-8,8v28H180a8,8,0,0,0,0,16h36a8,8,0,0,0,8-8V180A8,8,0,0,0,216,172ZM76,208H48V180a8,8,0,0,0-16,0v36a8,8,0,0,0,8,8H76a8,8,0,0,0,0-16ZM40,84a8,8,0,0,0,8-8V48H76a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V76A8,8,0,0,0,40,84Zm136,92a8,8,0,0,1-6.41-3.19,52,52,0,0,0-83.2,0,8,8,0,1,1-12.8-9.62A67.94,67.94,0,0,1,101,141.51a40,40,0,1,1,53.94,0,67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,176,176Zm-48-40a24,24,0,1,0-24-24A24,24,0,0,0,128,136Z"></path></g></svg>',
+      },
+      {
+        title: "Equipment and Crew Planning",
+        description: "We ensure that the right equipment and skilled crew members are in place for a successful shoot. This includes camera selection, lighting setup, and more.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M195.88,60.12a96,96,0,1,0,0,135.76A96,96,0,0,0,195.88,60.12Zm-55.34,103h0l-36.68-6.69h0L91.32,121.3l24.14-28.41h0l36.68,6.69,12.54,35.12Z" opacity="0.2"></path><path d="M201.54,54.46A104,104,0,0,0,54.46,201.54,104,104,0,0,0,201.54,54.46ZM190.23,65.78a88.18,88.18,0,0,1,11,13.48L167.55,119,139.63,40.78A87.34,87.34,0,0,1,190.23,65.78ZM155.59,133l-18.16,21.37-27.59-5L100.41,123l18.16-21.37,27.59,5ZM65.77,65.78a87.34,87.34,0,0,1,56.66-25.59l17.51,49L58.3,74.32A88,88,0,0,1,65.77,65.78ZM46.65,161.54a88.41,88.41,0,0,1,2.53-72.62l51.21,9.35Zm19.12,28.68a88.18,88.18,0,0,1-11-13.48L88.45,137l27.92,78.18A87.34,87.34,0,0,1,65.77,190.22Zm124.46,0a87.34,87.34,0,0,1-56.66,25.59l-17.51-49,81.64,14.91A88,88,0,0,1,190.23,190.22Zm-34.62-32.49,53.74-63.27a88.41,88.41,0,0,1-2.53,72.62Z"></path></g></svg>',
+      },
+      {
+        title: "Production Timeline",
+        description: "We establish a clear timeline for the pre-production phase to keep everything on track and ensure timely project delivery.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" opacity="0.2"></path><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"></path></g></svg>',
+      },
+    ],
+  },
+  {
+    title: "Production",
+    intro1: "Our skilled cinematographers expertly frame and capture your content, ensuring that every shot is visually stunning and engaging.",
+    intro2: "Elevate your visuals with breathtaking aerial footage. Our drone videography services provide stunning perspectives that add a dynamic dimension to your videos.",
+    images: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    items: [
+      {
+        title: "Cinematography",
+        description: "Our skilled cinematographers expertly frame and capture your content, ensuring that every shot is visually stunning and engaging.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M67.71,64.59l47.79,27.6L40.43,112,32.27,82a7.76,7.76,0,0,1,5.58-9.52ZM199.84,37.76a7.9,7.9,0,0,0-9.66-5.49L126.61,49.05,174.4,76.64,208,67.77Z" opacity="0.2"></path><path d="M216,104H102.09L210,75.51a8,8,0,0,0,5.68-9.84l-8.16-30a15.93,15.93,0,0,0-19.42-11.13L35.81,64.74a15.75,15.75,0,0,0-9.7,7.4,15.51,15.51,0,0,0-1.55,12L32,111.56c0,.14,0,.29,0,.44v88a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V112A8,8,0,0,0,216,104ZM192.16,40l6,22.07-22.62,6L147.42,51.83Zm-66.69,17.6,28.12,16.24-36.94,9.75L88.53,67.37Zm-79.4,44.62-6-22.08,26.5-7L94.69,89.4ZM208,200H48V120H208v80Z"></path></g></svg>',
+      },
+      {
+        title: "Drone Videography",
+        description: "Elevate your visuals with breathtaking aerial footage. Our drone videography services provide stunning perspectives that add a dynamic dimension to your videos.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M200,80v96a8,8,0,0,1-8,8H152a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8h40A8,8,0,0,1,200,80ZM104,32H64a8,8,0,0,0-8,8V176a8,8,0,0,0,8,8h40a8,8,0,0,0,8-8V40A8,8,0,0,0,104,32Z" opacity="0.2"></path><path d="M64,192h40a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V176A16,16,0,0,0,64,192ZM64,40h40V176H64ZM224,216a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,216Zm-72-24h40a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H152a16,16,0,0,0-16,16v96A16,16,0,0,0,152,192Zm0-112h40v96H152Z"></path></g></svg>',
+      },
+      {
+        title: "Live Streaming",
+        description: "We're well-versed in live streaming, enabling you to broadcast events, presentations, and content in real-time to a global audience.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M160,128a32,32,0,1,1-32-32A32,32,0,0,1,160,128Z" opacity="0.2"></path><path d="M128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152Zm73.71,7.14a80,80,0,0,1-14.08,22.2,8,8,0,0,1-11.92-10.67,63.95,63.95,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67,80.08,80.08,0,0,1,14.08,84.47ZM69,103.09a64,64,0,0,0,11.26,67.58,8,8,0,0,1-11.92,10.67,79.93,79.93,0,0,1,0-106.67A8,8,0,1,1,80.29,85.34,63.77,63.77,0,0,0,69,103.09ZM248,128a119.58,119.58,0,0,1-34.29,84,8,8,0,1,1-11.42-11.2,103.9,103.9,0,0,0,0-145.56A8,8,0,1,1,213.71,44,119.58,119.58,0,0,1,248,128ZM53.71,200.78A8,8,0,1,1,42.29,212a119.87,119.87,0,0,1,0-168,8,8,0,1,1,11.42,11.2,103.9,103.9,0,0,0,0,145.56Z"></path></g></svg>',
+      },
+      {
+        title: "Steadicam and Gimbal Work",
+        description: "For silky-smooth and stabilized footage, our Steadicam and gimbal work ensures that every shot is free from shaky distractions.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M81,175A24,24,0,1,1,47,175,24,24,0,0,1,81,175ZM209,47A24,24,0,1,0,209,81,24,24,0,0,0,209,47Z" opacity="0.2"></path><path d="M214.64,41.36a32,32,0,0,0-50.2,38.89L80.25,164.44a32.06,32.06,0,0,0-38.89,4.94h0a32,32,0,1,0,50.2,6.37l84.19-84.19a32,32,0,0,0,38.89-50.2Zm-139.33,162a16,16,0,0,1-22.64-22.64h0a16,16,0,0,1,22.63,0h0A16,16,0,0,1,75.31,203.33Zm128-128a16,16,0,1,1,0-22.63A16,16,0,0,1,203.33,75.3Z"></path></g></svg>',
+      },
+      {
+        title: "Multi-Camera Setup",
+        description: "Multi-camera setups add versatility and dynamism to your video. We utilize multiple cameras to capture different angles and perspectives, enhancing your storytelling.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M208,64H176L160,40H96L80,64H48A16,16,0,0,0,32,80V192a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V80A16,16,0,0,0,208,64ZM128,168a36,36,0,1,1,36-36A36,36,0,0,1,128,168Z" opacity="0.2"></path><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"></path></g></svg>',
+      },
+      {
+        title: "Time-Lapse and Slow Motion",
+        description: "Time-lapse and slow-motion techniques are powerful storytelling tools. Our team excels in creating time-lapse sequences and slow-motion footage that captivate audiences.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M144,128a7.76,7.76,0,0,1-3.63,6.59L52.18,190.74A7.91,7.91,0,0,1,40,184.15V71.85a7.91,7.91,0,0,1,12.18-6.59l88.19,56.15A7.76,7.76,0,0,1,144,128Zm100.37-6.59L156.18,65.26A7.91,7.91,0,0,0,144,71.85v112.3a7.91,7.91,0,0,0,12.18,6.59l88.19-56.15A7.8,7.8,0,0,0,244.37,121.41Z" opacity="0.2"></path><path d="M248.67,114.66,160.48,58.5A15.91,15.91,0,0,0,136,71.84v37.3L56.48,58.5A15.91,15.91,0,0,0,32,71.84V184.16A15.92,15.92,0,0,0,56.48,197.5L136,146.86v37.3a15.92,15.92,0,0,0,24.48,13.34l88.19-56.16a15.8,15.8,0,0,0,0-26.68ZM48,183.94V72.07L135.82,128Zm104,0V72.07L239.82,128Z"></path></g></svg>',
+      },
+      {
+        title: "Green Screen and Chroma Key",
+        description: "For projects that require background replacement or visual effects, our green screen and chroma key services allow us to create virtually any environment, enhancing your storytelling.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M52.3,160h89l-38.62,38.63a32,32,0,0,1-32.06,8h0l-20,8.74a8,8,0,0,1-8.86-1.67,5.74,5.74,0,0,1-1.2-6.36l9.19-21.06h0A32.07,32.07,0,0,1,52.3,160ZM207.23,47.51c-11.07-10.49-28.65-9.83-39.44,1l-25,25.1-4.89-4.88a16,16,0,0,0-22.63,0l-9,9a8,8,0,0,0,0,11.31L167,149.66a8,8,0,0,0,11.31,0l9-9a16,16,0,0,0,0-22.63l-4.88-4.89L207.8,87.66A28,28,0,0,0,207.23,47.51Z" opacity="0.2"></path><path d="M224,67.3a35.79,35.79,0,0,0-11.26-25.66c-14-13.28-36.72-12.78-50.62,1.13L142.8,62.2a24,24,0,0,0-33.14.77l-9,9a16,16,0,0,0,0,22.64l2,2.06-51,51a39.75,39.75,0,0,0-10.53,38l-8,18.41A13.65,13.65,0,0,0,36,219.29a15.9,15.9,0,0,0,17.71,3.36L71.24,215a39.9,39.9,0,0,0,37.05-10.75l51-51,2.06,2.06a16,16,0,0,0,22.62,0l9-9a24,24,0,0,0,.74-33.18l19.75-19.87A35.75,35.75,0,0,0,224,67.3ZM97,193a24,24,0,0,1-24,6,8,8,0,0,0-5.55.31l-18.1,7.9L57,189.41a8,8,0,0,0,.25-5.75,24,24,0,0,1,.1-15.69H122Zm41-41H70.07l44-44,33.94,34Zm64.18-70-25.37,25.52a8,8,0,0,0,0,11.31l4.89,4.88a8,8,0,0,1,0,11.32l-9,9L112,83.26l9-9a8,8,0,0,1,11.31,0l4.89,4.89a8,8,0,0,0,5.65,2.34h0a8,8,0,0,0,5.66-2.36l24.94-25.09c7.81-7.82,20.5-8.18,28.29-.81a20,20,0,0,1,.39,28.7Z"></path></g></svg>',
+      },
+      {
+        title: "Dynamic Webinars",
+        description: "Webinars are an essential tool for online engagement. We can create and manage dynamic webinars, making sure your content is engaging and informative.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M224,64V176a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V64A16,16,0,0,1,48,48H208A16,16,0,0,1,224,64Z" opacity="0.2"></path><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Zm-48,48a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,224Z"></path></g></svg>',
+      },
+    ],
+  },
+  {
+    title: "Post-Production",
+    intro1: "The real magic happens in post-production. This is where we take the raw footage and craft it into a polished, engaging video.",
+    intro2: "Our post-production services cover video editing, sound design, color correction, visual effects, and more. We pay meticulous attention to detail to ensure your video looks and sounds its best.",
+    images: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    items: [
+      {
+        title: "Video Editing",
+        description: "Our skilled editors meticulously assemble and edit the footage, creating a seamless, coherent, and compelling narrative that captivates your audience.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M40.2,95.8a28,28,0,1,1,39.6,0A28,28,0,0,1,40.2,95.8Zm0,64.4a28,28,0,1,0,39.6,0A28,28,0,0,0,40.2,160.2Z" opacity="0.2"></path><path d="M157.73,113.13A8,8,0,0,1,159.82,102L227.48,55.7a8,8,0,0,1,9,13.21l-67.67,46.3a7.92,7.92,0,0,1-4.51,1.4A8,8,0,0,1,157.73,113.13Zm80.87,85.09a8,8,0,0,1-11.12,2.08L136,137.7,93.49,166.78a36,36,0,1,1-9-13.19L121.83,128,84.44,102.41a35.86,35.86,0,1,1,9-13.19l143,97.87A8,8,0,0,1,238.6,198.22ZM80,180a20,20,0,1,0-5.86,14.14A19.85,19.85,0,0,0,80,180ZM74.14,90.13a20,20,0,1,0-28.28,0A19.85,19.85,0,0,0,74.14,90.13Z"></path></g></svg>',
+      },
+      {
+        title: "Color Grading",
+        description: "We enhance the visuals by applying color grading techniques, ensuring that your video looks its best with vibrant colors, a consistent mood, and a professional finish.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M224,127.17a96.48,96.48,0,0,1-2.39,22.18A24,24,0,0,1,198.21,168H152a24,24,0,0,0-24,24,24,24,0,0,1-32,22.61C58.73,201.44,32,169.81,32,128a96,96,0,0,1,95-96C179.84,31.47,223.55,74.35,224,127.17Z" opacity="0.2"></path><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"></path></g></svg>',
+      },
+      {
+        title: "Audio Enhancement",
+        description: "Clear and impactful audio is vital for a memorable video. We provide audio enhancement services to make sure your message is conveyed with crystal clarity.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M232,128c-52,110.85-78,55.43-104,0ZM24,128H128C102,72.57,76,17.15,24,128Z" opacity="0.2"></path><path d="M239.24,131.4c-22,46.8-41.4,68.6-61.2,68.6-25.1,0-40.73-33.32-57.28-68.6C107.7,103.56,92.9,72,78,72c-16.4,0-36.31,37.21-46.72,59.4a8,8,0,0,1-14.48-6.8C38.71,77.8,58.16,56,78,56c25.1,0,40.73,33.32,57.28,68.6C148.3,152.44,163.1,184,178,184c16.4,0,36.31-37.21,46.72-59.4a8,8,0,0,1,14.48,6.8Z"></path></g></svg>',
+      },
+      {
+        title: "3D Animation and CGI",
+        description: "To add a touch of magic to your project, we offer 3D animation and CGI services that create stunning visual effects and immersive 3D elements.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M128,129.09V232a8,8,0,0,1-3.84-1l-88-48.16a8,8,0,0,1-4.16-7V80.2a8,8,0,0,1,.7-3.27Z" opacity="0.2"></path><path d="M223.68,66.15,135.68,18h0a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32h0l80.34,44L128,120,47.66,76ZM40,90l80,43.78v85.79L40,175.82Zm96,129.57V133.82L216,90v85.78Z"></path></g></svg>',
+      },
+      {
+        title: "Subtitles and Closed Captions",
+        description: "We can add subtitles and closed captions to make your content accessible to a broader audience, ensuring that your message reaches everyone.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M232,164c0,15.46-14.33,28-32,28s-32-12.54-32-28,14.33-28,32-28S232,148.54,232,164ZM34.82,152h90.36L80,56Z" opacity="0.2"></path><path d="M87.24,52.59a8,8,0,0,0-14.48,0l-64,136a8,8,0,1,0,14.48,6.81L39.9,160h80.2l16.66,35.4a8,8,0,1,0,14.48-6.81ZM47.43,144,80,74.79,112.57,144ZM200,96c-12.76,0-22.73,3.47-29.63,10.32a8,8,0,0,0,11.26,11.36c3.8-3.77,10-5.68,18.37-5.68,13.23,0,24,9,24,20v3.22A42.76,42.76,0,0,0,200,128c-22.06,0-40,16.15-40,36s17.94,36,40,36a42.73,42.73,0,0,0,24-7.25,8,8,0,0,0,16-.75V132C240,112.15,222.06,96,200,96Zm0,88c-13.23,0-24-9-24-20s10.77-20,24-20,24,9,24,20S213.23,184,200,184Z"></path></g></svg>',
+      },
+      {
+        title: "Whiteboard Animation",
+        description: "Whiteboard animation is an engaging way to convey complex ideas. Our whiteboard animation services turn your concepts into captivating visuals that resonate with your audience.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M192,80v96H104a32,32,0,1,0-32-32H64V80Z" opacity="0.2"></path><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM80,144a24,24,0,1,1,24,24A24,24,0,0,1,80,144Zm136,56H159.43a64.39,64.39,0,0,0-28.83-26.16,40,40,0,1,0-53.2,0A64.39,64.39,0,0,0,48.57,200H40V56H216ZM56,96V80a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8v96a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h8V88H72v8a8,8,0,0,1-16,0Z"></path></g></svg>',
+      },
+      {
+        title: "DVD and Blu-ray Authoring",
+        description: "If your project is intended for physical distribution, we provide DVD and Blu-ray authoring services, ensuring your content is professionally presented.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M224,128a96,96,0,1,1-28.12-67.88l-45.25,45.25h0A32,32,0,1,0,160,128Z" opacity="0.2"></path><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.2,96a39.77,39.77,0,0,0-5.84-14l34.23-34.24a87.54,87.54,0,0,1,20,48.28ZM152,128a24,24,0,1,1-24-24A24,24,0,0,1,152,128Zm-24,88A88,88,0,1,1,184.28,60.4L150,94.64A40,40,0,1,0,167.2,136h48.43A88.11,88.11,0,0,1,128,216Z"></path></g></svg>',
+      },
+      {
+        title: "Archiving and Backup",
+        description: "We understand the importance of preserving your valuable content. Our archiving and backup services ensure that your video assets are securely stored and easily retrievable for future use.",
+        iconSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select:none;width:100%;height:100%;display:inline-block;fill:rgb(255,115,0);color:rgb(255,115,0);flex-shrink:0"><g weight="duotone"><path d="M240,128a80,80,0,0,1-80,80H72A56,56,0,1,1,85.92,97.74l0,.1A80,80,0,0,1,240,128Z" opacity="0.2"></path><path d="M178.34,165.66,160,147.31V208a8,8,0,0,1-16,0V147.31l-18.34,18.35a8,8,0,0,1-11.32-11.32l32-32a8,8,0,0,1,11.32,0l32,32a8,8,0,0,1-11.32,11.32ZM160,40A88.08,88.08,0,0,0,81.29,88.68,64,64,0,1,0,72,216h40a8,8,0,0,0,0-16H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.12A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,100.8,66,8,8,0,0,0,3.2,15.34,7.9,7.9,0,0,0,3.2-.68A88,88,0,0,0,160,40Z"></path></g></svg>',
+      },
+    ],
+  },
+];
+
+export const SERVICE_CATEGORIES = [
+  { number: "01", title: "Corporate Video",      description: "Polished internal and external videos that communicate your brand, culture, and message with clarity and confidence.", image: "/images/industries/corporate.svg" },
+  { number: "02", title: "Commercial Video",     description: "Short, impactful visual narratives that promote products, services, or brands with strong storytelling and persuasive visuals.", image: "/images/industries/commercials.svg" },
+  { number: "03", title: "Documentary Film",     description: "Real stories, told with depth and craft — we bring authenticity and cinematic quality to every documentary project.", image: "/images/industries/documentaries.svg" },
+  { number: "04", title: "Product Video",        description: "Clean, detail-driven product films that highlight features, craftsmanship, and use-cases to drive conversions.", image: "/images/portfolio/placeholder.png" },
+  { number: "05", title: "Animation",            description: "From motion graphics to full 2D/3D animation, we turn complex ideas into clear, engaging visual stories.", image: "/images/industries/vfx.svg" },
+  { number: "06", title: "Event Video",          description: "Multi-camera coverage and same-day edits that capture the energy of conferences, launches, and live events.", image: "/images/industries/events.svg" },
+  { number: "07", title: "Educational Video",    description: "Training and e-learning content designed to inform clearly and keep learners engaged from start to finish.", image: "/images/portfolio/placeholder.png" },
+  { number: "08", title: "Entertainment Video",  description: "Narrative-driven content built for impact — from short films to branded entertainment series.", image: "/images/industries/narrative.svg" },
+  { number: "09", title: "Fashion Video",        description: "Stylish, fast-paced visuals that showcase collections and campaigns with editorial polish.", image: "/images/portfolio/placeholder.png" },
+  { number: "10", title: "Lifestyle",            description: "Authentic lifestyle content that captures real moments and connects with audiences on a personal level.", image: "/images/portfolio/placeholder.png" },
+  { number: "11", title: "Interview Video",      description: "Professionally lit, multi-angle interviews edited into compelling testimonials and feature pieces.", image: "/images/portfolio/placeholder.png" },
+  { number: "12", title: "Social Media Video",   description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts.", image: "/images/industries/reels.svg" },
+];
+
 export const INDUSTRIES = [
-  { title: "Corporate Videos",          image: "/images/industries/corporate.jpg",   description: "Enhance your brand's impact with our corporate video expertise. We create engaging content for businesses, from promotions to training materials." },
-  { title: "Documentaries",             image: "/images/industries/documentaries.jpg", description: "We bring real-life stories to life. Our documentaries inform, entertain, and educate on diverse subjects, ensuring your message is captivatingly conveyed." },
-  { title: "Entertainment & Narrative", image: "/images/industries/narrative.jpg",   description: "Immerse your audience in captivating stories. Our creative team brings your visions to life, whether it's a short film or a full-length feature." },
-  { title: "Commercials & Ads",         image: "/images/industries/commercials.jpg", description: "Make a memorable impression. Our short, attention-grabbing videos showcase your products, services, or brand identity effectively." },
-  { title: "Shorts & Reels",            image: "/images/industries/reels.jpg",       description: "Stay on-trend and engage your audience with our dynamic social media content designed for maximum impact and shareability on popular platforms." },
-  { title: "Event & Live Streaming",    image: "/images/industries/events.jpg",      description: "Capture and share the excitement of live events. We provide multi-camera setups, live streaming, and post-event editing for unforgettable experiences." },
-  { title: "Animation & VFX",           image: "/images/industries/vfx.jpg",         description: "Elevate your content with stunning visuals. Our animation and VFX artists use cutting-edge tech for breathtaking effects in films, commercials, and more." },
+  { title: "Corporate Videos",          image: "/images/industries/corporate.svg",   description: "Enhance your brand's impact with our corporate video expertise. We create engaging content for businesses, from promotions to training materials." },
+  { title: "Documentaries",             image: "/images/industries/documentaries.svg", description: "We bring real-life stories to life. Our documentaries inform, entertain, and educate on diverse subjects, ensuring your message is captivatingly conveyed." },
+  { title: "Entertainment & Narrative", image: "/images/industries/narrative.svg",   description: "Immerse your audience in captivating stories. Our creative team brings your visions to life, whether it's a short film or a full-length feature." },
+  { title: "Commercials & Ads",         image: "/images/industries/commercials.svg", description: "Make a memorable impression. Our short, attention-grabbing videos showcase your products, services, or brand identity effectively." },
+  { title: "Shorts & Reels",            image: "/images/industries/reels.svg",       description: "Stay on-trend and engage your audience with our dynamic social media content designed for maximum impact and shareability on popular platforms." },
+  { title: "Event & Live Streaming",    image: "/images/industries/events.svg",      description: "Capture and share the excitement of live events. We provide multi-camera setups, live streaming, and post-event editing for unforgettable experiences." },
+  { title: "Animation & VFX",           image: "/images/industries/vfx.svg",         description: "Elevate your content with stunning visuals. Our animation and VFX artists use cutting-edge tech for breathtaking effects in films, commercials, and more." },
 ];
 
 export const STATS = [
