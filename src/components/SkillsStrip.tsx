@@ -7,8 +7,8 @@ import { SKILLS_STRIP } from "@/lib/constants";
 
 const MIN_SHOW_MS = 1200;
 
-const CARD_WIDTH = 190;
-const CARD_HEIGHT = 190;
+const CARD_WIDTH = 150;
+const CARD_HEIGHT = 150;
 
 function SkillWord({ label, image }: { label: string; image: string }) {
   const [hovered, setHovered] = useState(false);
@@ -39,10 +39,18 @@ function SkillWord({ label, image }: { label: string; image: string }) {
       <AnimatePresence>
         {hovered && (
           <motion.div
-            initial={{ opacity: 0, rotate: -11 }}
-            animate={{ opacity: 1, rotate: 7 }}
-            exit={{ opacity: 0, rotate: -11 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, rotate: -11, scale: 2.5 }}
+            animate={{ opacity: 1, rotate: 7, scale: 1 }}
+            exit={{
+              opacity: 0,
+              rotate: -11,
+              scale: 2.5,
+              transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }, // fade-OUT stays snappy
+            }}
+            transition={{
+              duration: 3.3,                  // ≈ 330px of marquee travel ÷ 100px/s — card visibly keeps shrinking across ~1/3 of its trip
+              ease: [0.16, 1, 0.3, 1],        // easeOutExpo: fast start, long slow tail
+            }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-hidden z-0"
             style={{
               width: CARD_WIDTH,
@@ -89,7 +97,7 @@ export default function SkillsStrip() {
 
   return (
     <section
-      className="relative py-24 md:py-32"
+      className="relative pt-8 pb-24 md:pt-12 md:pb-32"
       style={{
         background: "var(--bg)",
         maskImage:
@@ -98,7 +106,7 @@ export default function SkillsStrip() {
           "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
       }}
     >
-      <Marquee gradient={false} speed={30}>
+      <Marquee gradient={false} speed={100}>
         {doubled.map((skill, i) => (
           <SkillWord key={i} label={skill.label} image={skill.image} />
         ))}

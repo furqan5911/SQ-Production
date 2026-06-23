@@ -40,7 +40,12 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${spaceMono.variable} ${poppins.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-bg text-text antialiased">
         <LoadingScreen />
-        <LenisProvider>{children}</LenisProvider>
+        {/* Horizontal-overflow clipping (e.g. for off-screen marquee/sweep
+            animations) scoped to this wrapper instead of html/body — putting
+            it on the root elements breaks position:sticky site-wide. */}
+        <div className="overflow-x-clip">
+          <LenisProvider>{children}</LenisProvider>
+        </div>
         <ChatBubble />
         <CursorTrail />
       </body>

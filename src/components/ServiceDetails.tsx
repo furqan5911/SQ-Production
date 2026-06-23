@@ -1,56 +1,77 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useMotionValue } from "motion/react";
 import { SERVICE_DETAILS } from "@/lib/constants";
 
-function ServiceItem({
-  item,
-  index,
-  isHovered,
-  onHover,
-  onLeave,
-}: {
-  item: { title: string; description: string; iconSvg: string };
-  index: number;
-  isHovered: boolean;
-  onHover: () => void;
-  onLeave: () => void;
-}) {
+/* Per-panel marquee direction/speed — measured on the real site, each panel
+   genuinely differs (not meant to be matched exactly, just shouldn't be a
+   single hardcoded direction/speed):
+     Pre-Production: rightward (dir 1), ~215px/s
+     Production:     leftward  (dir -1), ~104px/s
+     Post-Production: rightward (dir 1), ~109px/s */
+const MARQUEE_CONFIG = [
+  { direction: 1 as const, speed: 215 },
+  { direction: -1 as const, speed: 104 },
+  { direction: 1 as const, speed: 109 },
+];
+
+function ServiceItem({ item }: { item: { title: string; description: string; iconSvg: string } }) {
+  const rotate = useMotionValue(0);
+  const color = useMotionValue("rgb(255,255,255)");
+  const controlsRef = useRef<{ stop: () => void }[]>([]);
+
+  function handleHoverStart() {
+    /* Slow underdamped spring with a visible overshoot/undershoot before
+       settling over ~3-4s — matches the measured color curve, not a flat
+       200ms ease. Color starts almost immediately on hover. */
+    const colorControls = animate(color, "rgb(255,122,59)", { type: "spring", stiffness: 24, damping: 5 });
+    /* One-shot spin-and-settle per hover (not a loop) — decelerates into
+       rest, matches the measured ~1.1deg -> ~360deg curve. Re-verification
+       found the icon starts ~0.5-1s after the color, not simultaneously. */
+    const rotateControls = animate(rotate, 360, { type: "spring", stiffness: 24, damping: 5, delay: 0.7 });
+    controlsRef.current = [colorControls, rotateControls];
+  }
+
+  function handleHoverEnd() {
+    /* Stop any in-flight (or still-delayed) animation first — otherwise a
+       quick hover-and-leave during the icon's 0.7s delay would still fire
+       the spin after the mouse has already left. */
+    controlsRef.current.forEach((c) => c.stop());
+    controlsRef.current = [];
+    /* Real site resets instantly on mouse-leave, not via an animated
+       reverse — confirmed: first sample after leaving is already back at
+       rest, regardless of how far into the hover-in animation it was. */
+    rotate.set(0);
+    color.set("rgb(255,255,255)");
+  }
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ type: "spring", stiffness: 116, damping: 30, mass: 1, delay: 0.1 }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      className="py-5 border-b cursor-default"
-      style={{ borderColor: "rgba(255,255,255,0.12)" }}
+    <div
+      onMouseEnter={handleHoverStart}
+      onMouseLeave={handleHoverEnd}
+      className="py-5 cursor-default"
     >
       <div className="flex items-start gap-3">
-        {/* Orange Phosphor icon */}
-        <div
+        {/* Orange Phosphor icon — already orange at rest, only rotation animates */}
+        <motion.div
           className="shrink-0 mt-0.5"
-          style={{ width: 24, height: 24 }}
+          style={{ width: 24, height: 24, rotate }}
           dangerouslySetInnerHTML={{ __html: item.iconSvg }}
         />
         <div>
-          {/* Title: white normally, orange on hover — matches inspo */}
-          <h4
+          <motion.h4
             style={{
               fontSize: 18,
               fontWeight: 500,
               fontFamily: "Syne, sans-serif",
               letterSpacing: "-0.9px",
               lineHeight: "27px",
-              color: isHovered ? "rgb(255, 115, 0)" : "rgb(255,255,255)",
-              transition: "color 0.2s ease",
+              color,
             }}
           >
             {item.title}
-          </h4>
-          {/* Description always visible */}
+          </motion.h4>
           <p
             className="mt-1"
             style={{
@@ -64,7 +85,75 @@ function ServiceItem({
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
+  );
+}
+
+/* Always-running horizontal marquee — not hover-triggered. Duplicates the
+   image list 3x and loops the middle copy's width seamlessly, forever,
+   independent of mouse position. */
+function MarqueeStrip({
+  images,
+  direction,
+  speed,
+}: {
+  images: string[];
+  direction: 1 | -1;
+  speed: number;
+}) {
+  const trackRef = useRef<HTMLUListElement>(null);
+  const x = useMotionValue(0);
+  const [setWidth, setSetWidth] = useState(0);
+  const repeated = [...images, ...images, ...images];
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const measure = () => setSetWidth(el.scrollWidth / 3);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [images]);
+
+  useEffect(() => {
+    if (!setWidth) return;
+    const duration = setWidth / speed;
+    const from = direction === 1 ? -setWidth : 0;
+    const to = direction === 1 ? 0 : -setWidth;
+    x.set(from);
+    const controls = animate(x, to, { duration, ease: "linear", repeat: Infinity });
+    return () => controls.stop();
+  }, [setWidth, speed, direction, x]);
+
+  return (
+    <div
+      className="relative mt-8 overflow-hidden rounded-2xl"
+      style={{
+        height: 200,
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
+      }}
+    >
+      <motion.ul
+        ref={trackRef}
+        style={{ x, display: "flex", gap: 16, listStyle: "none", margin: 0, padding: 0 }}
+      >
+        {repeated.map((src, i) => (
+          <li key={i} className="shrink-0" style={{ width: 280, height: 200 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={src}
+              alt=""
+              className="h-full w-full object-cover"
+              style={{ filter: "brightness(0.81)", borderRadius: 20 }}
+            />
+          </li>
+        ))}
+      </motion.ul>
+    </div>
   );
 }
 
@@ -75,106 +164,82 @@ function ServiceGroup({
   group: (typeof SERVICE_DETAILS)[0];
   groupIndex: number;
 }) {
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-
-  const previewImage =
-    hoveredIdx !== null
-      ? group.images[hoveredIdx % group.images.length]
-      : null;
+  const { direction, speed } = MARQUEE_CONFIG[groupIndex % MARQUEE_CONFIG.length];
 
   return (
     <div
       className={groupIndex > 0 ? "pt-20 md:pt-28 border-t" : ""}
       style={groupIndex > 0 ? { borderColor: "rgba(255,255,255,0.1)" } : undefined}
     >
+      {/* Panel-wide rounded glass outline — wraps the whole two-column
+          panel (text + list together), not per-item. Real site renders
+          this on a ::after pseudo-element; a plain wrapping border reads
+          identically. Pure outline: no background, no blur. */}
+      <div
+        className="rounded-[40px] p-8 md:p-12"
+        style={{ border: "1px solid rgba(255,255,255,0.3)" }}
+      >
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
 
-        {/* ── Left column ── sticky, text + animated hover preview image */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ type: "spring", stiffness: 116, damping: 30, mass: 1, delay: 0.1 }}
-          className="md:sticky md:top-28 self-start"
-        >
-          <h2
-            className="text-white mb-5"
-            style={{
-              fontSize: 30,
-              fontWeight: 600,
-              fontFamily: "Syne, sans-serif",
-              letterSpacing: "-1.5px",
-              lineHeight: "36px",
-            }}
-          >
-            {group.title}
-          </h2>
+        {/* ── Left column ── flex col so mt-auto pushes marquee to bottom; order-last mirrors Production */}
+        <div className={`flex flex-col ${groupIndex % 2 === 1 ? "md:order-last" : ""}`}>
+          {/* inner — text pins; z-[1] keeps it above marquee; no background — real site is transparent */}
+          <div className="md:sticky md:top-[120px] z-[1]">
+            <h2
+              className="text-white mb-5"
+              style={{
+                fontSize: 30,
+                fontWeight: 600,
+                fontFamily: "Syne, sans-serif",
+                letterSpacing: "-1.5px",
+                lineHeight: "36px",
+              }}
+            >
+              {group.title}
+            </h2>
 
-          {/* intro1 — small muted paragraph */}
-          <p
-            className="mb-5"
-            style={{
-              fontSize: 18,
-              fontWeight: 300,
-              color: "rgba(255,255,255,0.8)",
-              letterSpacing: "-0.36px",
-              lineHeight: "27px",
-            }}
-          >
-            {group.intro1}
-          </p>
+            {/* intro1 — small muted paragraph */}
+            <p
+              className="mb-5"
+              style={{
+                fontSize: 18,
+                fontWeight: 300,
+                color: "rgba(255,255,255,0.8)",
+                letterSpacing: "-0.36px",
+                lineHeight: "27px",
+              }}
+            >
+              {group.intro1}
+            </p>
 
-          {/* intro2 — large display paragraph */}
-          <p
-            style={{
-              fontSize: "clamp(1.5rem, 6vw, 2.25rem)",
-              fontWeight: 300,
-              color: "white",
-              letterSpacing: "-1.44px",
-              lineHeight: 1.2,
-            }}
-          >
-            {group.intro2}
-          </p>
-
-          {/* Preview image that flies in from the right when hovering an item */}
-          <div className="relative mt-8 overflow-hidden rounded-2xl" style={{ height: 200 }}>
-            <AnimatePresence mode="wait">
-              {previewImage && (
-                <motion.div
-                  key={previewImage + String(hoveredIdx)}
-                  initial={{ x: 60, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 60, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={previewImage}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* intro2 — large display paragraph */}
+            <p
+              style={{
+                fontSize: "clamp(1.5rem, 6vw, 2.25rem)",
+                fontWeight: 300,
+                color: "white",
+                letterSpacing: "-1.44px",
+                lineHeight: 1.2,
+              }}
+            >
+              {group.intro2}
+            </p>
           </div>
-        </motion.div>
 
-        {/* ── Right column ── always-visible item list */}
+          {/* mt-auto pushes marquee to bottom of stretched column — keeps it clear of pinned text */}
+          <div className="mt-auto">
+            <MarqueeStrip images={group.images} direction={direction} speed={speed} />
+          </div>
+        </div>
+
+        {/* ── Right column ── always-visible item list, no scroll reveal */}
         <div className="pt-1">
-          {group.items.map((item, i) => (
-            <ServiceItem
-              key={item.title}
-              item={item}
-              index={i}
-              isHovered={hoveredIdx === i}
-              onHover={() => setHoveredIdx(i)}
-              onLeave={() => setHoveredIdx(null)}
-            />
+          {group.items.map((item) => (
+            <ServiceItem key={item.title} item={item} />
           ))}
         </div>
 
+      </div>
       </div>
     </div>
   );

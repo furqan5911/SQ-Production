@@ -106,15 +106,10 @@ function ServiceCard({
         )}
       </AnimatePresence>
 
-      {/* Glass card */}
+      {/* Glass card — real site renders 0px border at rest and on hover,
+          confirmed via computed style; only the gradient tint is visible. */}
       <motion.div
-        style={{
-          background,
-          borderTop: "2px solid rgba(255,255,255,0.3)",
-          borderLeft: "2px solid rgba(255,255,255,0.3)",
-          borderBottom: "1px solid rgba(255,255,255,0.3)",
-          borderRight: "1px solid rgba(255,255,255,0.3)",
-        }}
+        style={{ background }}
         className="relative rounded-[30px] p-6 sm:p-8 md:p-10 cursor-pointer"
         onClick={() => { if (!isExpanded) expand(); }}
       >
@@ -278,7 +273,7 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="bg-[#0a0a0a] py-24 md:py-32">
+    <section id="services" className="bg-[#0a0a0a] pt-16 pb-24 md:pt-20 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-[1fr_1.6fr] gap-12 md:gap-20 items-start">
 

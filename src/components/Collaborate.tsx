@@ -94,7 +94,7 @@ export default function Collaborate() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt={SITE.name} className="h-10 md:h-12 w-auto mx-auto mb-8 opacity-90" />
+        <img src="/images/logo.png" alt={SITE.name} className="h-[100px] w-auto mx-auto mb-8 opacity-90" />
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-5">
           {COLLABORATE.heading.map((line) => (

@@ -1,23 +1,50 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
+  animate,
   motion,
   AnimatePresence,
+  useMotionValue,
   useScroll,
+  useSpring,
   useTransform,
 } from "motion/react";
-import Marquee from "react-fast-marquee";
 import { SERVICE_CATEGORIES } from "@/lib/constants";
 
-/* Continuous "breathing" float — never stops, independent of the open/close
-   transition. Matches ANALYSIS.md: title + EXPLORE text drift up/down by a
-   few pixels forever; the background number does NOT do this. */
-const breathe = {
-  y: [0, -4, 0],
-  transition: { duration: 2.6, repeat: Infinity, ease: "easeInOut" as const },
-};
+/* ── Fix 4/8 (FIX-SERVICECATEGORIES.md): while a row is open, a fixed
+   ~2.1s timer (not scroll) cyclically swaps which of the 3 fanned photos is
+   front/mid/back. Fix 8: the real site's 3 cards are genuinely different
+   pixel sizes (front 316x210, mid 407x271, back 614x408 — same ~1.5:1
+   aspect, back literally the biggest, just lowest z so it only peeks out),
+   not one box uniformly scaled down — so slots carry explicit w/h, not a
+   shared box + scale. Values below are that same ratio scaled down to fit
+   this panel; tune by eye against the real site if needed. */
+/* Fix 9: real site fans ~2:1 horizontal:vertical (204px x-travel, 99px
+   y-travel) — side-to-side dominant, not diagonal. y values cut roughly in
+   half vs. the original pass to bring the ratio back from ~1.3:1. */
+const FAN_SLOTS = [
+  { x: -40, y: -10, w: 380, h: 253, z: 10 },  // back — biggest, lowest z, mostly hidden
+  { x: 70, y: 35, w: 252, h: 168, z: 50 },    // mid
+  { x: 140, y: 60, w: 196, h: 130, z: 100 },  // front — smallest, topmost z
+];
+
+function fanSlotAt(continuousIndex: number) {
+  const wrapped = ((continuousIndex % 3) + 3) % 3;
+  const i0 = Math.floor(wrapped);
+  const i1 = (i0 + 1) % 3;
+  const t = wrapped - i0;
+  const a = FAN_SLOTS[i0];
+  const b = FAN_SLOTS[i1];
+  return {
+    x: a.x + (b.x - a.x) * t,
+    y: a.y + (b.y - a.y) * t,
+    w: a.w + (b.w - a.w) * t,
+    h: a.h + (b.h - a.h) * t,
+    z: a.z + (b.z - a.z) * t,
+  };
+}
 
 /* ── Down-arrow SVG (↓).
    Collapsed: rotate(-90deg) → becomes →
@@ -51,6 +78,7 @@ function CategoryRow({
   onToggle: () => void;
 }) {
   const rowRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   /* framer-1nf6ux6 scroll data from animations.json:
        Row entering viewport (scrollYProgress = 0): scale ≈ 1.38
@@ -62,80 +90,147 @@ function CategoryRow({
   });
   const numberScale = useTransform(scrollYProgress, [0, 1], [1.38, 1.2]);
 
+  /* Fix 4 (corrected + feel update) — autoplay timer, not scroll: restarts
+     at 0 every time the row opens, ticks forward every ~2.1s while open,
+     stops/resets when closed. Spring slowed down (lower stiffness, higher
+     mass) so a swap settles in ~1.3-1.5s like the real site, not ~0.6s.
+     Fix 10: damping raised 6 → 14 (damping ratio ~0.36 → ~0.84) so it
+     overshoots once and decays smoothly, instead of bouncing back and forth
+     across the resting value like a "pump." */
+  const fanPhaseRaw = useMotionValue(0);
+  const fanPhase = useSpring(fanPhaseRaw, { stiffness: 70, damping: 14, mass: 1 });
+
+  /* Real site's swap has a dramatic elastic "pop" — one card balloons to
+     2.2x-6.6x its resting size before snapping back to 1.0, rather than
+     smoothly crossfading between two already-close sizes. Layered as an
+     extra multiplicative scale on top of each card's explicit w/h (Fix 8),
+     kicked via an imperative `from` on every tick so the spring travels
+     through that wide range instead of easing between close numbers. */
+  const popScale = useMotionValue(1);
+
+  useEffect(() => {
+    fanPhaseRaw.set(0);
+    popScale.set(1);
+    if (!isOpen) return;
+    let tick = 0;
+    const interval = setInterval(() => {
+      tick += 1;
+      fanPhaseRaw.set(tick);
+      animate(popScale, 1, { type: "spring", stiffness: 70, damping: 14, mass: 1, from: 2.4 });
+    }, 2100);
+    return () => clearInterval(interval);
+  }, [isOpen, fanPhaseRaw, popScale]);
+
+  const fanX0 = useTransform(fanPhase, (p) => fanSlotAt(0 + p).x);
+  const fanY0 = useTransform(fanPhase, (p) => fanSlotAt(0 + p).y);
+  const fanW0 = useTransform(fanPhase, (p) => fanSlotAt(0 + p).w);
+  const fanH0 = useTransform(fanPhase, (p) => fanSlotAt(0 + p).h);
+  const fanZ0 = useTransform(fanPhase, (p) => Math.round(fanSlotAt(0 + p).z));
+
+  const fanX1 = useTransform(fanPhase, (p) => fanSlotAt(1 + p).x);
+  const fanY1 = useTransform(fanPhase, (p) => fanSlotAt(1 + p).y);
+  const fanW1 = useTransform(fanPhase, (p) => fanSlotAt(1 + p).w);
+  const fanH1 = useTransform(fanPhase, (p) => fanSlotAt(1 + p).h);
+  const fanZ1 = useTransform(fanPhase, (p) => Math.round(fanSlotAt(1 + p).z));
+
+  const fanX2 = useTransform(fanPhase, (p) => fanSlotAt(2 + p).x);
+  const fanY2 = useTransform(fanPhase, (p) => fanSlotAt(2 + p).y);
+  const fanW2 = useTransform(fanPhase, (p) => fanSlotAt(2 + p).w);
+  const fanH2 = useTransform(fanPhase, (p) => fanSlotAt(2 + p).h);
+  const fanZ2 = useTransform(fanPhase, (p) => Math.round(fanSlotAt(2 + p).z));
+
+  const fanImages = [
+    { x: fanX0, y: fanY0, w: fanW0, h: fanH0, z: fanZ0 },
+    { x: fanX1, y: fanY1, w: fanW1, h: fanH1, z: fanZ1 },
+    { x: fanX2, y: fanY2, w: fanW2, h: fanH2, z: fanZ2 },
+  ];
+
   return (
     <div ref={rowRef} className="relative">
 
-      {/* ── Giant decorative background number ──
-          framer-nma0ig from computed.json:
-            opacity: 0.37
-            translateY(-79px)  ← matrix(1,0,0,1,0,-79.1979)
-          framer-1nf6ux6 from animations.json:
-            scroll-driven scale 1.38 → 1.20             ── */}
+      {/* Fix 7: title+number block tilts ~2deg on hover (open or closed),
+          resets to 0deg on un-hover — independent of open/closed state. */}
       <motion.div
-        aria-hidden
-        className="absolute left-0 top-0 leading-none text-white select-none pointer-events-none"
-        style={{
-          fontSize: "clamp(78px, 24vw, 230px)",
-          fontWeight: 900,
-          fontFamily: "Syne, sans-serif",
-          letterSpacing: "-6px",
-          opacity: 0.37,
-          y: -79,             // translateY(-79px) — same as framer-nma0ig
-          scale: numberScale, // scroll-driven — same as framer-1nf6ux6
-          transformOrigin: "top left",
-          zIndex: 0,
-        }}
+        animate={{ rotate: isHovered ? 2 : 0 }}
+        transition={{ rotate: { type: "spring", stiffness: 200, damping: 20 } }}
       >
-        {item.number}
-      </motion.div>
-
-      {/* ── Clickable row: title left, arrow right ── */}
-      <button
-        onClick={onToggle}
-        className="relative z-10 w-full flex items-center justify-between gap-4 text-left"
-        style={{
-          minHeight: 170,
-          /* Left padding positions the title on top of the number's right edge — matching
-             the inspo where title appears overlaid on the number's right portion */
-          paddingLeft: "clamp(95px, 24vw, 215px)",
-          paddingRight: "0.5rem",
-        }}
-      >
-        <motion.h3
-          animate={{
-            y: [0, -4, 0],
-            color: isOpen ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,1)",
-          }}
-          transition={{
-            y: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
-            color: { duration: 0.25, ease: "easeOut" },
-          }}
-          className="text-2xl sm:text-3xl md:text-[1.9rem]"
-          style={{
-            fontFamily: "Syne, sans-serif",
-            fontWeight: 600,
-            letterSpacing: "-1px",
-            lineHeight: 1.1,
-          }}
-        >
-          {item.title}
-        </motion.h3>
-
-        {/* Arrow: ↓ SVG, rotated to -90deg (→) when collapsed.
-            Exact Framer state from computed.json:
-              closed: matrix(0,-1,1,0,0,0) = rotate(-90deg) = →, white
-              open:   transform: none     = 0deg          = ↓, orange ── */}
+        {/* ── Giant decorative background number ──
+            framer-nma0ig from computed.json:
+              opacity: 0.37
+              translateY(-79px)  ← matrix(1,0,0,1,0,-79.1979)
+            framer-1nf6ux6 from animations.json:
+              scroll-driven scale 1.38 → 1.20             ── */}
         <motion.div
-          className="shrink-0"
-          animate={{ rotate: isOpen ? 0 : -90, color: isOpen ? "#f87800" : "#ffffff" }}
-          transition={{
-            rotate: { type: "spring", stiffness: 200, damping: 20 },
-            color: { duration: 0.25, ease: "easeOut" },
+          aria-hidden
+          className="absolute left-0 top-0 leading-none text-white select-none pointer-events-none"
+          style={{
+            fontSize: "clamp(78px, 24vw, 230px)",
+            fontWeight: 900,
+            fontFamily: "Syne, sans-serif",
+            letterSpacing: "-6px",
+            opacity: 0.37,
+            y: -79,             // translateY(-79px) — same as framer-nma0ig
+            scale: numberScale, // scroll-driven — same as framer-1nf6ux6
+            transformOrigin: "top left",
+            zIndex: 0,
           }}
         >
-          <ArrowIcon />
+          {item.number}
         </motion.div>
-      </button>
+
+        {/* ── Clickable row: title left, arrow right ── */}
+        <button
+          onClick={onToggle}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative z-10 w-full flex items-center justify-between gap-4 text-left"
+          style={{
+            minHeight: 170,
+            /* Left padding positions the title on top of the number's right edge — matching
+               the inspo where title appears overlaid on the number's right portion */
+            paddingLeft: "clamp(95px, 24vw, 215px)",
+            paddingRight: "0.5rem",
+          }}
+        >
+          <motion.h3
+            animate={{
+              y: [0, -4, 0],
+              color: isHovered && !isOpen ? "rgba(255,255,255,0.57)" : "rgba(255,255,255,1)",
+            }}
+            transition={{
+              y: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
+              color: { duration: 0.25, ease: "easeOut" },
+            }}
+            className="text-2xl sm:text-3xl md:text-[1.9rem]"
+            style={{
+              fontFamily: "Syne, sans-serif",
+              fontWeight: 600,
+              letterSpacing: "-1px",
+              lineHeight: 1.1,
+            }}
+          >
+            {item.title}
+          </motion.h3>
+
+          {/* Arrow: ↓ SVG, 3-state machine measured against the real site:
+                idle-collapsed:    rotate(-90deg) = →, white
+                hovered-collapsed: rotate(0deg)   = ↓, orange (hover affordance only)
+                expanded:          rotate(180deg) = ↑, white (never orange once open) ── */}
+          <motion.div
+            className="shrink-0"
+            animate={{
+              rotate: isOpen ? 180 : isHovered ? 0 : -90,
+              color: !isOpen && isHovered ? "rgb(255,122,59)" : "rgba(255,255,255,0.8)",
+            }}
+            transition={{
+              rotate: { type: "spring", stiffness: 200, damping: 20 },
+              color: { duration: 0.25, ease: "easeOut" },
+            }}
+          >
+            <ArrowIcon />
+          </motion.div>
+        </button>
+      </motion.div>
 
       {/* ── Expanded panel (Framer AnimatePresence height + opacity) ── */}
       <AnimatePresence initial={false}>
@@ -154,50 +249,70 @@ function CategoryRow({
             }}
             className="overflow-hidden"
           >
-            {/* Hover-to-reveal photo → links out (./category/x in the inspo).
-                From FINDINGS: "hidden reveal-on-hover that links to another page" —
-                EXPLORE is invisible until you hover the photo, then it's a real link. */}
+            {/* Fanned 3-photo "card deck" + static EXPLORE affordance, links out.
+                Real-site target is /category/<slug> in a new tab; until that
+                filtered-archive route exists, this points at /projects. */}
             <Link
               href="/projects"
-              className="group relative block overflow-hidden border-t"
-              style={{ borderColor: "rgba(255,255,255,0.08)", height: 220 }}
+              target="_blank"
+              className="group relative block border-t"
+              style={{ borderColor: "rgba(255,255,255,0.08)", height: 290, paddingTop: 20 }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/60 transition-colors duration-300 group-hover:bg-black/40" />
+              {/* Fix 5: overlay must be a sibling of the images INSIDE this
+                  div, not a sibling of this div at the <Link> level —
+                  otherwise its `absolute inset-0` resolves against the
+                  full-width row instead of the photo. Sized to fit the
+                  widest/tallest fan slot (Fix 8: back card is 380x253). */}
+              <div className="relative" style={{ width: 420, height: 260 }}>
+                {fanImages.map((fan, idx) => (
+                  <motion.img
+                    key={idx}
+                    src={item.images[idx]}
+                    alt={item.title}
+                    className="absolute left-0 top-0 rounded-xl border border-white/10 object-cover shadow-2xl"
+                    style={{
+                      x: fan.x,
+                      y: fan.y,
+                      width: fan.w,
+                      height: fan.h,
+                      scale: popScale,
+                      zIndex: fan.z,
+                    }}
+                  />
+                ))}
 
-              {/* EXPLORE marquee — invisible by default, fades in on hover */}
-              <div className="absolute inset-0 flex items-center overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <Marquee speed={80} gradient={false}>
-                  {[0, 1, 2, 3, 4].map((idx) => (
-                    <motion.span
-                      key={idx}
-                      animate={breathe}
-                      className="flex items-center gap-6 mr-6"
+                {/* Static EXPLORE label + circular arrow — fades in on hover, no motion.
+                    Fix 5 (z-index): fan images get an explicit zIndex (72-100, from
+                    fanZ/scale), so this needs to be above that range or it renders
+                    fully opaque but hidden underneath the front image. */}
+                <div
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/0 opacity-0 transition-opacity duration-300 group-hover:bg-black/50 group-hover:opacity-100"
+                  style={{ zIndex: 200 }}
+                >
+                  <div
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 56, height: 56, backgroundColor: "#2dd4bf" }}
+                  >
+                    <svg
+                      width={22}
+                      height={22}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0a0a0a"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <span
-                        className="text-4xl md:text-5xl text-white"
-                        style={{
-                          fontFamily: "Syne, sans-serif",
-                          fontWeight: 900,
-                          letterSpacing: "-2px",
-                        }}
-                      >
-                        EXPLORE
-                      </span>
-                      <span
-                        className="text-4xl md:text-5xl"
-                        style={{ color: "#f87800", fontWeight: 900 }}
-                      >
-                        ·
-                      </span>
-                    </motion.span>
-                  ))}
-                </Marquee>
+                      <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
+                  </div>
+                  <span
+                    className="text-xs text-white"
+                    style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: "2px" }}
+                  >
+                    EXPLORE
+                  </span>
+                </div>
               </div>
             </Link>
 
@@ -254,8 +369,8 @@ export default function ServiceCategories() {
 
         {/* ── Glass border box — wraps heading + all rows (Image #6) ── */}
         <div
-          className="relative rounded-[24px] overflow-hidden"
-          style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+          className="relative rounded-[40px] overflow-hidden"
+          style={{ border: "1px solid rgba(255,255,255,0.3)" }}
         >
 
           {/* framer-hv088x "Lines" — faint vertical grid lines spanning the whole

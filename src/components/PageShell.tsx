@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 interface Props {
   eyebrow: string;
@@ -33,6 +34,8 @@ export default function PageShell({ eyebrow, title, subtitle, children }: Props)
               <p className="text-[#888] text-lg max-w-2xl leading-relaxed">{subtitle}</p>
             )}
           </motion.div>
+
+          <ScrollIndicator className="mt-16 w-fit" />
         </section>
 
         {children}

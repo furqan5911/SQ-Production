@@ -42,7 +42,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic showcase of two landmark architectural projects by Bukhari Associates — capturing the transformation of residential spaces through open planning and bold design.",
-    image: "/images/portfolio/placeholder.png",
+    image: "/images/portfolio/bukhari-associates.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/rim-house.mp4",    label: "RIM HOUSE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/we%20are%20back.mp4",  label: "We Are Back With a Bang" },
@@ -510,19 +510,34 @@ export const SERVICE_DETAILS = [
   },
 ];
 
+/* Stand-in photos used for all 12 categories until distinct per-category
+   photos are sourced — see FIX-SERVICECATEGORIES.md Fix 3. Previously this
+   pointed at 3 user-supplied screenshots (a client logo on white, and two
+   raw browser screenshots with visible tabs/address bar) — flagged as
+   actively wrong, not just generic, so swapped for neutral on-theme
+   gradients (no text/logos/UI chrome) until real photos exist. 3 distinct
+   files so the fan/auto-cycle swap is visible; once real per-category
+   photos exist, replace this shared array with a unique `images` triplet
+   per category. */
+const CATEGORY_PLACEHOLDER_IMAGES = [
+  "/images/services/categories/neutral-1.svg",
+  "/images/services/categories/neutral-2.svg",
+  "/images/services/categories/neutral-3.svg",
+];
+
 export const SERVICE_CATEGORIES = [
-  { number: "01", title: "Corporate Video",      description: "Polished internal and external videos that communicate your brand, culture, and message with clarity and confidence.", image: "/images/industries/corporate.svg" },
-  { number: "02", title: "Commercial Video",     description: "Short, impactful visual narratives that promote products, services, or brands with strong storytelling and persuasive visuals.", image: "/images/industries/commercials.svg" },
-  { number: "03", title: "Documentary Film",     description: "Real stories, told with depth and craft — we bring authenticity and cinematic quality to every documentary project.", image: "/images/industries/documentaries.svg" },
-  { number: "04", title: "Product Video",        description: "Clean, detail-driven product films that highlight features, craftsmanship, and use-cases to drive conversions.", image: "/images/portfolio/placeholder.png" },
-  { number: "05", title: "Animation",            description: "From motion graphics to full 2D/3D animation, we turn complex ideas into clear, engaging visual stories.", image: "/images/industries/vfx.svg" },
-  { number: "06", title: "Event Video",          description: "Multi-camera coverage and same-day edits that capture the energy of conferences, launches, and live events.", image: "/images/industries/events.svg" },
-  { number: "07", title: "Educational Video",    description: "Training and e-learning content designed to inform clearly and keep learners engaged from start to finish.", image: "/images/portfolio/placeholder.png" },
-  { number: "08", title: "Entertainment Video",  description: "Narrative-driven content built for impact — from short films to branded entertainment series.", image: "/images/industries/narrative.svg" },
-  { number: "09", title: "Fashion Video",        description: "Stylish, fast-paced visuals that showcase collections and campaigns with editorial polish.", image: "/images/portfolio/placeholder.png" },
-  { number: "10", title: "Lifestyle",            description: "Authentic lifestyle content that captures real moments and connects with audiences on a personal level.", image: "/images/portfolio/placeholder.png" },
-  { number: "11", title: "Interview Video",      description: "Professionally lit, multi-angle interviews edited into compelling testimonials and feature pieces.", image: "/images/portfolio/placeholder.png" },
-  { number: "12", title: "Social Media Video",   description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts.", image: "/images/industries/reels.svg" },
+  { number: "01", title: "Corporate Video",      description: "Polished internal and external videos that communicate your brand, culture, and message with clarity and confidence.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "02", title: "Commercial Video",     description: "Short, impactful visual narratives that promote products, services, or brands with strong storytelling and persuasive visuals.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "03", title: "Documentary Film",     description: "Real stories, told with depth and craft — we bring authenticity and cinematic quality to every documentary project.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "04", title: "Product Video",        description: "Clean, detail-driven product films that highlight features, craftsmanship, and use-cases to drive conversions.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "05", title: "Animation",            description: "From motion graphics to full 2D/3D animation, we turn complex ideas into clear, engaging visual stories.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "06", title: "Event Video",          description: "Multi-camera coverage and same-day edits that capture the energy of conferences, launches, and live events.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "07", title: "Educational Video",    description: "Training and e-learning content designed to inform clearly and keep learners engaged from start to finish.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "08", title: "Entertainment Video",  description: "Narrative-driven content built for impact — from short films to branded entertainment series.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "09", title: "Fashion Video",        description: "Stylish, fast-paced visuals that showcase collections and campaigns with editorial polish.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "10", title: "Lifestyle",            description: "Authentic lifestyle content that captures real moments and connects with audiences on a personal level.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "11", title: "Interview Video",      description: "Professionally lit, multi-angle interviews edited into compelling testimonials and feature pieces.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "12", title: "Social Media Video",   description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts.", images: CATEGORY_PLACEHOLDER_IMAGES },
 ];
 
 export const INDUSTRIES = [

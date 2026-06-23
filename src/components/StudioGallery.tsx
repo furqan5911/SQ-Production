@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "motion/react";
@@ -19,7 +19,7 @@ function SlideCard({ slide }: { slide: (typeof STUDIO_GALLERY.slides)[0] }) {
 
   return (
     <div
-      className="relative overflow-hidden rounded-[20px] aspect-[4/5] cursor-pointer"
+      className="relative overflow-hidden rounded-[30px] aspect-[3/2] cursor-pointer"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
@@ -192,11 +192,20 @@ function BookTourBtn() {
 export default function StudioGallery() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: "center",   // active card is centered, side cards peek in
+    align: "center",
     dragFree: false,
   });
+  const [activeIndex, setActiveIndex] = useState(0);
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setActiveIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
 
   return (
     <section id="studio-gallery" className="bg-[#0a0a0a] py-20 md:py-28">
@@ -204,11 +213,11 @@ export default function StudioGallery() {
 
         {/* ── Glass border box ── */}
         <div
-          className="rounded-[28px] overflow-hidden"
-          style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+          className="rounded-[40px] overflow-hidden p-[50px]"
+          style={{ border: "1px solid rgba(255,255,255,0.3)" }}
         >
-          {/* Heading block — padded inside the box */}
-          <div className="flex flex-col items-center text-center gap-6 pt-12 pb-10 px-6 md:px-16">
+          {/* Heading block — padding comes from glass box, no inner pt/px */}
+          <div className="flex flex-col items-center text-center gap-6 pb-10">
             <motion.h2
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -257,9 +266,16 @@ export default function StudioGallery() {
           <div className="relative">
             <div ref={emblaRef} className="overflow-hidden">
               <div className="flex">
-                {STUDIO_GALLERY.slides.map((slide) => (
-                  /* Each slide is ~65% of the container so side cards peek */
-                  <div key={slide.title} className="shrink-0 w-[82%] sm:w-[70%] md:w-[65%] px-1.5">
+                {STUDIO_GALLERY.slides.map((slide, i) => (
+                  <div
+                    key={slide.title}
+                    className="shrink-0 w-[82%] sm:w-[70%] md:w-[65%] px-1.5"
+                    style={{
+                      transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1)",
+                      transform: activeIndex === i ? "scale(1)" : "scale(0.78)",
+                      transformOrigin: "center center",
+                    }}
+                  >
                     <SlideCard slide={slide} />
                   </div>
                 ))}

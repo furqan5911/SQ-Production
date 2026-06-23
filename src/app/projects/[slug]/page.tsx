@@ -49,20 +49,21 @@ export default function ProjectDetailPage() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 px-6 md:px-20 pb-12 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
-                {project.category}
-              </span>
-              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mx-auto">
-                {project.title}
-              </h1>
-            </motion.div>
-          </div>
+        </div>
+
+        <div className="px-6 md:px-20 pt-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
+              {project.category}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mx-auto">
+              {project.title}
+            </h1>
+          </motion.div>
         </div>
 
         <div className="max-w-5xl mx-auto px-6 md:px-10">

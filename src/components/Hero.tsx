@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { SITE } from "@/lib/constants";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -162,19 +163,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-      >
-        <span className="text-[#555] text-xs tracking-widest uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-0.5 h-8 bg-gradient-to-b from-[#555] to-transparent"
-        />
-      </motion.div>
+      <ScrollIndicator className="absolute bottom-10 left-6 md:left-12" />
     </section>
   );
 }

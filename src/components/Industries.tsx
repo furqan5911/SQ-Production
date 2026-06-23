@@ -193,7 +193,7 @@ function CategoriesBtn() {
 
 export default function Industries() {
   return (
-    <section id="industries" className="bg-[#0a0a0a] py-24 md:py-32">
+    <section id="industries" className="bg-[#0a0a0a] pt-8 pb-24 md:pt-12 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Heading */}

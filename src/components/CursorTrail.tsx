@@ -10,7 +10,9 @@ const TRAIL_HUE = 30; // orange, matches --accent
 
 type Ghost = { x: number; y: number; bornAt: number };
 
-function drawArrow(
+const BASE_RADIUS = 8;
+
+function drawCircle(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -18,17 +20,8 @@ function drawArrow(
   fillStyle: string
 ) {
   ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(scale, scale);
   ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(0, 17);
-  ctx.lineTo(4, 13);
-  ctx.lineTo(7, 20);
-  ctx.lineTo(10, 19);
-  ctx.lineTo(7, 12);
-  ctx.lineTo(13, 12);
-  ctx.closePath();
+  ctx.arc(x, y, BASE_RADIUS * scale, 0, Math.PI * 2);
   ctx.fillStyle = fillStyle;
   ctx.fill();
   ctx.restore();
@@ -112,7 +105,7 @@ export default function CursorTrail() {
         const age = (now - g.bornAt) / GHOST_LIFETIME;
         const alpha = 1 - age;
         const scale = BASE_SCALE * (1 - age * 0.45);
-        drawArrow(
+        drawCircle(
           ctx!,
           g.x,
           g.y,
@@ -122,7 +115,7 @@ export default function CursorTrail() {
       });
 
       if (activeRef.current && posRef.current) {
-        drawArrow(ctx!, posRef.current.x, posRef.current.y, BASE_SCALE, "#ffffff");
+        drawCircle(ctx!, posRef.current.x, posRef.current.y, BASE_SCALE, "#ffffff");
       }
 
       ctx!.restore();

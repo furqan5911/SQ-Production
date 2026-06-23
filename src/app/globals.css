@@ -24,7 +24,12 @@ html {
   background: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* No overflow value here — ANY non-`visible` overflow on html/body (even
+     `clip` on both axes) breaks position:sticky for the whole site, since
+     it turns html/body into their own scroll/clip containers instead of
+     leaving the viewport as sticky's implicit scrollport. Confirmed live;
+     see FIX-SERVICEDETAILS.md. If horizontal clipping is needed, scope it
+     to a wrapper div in the root layout instead (see layout.tsx). */
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE / Edge */
 }
@@ -38,7 +43,6 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 * {
