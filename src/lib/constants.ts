@@ -97,6 +97,71 @@ export const PROJECTS = [
     ],
     clientInstagram: "https://www.instagram.com/bukhariassociates",
   },
+  {
+    slug: "roushan-builds",
+    title: "Roushan Builds",
+    subtitle: "Architectural storytelling built to inspire.",
+    category: "Architecture",
+    client: "Roushan Builds",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A cinematic showcase for Roushan Builds — two powerful films capturing the craftsmanship, scale, and vision behind their architectural projects.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Roushan%20Builds/Roushan%20Builds%201.mp4", label: "ROUSHAN BUILDS — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Roushan%20Builds/Roushan%20Builds%202.mp4", label: "ROUSHAN BUILDS — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two architectural showcase films for Roushan Builds, capturing the scale, detail, and craftsmanship of their projects for digital and marketing use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined the visual narrative to highlight the brand's architectural identity.",
+          "Identified key structural features and spaces to capture on camera.",
+          "Set the tone — cinematic, bold, and premium.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Location scouting and scheduling across project sites.",
+          "Shot list and storyboard preparation.",
+          "Equipment and crew planning for architectural environments.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Full site filming across multiple angles and perspectives.",
+          "Drone and aerial footage of exteriors.",
+          "Detail shots capturing materials, finishes, and spatial transitions.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing footage into two cohesive architectural films.",
+          "Colour grading to enhance the visual quality of the spaces.",
+          "Sound design, music, and motion graphics for titles.",
+        ],
+      },
+    ],
+    timeline: "Completed over 3 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished architectural films for marketing and social use.",
+      "Gave Roushan Builds a strong visual identity across their content.",
+      "Content built for use across digital platforms and client presentations.",
+    ],
+    clientInstagram: "",
+  },
   // ── Placeholders — replace with real projects ──────────────────────────
   {
     slug: "placeholder-2",
@@ -246,6 +311,491 @@ export const PROJECTS = [
       "Content built for reuse across ads, product pages, and social platforms.",
     ],
     clientInstagram: "",
+  },
+  {
+    slug: "ali-zafar",
+    title: "Ali Zafar",
+    subtitle: "Content built for a star.",
+    category: "Celebrity & Creator",
+    client: "Ali Zafar",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two high-energy films produced for Ali Zafar — capturing his personality, presence, and brand with bold visuals built for social media and digital platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Ali%20zafar/AZ%20GYM.mp4",       label: "ALI ZAFAR — GYM" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Ali%20zafar/Ali%20zafar%202.mp4", label: "ALI ZAFAR — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two content films for Ali Zafar, crafted to reflect his personal brand with dynamic visuals optimised for social media.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a visual style that matches Ali Zafar's personal brand and energy.",
+          "Identified key moments and themes to capture across both films.",
+          "Set the tone — bold, authentic, and high-energy.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Location and scheduling coordination.",
+          "Shot list preparation for dynamic content coverage.",
+          "Crew and equipment planning.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming to capture energy and personality.",
+          "Close-up and wide shots for versatile edit options.",
+          "On-location audio and ambient capture.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Fast-paced editing into two distinct content films.",
+          "Colour grading for a bold, social-ready look.",
+          "Sound design, music sync, and motion graphics.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished content films ready for social media.",
+      "Captured Ali Zafar's brand presence with high-energy visuals.",
+      "Content built for reuse across reels, ads, and digital platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "daniya-kanwal",
+    title: "Daniya Kanwal",
+    subtitle: "Creator content with style and substance.",
+    category: "Celebrity & Creator",
+    client: "Daniya Kanwal",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two standout films produced for Daniya Kanwal — vibrant, personality-driven content built to perform across social platforms and connect with her audience.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Daniya%20kanwal/Shoqeen%20Kuri%20-%20Daniya.mp4", label: "SHOQEEN KURI" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Daniya%20kanwal/Daniya%20Kanwal%201.mp4",          label: "DANIYA KANWAL — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two creator films for Daniya Kanwal, designed to showcase her personality and style with polished visuals built for social-first audiences.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a vibrant, personality-first visual style to match the brand.",
+          "Identified key themes and moments to highlight across both films.",
+          "Set the tone — colourful, energetic, and authentic.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Location scouting and scheduling coordination.",
+          "Shot list and styling preparation.",
+          "Crew and equipment planning for creator content.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming to capture personality and energy.",
+          "Lifestyle and performance shots across locations.",
+          "On-location audio and sound capture.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two polished, social-ready films.",
+          "Colour grading for a vibrant, on-brand look.",
+          "Sound design, music sync, and motion graphics.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished creator films ready for social media.",
+      "Captured Daniya Kanwal's brand with vibrant, engaging visuals.",
+      "Content built for reuse across reels, ads, and digital platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "short-films",
+    title: "Short Films",
+    subtitle: "Original short-form storytelling.",
+    category: "Short Films",
+    client: "SQ Productions",
+    year: "2025",
+    services: ["Direction", "Cinematography", "Post Production"],
+    description:
+      "Two original short films produced by SQ Productions — intimate, character-driven stories told with cinematic craft and a bold visual voice.",
+    image: "/images/portfolio/placeholder.png",
+    noMeta: true,
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo1.mp4", label: "College Diaries", youtubeUrl: "https://youtu.be/tl4BVqTbUKc?si=ewS3dbAmqh5v8ig1",  poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/tumb2.jpeg" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo.mp4",  label: "The Good Man",   youtubeUrl: "https://youtu.be/i6lkJ6T80QA?si=0UBzUi8-P2IshHgV", poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/thumb.jpeg"  },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview: "",
+    scopePhases: [],
+    timeline: "",
+    budget: "",
+    outcomes: [],
+    clientInstagram: "",
+  },
+  {
+    slug: "glome",
+    title: "Glome",
+    subtitle: "Brand films built to make an impression.",
+    category: "Branding",
+    client: "Glome",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two sleek branding films for Glome — cinematic, identity-driven visuals built to communicate the brand's personality and stand out across digital platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Glome/Glome%201.mp4", label: "GLOME — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Glome/Glome%202.mp4", label: "GLOME — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two branding films for Glome, designed to capture the brand's identity and vision with polished, cinematic visuals for digital and social use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a visual language that reflects the Glome brand identity.",
+          "Identified key brand moments and themes to communicate.",
+          "Set the tone — refined, modern, and distinctive.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Location scouting and scheduling coordination.",
+          "Shot list and storyboard preparation for both films.",
+          "Crew, equipment, and styling planning.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Cinematic filming across locations suited to the brand aesthetic.",
+          "Detail and wide shots to capture the full brand story.",
+          "Multiple coverage options for a flexible edit.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two cohesive, brand-consistent films.",
+          "Colour grading for a refined, premium look.",
+          "Sound design, music sync, and motion graphics.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished branding films ready for digital and social use.",
+      "Gave Glome a strong, consistent visual identity across their content.",
+      "Content built for use across campaigns, social platforms, and presentations.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "the-next-dubai",
+    title: "The Next Dubai",
+    subtitle: "Branding films built for a city on the rise.",
+    category: "Branding",
+    client: "The Next Dubai",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A four-part branding series for The Next Dubai — cinematic, high-energy films that capture the vision, ambition, and identity of a brand shaping the future of Dubai.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd.mp4",  label: "THE NEXT DUBAI — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd2.mp4", label: "THE NEXT DUBAI — FILM TWO" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd3.mp4", label: "THE NEXT DUBAI — FILM THREE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd4.mp4", label: "THE NEXT DUBAI — FILM FOUR" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of four branding films for The Next Dubai, designed to communicate the brand's vision and identity with cinematic precision across digital and social platforms.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a cinematic, aspirational visual language suited to the brand.",
+          "Identified key brand pillars and messaging to communicate across all four films.",
+          "Set the tone — bold, forward-thinking, and premium.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Location scouting across Dubai to find settings that reflect the brand vision.",
+          "Shot list and storyboard preparation for all four films.",
+          "Crew, equipment, and scheduling coordination across shoot days.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-location filming across four distinct brand films.",
+          "Cinematic camera movement and lighting to elevate the brand aesthetic.",
+          "Drone and wide-format shots to capture the scale of the vision.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing all four films into cohesive, brand-consistent narratives.",
+          "Colour grading for a premium, aspirational look.",
+          "Sound design, music sync, and motion graphics for titles.",
+        ],
+      },
+    ],
+    timeline: "Completed over 4 weeks — pre-production, multi-day shoot, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered four polished branding films ready for social and digital use.",
+      "Gave The Next Dubai a strong, consistent visual identity across all content.",
+      "Content built for use across campaigns, social platforms, and presentations.",
+    ],
+    clientInstagram: "https://www.instagram.com/the_nextdubai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+  },
+  {
+    slug: "esmel",
+    title: "Esmel",
+    subtitle: "Product films crafted with precision.",
+    category: "Product",
+    client: "Esmel",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two clean, detail-driven product films for Esmel — built to highlight the product's quality and appeal across social and retail platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Esmel/Esmel%201.mp4", label: "ESMEL — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Esmel/esmel%202.mp4", label: "ESMEL — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two product films for Esmel, designed to showcase the product with clean, detail-focused visuals for social media and retail use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a clean, product-first visual style to suit the brand.",
+          "Identified key product features and details to capture.",
+          "Set the tone — minimal, precise, and premium.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling for product-focused shots.",
+          "Shot list preparation for detail and lifestyle angles.",
+          "Lighting and camera setup planning.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Macro and multi-angle filming of the product.",
+          "Lifestyle shots showing the product in context.",
+          "Multiple coverage options for a flexible edit.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two polished short-form product films.",
+          "Colour grading for a clean, consistent brand look.",
+          "Sound design and motion graphics for titles.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and retail use.",
+      "Gave Esmel a clean, consistent visual identity across its content.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "al-fatah",
+    title: "AL FATAH",
+    subtitle: "Product films that command attention.",
+    category: "Product",
+    client: "AL FATAH",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two sharp, detail-driven product films for AL FATAH — clean visuals built to showcase the product and perform across social and retail platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Al%20fatah/Al%20fatah%201.mp4", label: "AL FATAH — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Al%20fatah/al%20fatah%202.mp4", label: "AL FATAH — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two product films for AL FATAH, built to highlight the product with clean, high-impact visuals for social media and retail use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a bold, product-first visual style to match the brand.",
+          "Identified key product features and details to capture on camera.",
+          "Set the tone — clean, confident, and premium.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling for product-focused shots.",
+          "Shot list preparation for detail and lifestyle angles.",
+          "Lighting and camera setup planning.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming of the product in detail and in use.",
+          "Macro and lifestyle shots for a versatile edit.",
+          "Multiple coverage options across both films.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two distinct short-form product films.",
+          "Colour grading for a bold, premium look.",
+          "Sound design and motion graphics for titles and highlights.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and retail use.",
+      "Gave AL FATAH a consistent, high-impact visual identity.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "bounceway",
+    title: "Bounceway",
+    subtitle: "Product films built to move.",
+    category: "Product",
+    client: "Bounceway",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A product-focused campaign for Bounceway — two sharp, high-energy films designed to showcase the product in action and drive results across social and retail platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bounceway/bounceway.mp4",  label: "BOUNCEWAY — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bounceway/bounceway2.mp4", label: "BOUNCEWAY — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two product-driven films for Bounceway, built to highlight the product with clean, high-energy visuals optimised for social media and retail use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a dynamic, product-first visual style to match the brand energy.",
+          "Identified key product features and moments to capture on camera.",
+          "Set the tone — bold, fast-paced, and impactful.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling for product-focused shots.",
+          "Shot list preparation for action and detail angles.",
+          "Lighting and camera setup planning for optimal product presentation.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming of the product in use and in detail.",
+          "Action and lifestyle shots to convey the brand personality.",
+          "Multiple coverage options for a flexible edit.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two distinct short-form product films.",
+          "Colour grading for a bold, punchy look.",
+          "Sound design and motion graphics for titles and product highlights.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and retail use.",
+      "Gave Bounceway a high-energy visual identity for their campaign.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
+    clientInstagram: "https://www.instagram.com/bounce.way?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
   {
     slug: "placeholder-5",

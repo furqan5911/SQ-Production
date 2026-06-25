@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "motion/react";
 import Marquee from "react-fast-marquee";
 
 const REELS = [
-  { id: 1, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/rim-house.mp4",    label: "RIM HOUSE" },
-  { id: 2, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/we%20are%20back.mp4", label: "WE ARE BACK" },
-  { id: 3, src: null, label: null },
-  { id: 4, src: null, label: null },
-  { id: 5, src: null, label: null },
+  { id: 1, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/we%20are%20back.mp4" },
+  { id: 2, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage1.mp4" },
+  { id: 3, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
+  { id: 4, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage3.mp4" },
+  { id: 5, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage4.mp4" },
 ];
 
 function fmt(s: number) {
@@ -17,7 +17,7 @@ function fmt(s: number) {
   return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 }
 
-function VideoModal({ src, label, onClose }: { src: string; label: string; onClose: () => void }) {
+function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(true);
   const [current, setCurrent] = useState(0);
@@ -81,7 +81,6 @@ function VideoModal({ src, label, onClose }: { src: string; label: string; onClo
             </svg>
             Back
           </button>
-          <span className="text-white/60 text-[9px] font-bold tracking-[0.25em] uppercase">{label}</span>
         </div>
 
         {/* Center — play icon shown only when paused, click video to toggle */}
@@ -153,7 +152,7 @@ function VideoModal({ src, label, onClose }: { src: string; label: string; onClo
 }
 
 export default function Reels() {
-  const [modal, setModal] = useState<{ src: string; label: string } | null>(null);
+  const [modal, setModal] = useState<{ src: string } | null>(null);
 
   return (
     <section className="bg-[#0a0a0a] py-20 overflow-hidden">
@@ -179,7 +178,7 @@ export default function Reels() {
         {REELS.map((reel) => (
           <div
             key={reel.id}
-            onClick={() => reel.src && reel.label && setModal({ src: reel.src, label: reel.label })}
+            onClick={() => reel.src && setModal({ src: reel.src })}
             className={`relative mx-3 w-[190px] md:w-[220px] aspect-[9/16] rounded-2xl overflow-hidden bg-[#111] flex-shrink-0 ${reel.src ? "cursor-pointer group" : "cursor-default"}`}
           >
             {reel.src ? (
@@ -200,9 +199,6 @@ export default function Reels() {
                     </svg>
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-white text-[10px] font-bold tracking-[0.2em]">{reel.label}</p>
-                </div>
               </>
             ) : (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-20">
@@ -222,7 +218,6 @@ export default function Reels() {
         {modal && (
           <VideoModal
             src={modal.src}
-            label={modal.label}
             onClose={() => setModal(null)}
           />
         )}

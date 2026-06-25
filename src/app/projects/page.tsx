@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PROJECTS, CLIENT_MARQUEE } from "@/lib/constants";
 
-const CATEGORIES = ["All", "Architecture", "Fashion", "Fitness", "Commercial", "Documentary"];
+const CATEGORIES = ["All", "AI Ads", "Architecture", "Branding", "Celebrity & Creator", "Commercial", "Documentary", "Fashion", "Fitness", "Music Video", "Product", "Short Films"];
 
 const cardVariants = {
   hidden: { opacity: 0, x: -60 },

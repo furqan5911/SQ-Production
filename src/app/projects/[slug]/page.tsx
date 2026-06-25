@@ -69,7 +69,7 @@ export default function ProjectDetailPage() {
         <div className="max-w-5xl mx-auto px-6 md:px-10">
 
           {/* ── Meta row ── */}
-          <motion.div
+          {!(project as Record<string, unknown>).noMeta && <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
@@ -87,7 +87,7 @@ export default function ProjectDetailPage() {
                 <p className="text-white font-semibold text-sm">{value}</p>
               </div>
             ))}
-          </motion.div>
+          </motion.div>}
 
           {/* ── Description ── */}
           <motion.div
@@ -102,7 +102,7 @@ export default function ProjectDetailPage() {
             </p>
           </motion.div>
 
-          {/* ── Videos — side by side 9:16 reel format ── */}
+          {/* ── Videos ── */}
           {project.videos.length > 0 && (
             <motion.div
               variants={fadeUp}
@@ -111,20 +111,57 @@ export default function ProjectDetailPage() {
               viewport={{ once: true }}
               className="mb-20"
             >
-              <div className={`grid gap-6 ${project.videos.length === 1 ? "grid-cols-1 max-w-sm mx-auto" : "grid-cols-1 sm:grid-cols-2"}`}>
-                {project.videos.map((v, i) => (
-                  <div key={i} className="flex flex-col gap-3">
-                    <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
-                      <video
-                        src={v.src}
-                        controls
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover rounded-2xl bg-[#111]"
-                      />
+              {(project.videos[0] as { src: string; label: string; youtubeUrl?: string }).youtubeUrl ? (
+                /* Horizontal layout — short films with title + YouTube link */
+                <div className="flex flex-col gap-14">
+                  {project.videos.map((v, i) => {
+                    const vx = v as { src: string; label: string; youtubeUrl?: string; poster?: string };
+                    return (
+                      <div key={i} className="flex flex-col items-center gap-4">
+                        <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>
+                        <div className="relative w-full rounded-2xl overflow-hidden bg-[#111]" style={{ paddingBottom: "56.25%" }}>
+                          <video
+                            src={vx.src}
+                            poster={vx.poster}
+                            controls
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                        </div>
+                        {vx.youtubeUrl && (
+                          <a
+                            href={vx.youtubeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-[#f87800] text-black font-black text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-full hover:bg-white transition-colors duration-200"
+                          >
+                            Watch Full Video
+                            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M3 8h10M9 4l4 4-4 4"/>
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                /* Vertical 9:16 layout — standard project reels */
+                <div className={`grid gap-6 ${project.videos.length === 1 ? "grid-cols-1 max-w-sm mx-auto" : "grid-cols-1 sm:grid-cols-2"}`}>
+                  {project.videos.map((v, i) => (
+                    <div key={i} className="flex flex-col gap-3">
+                      <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
+                        <video
+                          src={v.src}
+                          controls
+                          playsInline
+                          className="absolute inset-0 w-full h-full object-cover rounded-2xl bg-[#111]"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </motion.div>
           )}
 
