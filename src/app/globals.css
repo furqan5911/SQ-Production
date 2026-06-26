@@ -21,7 +21,11 @@
 }
 
 html {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 0%, rgba(248,120,0,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 100%, rgba(248,120,0,0.18) 0%, transparent 60%),
+    #0a0a0a;
+  background-attachment: fixed;
   color: var(--text);
   scroll-behavior: smooth;
   /* No overflow value here — ANY non-`visible` overflow on html/body (even
@@ -40,7 +44,7 @@ html::-webkit-scrollbar {
 
 body {
   font-family: var(--font-syne), system-ui, sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }

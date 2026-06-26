@@ -10,13 +10,19 @@ const fadeUp = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
+function categoryHref(item: (typeof PROJECTS)[0]) {
+  if (item.category === "Music Video") return "/projects/music-videos";
+  if (item.category === "Short Films") return "/projects/short-films";
+  return `/projects?category=${encodeURIComponent(item.category)}`;
+}
+
 function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
   const firstVideo = item.videos[0]?.src;
 
   return (
     <Link
-      href={`/projects/${item.slug}`}
-      className="group relative shrink-0 w-full max-w-[380px] mx-auto md:w-[340px] md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden bg-[#111] block"
+      href={categoryHref(item)}
+      className="group relative shrink-0 w-full max-w-[380px] mx-auto md:w-[400px] md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden bg-[#111] block"
     >
       {firstVideo ? (
         /* Always-playing preview video — replaces the static thumbnail entirely */
@@ -165,15 +171,28 @@ export default function Portfolio() {
   // 1.3× the sweep of pinned scroll) — so the section is only as tall as the
   // sweep needs. A fixed 300vh left a long pinned "dead" stretch (black space)
   // because the real sweep is far shorter than 300vh.
+  const featured = PROJECTS.slice(0, 6);
+
   const [distance, setDistance] = useState(0);
   const [runway, setRunway] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const CARD_W = 400;
+  const CARD_GAP = 24; // gap-6
+  const CARD_STEP = CARD_W + CARD_GAP; // 424
+  const PAD_L = 48; // px-12
+
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     const measure = () => {
-      const d = Math.max(0, el.scrollWidth - el.clientWidth);
-      setDistance(d);
-      setRunway(window.innerHeight + d * 1.3);
+      const W = window.innerWidth;
+      const sx = W - PAD_L - CARD_W;
+      // end position: last card centered at W/2
+      const fullD = Math.max(0, PAD_L + (featured.length - 1) * CARD_STEP + CARD_W / 2 - W / 2) + CARD_STEP;
+      setStartX(sx);
+      setDistance(fullD);
+      setRunway(window.innerHeight + (sx + fullD) * 1.3);
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -189,21 +208,20 @@ export default function Portfolio() {
     target: wrapRef,
     offset: ["start start", "end end"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
+  const x = useTransform(scrollYProgress, [0, 1], [startX, -distance]);
 
-  const featured = PROJECTS.slice(0, 6);
-
-  const [activeIndex, setActiveIndex] = useState(0);
   useMotionValueEvent(x, "change", (latest) => {
-    const cardStep = 364; // 340px card + 24px gap
-    const idx = Math.round(-latest / cardStep);
+    const W = window.innerWidth;
+    // card i is centered when x = W/2 - PAD_L - CARD_W/2 - i*CARD_STEP
+    const card0CenterX = W / 2 - PAD_L - CARD_W / 2;
+    const idx = Math.round((card0CenterX - latest) / CARD_STEP);
     setActiveIndex(Math.max(0, Math.min(featured.length - 1, idx)));
   });
 
   return (
     <>
       {/* ── Mobile: simple centered heading + vertical card stack (no scroll-jack) ── */}
-      <div className="md:hidden bg-[#0a0a0a] py-16">
+      <div className="md:hidden bg-transparent py-16">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -231,35 +249,35 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* ── Desktop: sticky-pinned full-bleed horizontal sweep, scrubbed by scroll ── */}
+      {/* ── Desktop heading — normal flow, scrolls away before cards pin ── */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="hidden md:flex flex-col items-center text-center gap-4 px-12 pt-20 pb-16 bg-transparent"
+      >
+        <div>
+          <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
+            Portfolio
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
+            Our Handpicked<br />Featured Portfolio
+          </h2>
+        </div>
+        <SeeAllProjectsBtn />
+      </motion.div>
+
+      {/* ── Desktop sticky card sweep — cards only, full viewport height ── */}
       <div
         ref={wrapRef}
         style={{ height: runway ? `${runway}px` : "100vh" }}
-        className="hidden md:block relative bg-[#0a0a0a]"
+        className="hidden md:block relative bg-transparent"
       >
-        <div className="sticky top-0 h-screen flex flex-col justify-center pb-10">
+        <div className="sticky top-0 h-screen flex items-center">
 
-          {/* Heading row — stays put while the cards slide underneath it */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="px-6 md:px-12 mb-12 flex items-end justify-between gap-4"
-          >
-            <div>
-              <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">
-                Portfolio
-              </span>
-              <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
-                Our Handpicked<br />Featured Portfolio
-              </h2>
-            </div>
-            <SeeAllProjectsBtn />
-          </motion.div>
-
-          {/* Full-bleed sliding track — runs edge to edge for a long sweep */}
-          <div className="overflow-x-clip">
+          {/* Full-bleed sliding track */}
+          <div className="overflow-x-clip w-full">
             <motion.div
               ref={trackRef}
               style={{ x }}
@@ -269,6 +287,7 @@ export default function Portfolio() {
                 <div
                   key={item.slug}
                   style={{
+                    flexShrink: 0,
                     transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1)",
                     transform: activeIndex === i ? "scale(1)" : "scale(0.85)",
                     transformOrigin: "center center",

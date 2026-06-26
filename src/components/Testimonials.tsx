@@ -151,7 +151,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute inset-0 overflow-hidden bg-transparent">
         {TESTIMONIALS_BG ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}

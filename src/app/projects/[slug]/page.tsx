@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import Navbar from "@/components/Navbar";
@@ -12,6 +13,77 @@ const fadeUp = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
+function EyeBlink({ hovered }: { hovered: boolean }) {
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+
+  const shouldBlink = hovered || isTouch;
+
+  return (
+    <motion.span
+      animate={shouldBlink
+        ? { scaleY: [1, 0.08, 1, 0.08, 1] }
+        : { scaleY: 1 }
+      }
+      transition={shouldBlink
+        ? {
+            duration: 0.55,
+            times: [0, 0.2, 0.4, 0.6, 1],
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatDelay: isTouch && !hovered ? 3 : 0.6,
+          }
+        : { duration: 0.2 }
+      }
+      style={{ display: "inline-block", transformOrigin: "center" }}
+    >
+      👀
+    </motion.span>
+  );
+}
+
+function InstagramCTA({ href }: { href: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.05 : 1, backgroundColor: hovered ? "#ffffff" : "#f87800" }}
+      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      className="inline-flex items-center gap-2 text-black font-black text-sm uppercase px-8 py-4 rounded-full"
+      style={{ letterSpacing: hovered ? "0.22em" : "0.1em", transition: "letter-spacing 0.35s ease" }}
+    >
+      <span>No cap, peep the full work</span>
+      <EyeBlink hovered={hovered} />
+    </motion.a>
+  );
+}
+
+function WatchFullVideoCTA({ href }: { href: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.05 : 1, backgroundColor: hovered ? "#ffffff" : "#f87800" }}
+      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      className="inline-flex items-center gap-2 text-black font-black text-sm uppercase px-8 py-4 rounded-full"
+      style={{ letterSpacing: hovered ? "0.22em" : "0.1em", transition: "letter-spacing 0.35s ease" }}
+    >
+      <span>Watch Full Video</span>
+      <EyeBlink hovered={hovered} />
+    </motion.a>
+  );
+}
+
 export default function ProjectDetailPage() {
   const params  = useParams();
   const slug    = params?.slug as string;
@@ -21,7 +93,7 @@ export default function ProjectDetailPage() {
     return (
       <>
         <Navbar />
-        <main className="bg-[#0a0a0a] min-h-screen flex items-center justify-center">
+        <main className="bg-transparent min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-white text-4xl font-black mb-4">Project Not Found</h1>
             <Link href="/projects" className="text-[#f87800] hover:underline">← Back to Projects</Link>
@@ -39,7 +111,7 @@ export default function ProjectDetailPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-[#0a0a0a] min-h-screen">
+      <main className="bg-transparent min-h-screen">
 
         {/* ── Hero ── */}
         <div className="relative w-full h-[60vh] md:h-[75vh] overflow-hidden">
@@ -129,17 +201,7 @@ export default function ProjectDetailPage() {
                           />
                         </div>
                         {vx.youtubeUrl && (
-                          <a
-                            href={vx.youtubeUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-[#f87800] text-black font-black text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-full hover:bg-white transition-colors duration-200"
-                          >
-                            Watch Full Video
-                            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M3 8h10M9 4l4 4-4 4"/>
-                            </svg>
-                          </a>
+                          <WatchFullVideoCTA href={vx.youtubeUrl} />
                         )}
                       </div>
                     );
@@ -236,17 +298,7 @@ export default function ProjectDetailPage() {
               className="mb-24 flex flex-col items-center gap-4 text-center"
             >
               <p className="text-[#555] text-sm">Liked what you saw? There&apos;s more where that came from.</p>
-              <a
-                href={project.clientInstagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#f87800] text-black font-black text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-full hover:bg-white transition-colors duration-200"
-              >
-                No cap, peep the full work 👀
-                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-              </a>
+              <InstagramCTA href={project.clientInstagram} />
             </motion.div>
           )}
 

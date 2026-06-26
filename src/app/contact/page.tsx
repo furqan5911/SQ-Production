@@ -13,6 +13,7 @@ export default function ContactPage() {
       eyebrow="Get in touch"
       title="Let's Collaborate"
       subtitle="Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back to you within 24 hours."
+      centered
     >
       <ContactSection />
     </PageShell>

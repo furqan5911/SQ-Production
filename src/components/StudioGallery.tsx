@@ -208,12 +208,12 @@ export default function StudioGallery() {
   }, [emblaApi]);
 
   return (
-    <section id="studio-gallery" className="bg-[#0a0a0a] py-20 md:py-28">
+    <section id="studio-gallery" className="bg-transparent py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* ── Glass border box ── */}
         <div
-          className="rounded-[40px] overflow-hidden p-[50px]"
+          className="rounded-[40px] overflow-hidden p-6 sm:p-10 md:p-[50px]"
           style={{ border: "1px solid rgba(255,255,255,0.3)" }}
         >
           {/* Heading block — padding comes from glass box, no inner pt/px */}

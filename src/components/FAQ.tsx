@@ -106,7 +106,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-[#0a0a0a] py-24 md:py-32">
+    <section id="faq" className="relative overflow-hidden bg-transparent py-24 md:py-32">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ backgroundImage: GRID_BG, backgroundSize: "48px 48px" }}

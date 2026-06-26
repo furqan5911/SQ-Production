@@ -76,7 +76,7 @@ export default function Hero() {
         >
           {/* Outer glass pill */}
           <Link
-            href="/contact"
+            href="/contact#book"
             className="shrink-0 inline-flex items-center overflow-hidden"
             style={{
               height: 60,

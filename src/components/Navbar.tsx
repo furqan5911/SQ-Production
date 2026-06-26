@@ -61,12 +61,24 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <Link
-          href="/contact"
-          className="hidden md:inline-flex items-center gap-2 bg-white text-black text-[15px] font-bold px-5 py-1.5 rounded-full hover:bg-[#f87800] hover:text-black transition-colors duration-200 shrink-0"
+        <motion.div
+          className="hidden md:block shrink-0"
+          animate={{ scale: [1, 1.09, 0.97, 1.05, 1] }}
+          transition={{
+            duration: 0.55,
+            delay: 1,
+            repeat: Infinity,
+            repeatDelay: 2.8,
+            ease: "easeInOut",
+          }}
         >
-          {SITE.ctaPrimary}
-        </Link>
+          <Link
+            href="/contact#book"
+            className="inline-flex items-center gap-2 bg-white text-black text-[15px] font-bold px-5 py-1.5 rounded-full hover:bg-[#f87800] hover:text-black transition-colors duration-200"
+          >
+            {SITE.ctaPrimary}
+          </Link>
+        </motion.div>
 
         {/* Hamburger */}
         <button
@@ -113,13 +125,24 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 bg-white text-black text-sm font-bold px-5 py-2.5 rounded-full text-center hover:bg-[#f87800] transition-colors duration-200"
+              <motion.div
+                animate={{ scale: [1, 1.09, 0.97, 1.05, 1] }}
+                transition={{
+                  duration: 0.55,
+                  delay: 1,
+                  repeat: Infinity,
+                  repeatDelay: 2.8,
+                  ease: "easeInOut",
+                }}
               >
-                {SITE.ctaPrimary}
-              </Link>
+                <Link
+                  href="/contact#book"
+                  onClick={() => setMenuOpen(false)}
+                  className="block mt-2 bg-white text-black text-sm font-bold px-5 py-2.5 rounded-full text-center hover:bg-[#f87800] transition-colors duration-200"
+                >
+                  {SITE.ctaPrimary}
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

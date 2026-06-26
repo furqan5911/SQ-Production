@@ -153,33 +153,44 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 
 export default function Reels() {
   const [modal, setModal] = useState<{ src: string } | null>(null);
+  const [play, setPlay] = useState(true);
+
+  function handleCardMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const relY = (e.clientY - rect.top) / rect.height;
+    const inCenter = relY >= 0.3 && relY <= 0.7;
+    setPlay(!inCenter);
+  }
+
+  function handleCardMouseLeave() {
+    setPlay(true);
+  }
 
   return (
-    <section className="bg-[#0a0a0a] py-20 overflow-hidden">
+    <section className="bg-transparent py-20 overflow-hidden">
 
-      {/* Heading */}
+      {/* Heading — centered, no "Reels" label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-7xl mx-auto px-6 md:px-10 mb-12"
+        className="max-w-7xl mx-auto px-6 md:px-10 mb-12 text-center"
       >
-        <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
-          Reels
-        </span>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight">
           no cap, we ate fr.
         </h2>
       </motion.div>
 
-      {/* Continuous marquee strip */}
-      <Marquee gradient={false} speed={70} pauseOnHover>
+      {/* Continuous marquee strip — autoFill removes the loop gap */}
+      <Marquee gradient={false} speed={70} autoFill play={play}>
         {REELS.map((reel) => (
           <div
             key={reel.id}
             onClick={() => reel.src && setModal({ src: reel.src })}
-            className={`relative mx-3 w-[190px] md:w-[220px] aspect-[9/16] rounded-2xl overflow-hidden bg-[#111] flex-shrink-0 ${reel.src ? "cursor-pointer group" : "cursor-default"}`}
+            onMouseMove={handleCardMouseMove}
+            onMouseLeave={handleCardMouseLeave}
+            className={`relative mx-3 w-[190px] md:w-[220px] h-[340px] md:h-[400px] rounded-2xl overflow-hidden bg-[#111] flex-shrink-0 ${reel.src ? "cursor-pointer group" : "cursor-default"}`}
           >
             {reel.src ? (
               <>

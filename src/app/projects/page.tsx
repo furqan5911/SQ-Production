@@ -1,14 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import Marquee from "react-fast-marquee";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PROJECTS, CLIENT_MARQUEE } from "@/lib/constants";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
-const CATEGORIES = ["All", "AI Ads", "Architecture", "Branding", "Celebrity & Creator", "Commercial", "Documentary", "Fashion", "Fitness", "Music Video", "Product", "Short Films"];
+const CATEGORIES = ["All", "AI Ads", "Architecture", "Celebrity & Creator", "Commercial", "Fashion", "Fashion Films", "Fitness", "Music Video", "Podcast", "Product", "Short Films", "Social Media"];
 
 const cardVariants = {
   hidden: { opacity: 0, x: -60 },
@@ -19,20 +22,46 @@ const cardVariants = {
   }),
 };
 
-export default function ProjectsPage() {
-  const [active, setActive] = useState("All");
+function ProjectsContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const lenis = useLenis();
+  const [active, setActive] = useState(() => {
+    const cat = searchParams.get("category");
+    return cat && CATEGORIES.includes(cat) ? cat : "All";
+  });
+
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat && CATEGORIES.includes(cat)) {
+      setActive(cat);
+      setTimeout(() => {
+        const el = document.getElementById("projects-grid");
+        if (el && lenis) {
+          lenis.scrollTo(el, { offset: -20 });
+        }
+      }, 300);
+    }
+  }, [searchParams, lenis]);
 
   const filtered = active === "All"
-    ? PROJECTS
+    ? (() => {
+        const seen = new Set<string>();
+        return PROJECTS.filter((p) => {
+          if (seen.has(p.category)) return false;
+          seen.add(p.category);
+          return true;
+        });
+      })()
     : PROJECTS.filter((p) => p.category === active);
 
   return (
     <>
       <Navbar />
-      <main className="bg-[#0a0a0a] min-h-screen">
+      <main className="bg-transparent min-h-screen">
 
         {/* ── Full-viewport hero ── */}
-        <section className="relative h-screen flex items-start overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background image */}
           <div className="absolute inset-0">
             <img
@@ -43,8 +72,8 @@ export default function ProjectsPage() {
             <div className="absolute inset-0 bg-black/60" />
           </div>
 
-          {/* Hero text — top left */}
-          <div className="relative z-10 pt-28 md:pt-40 px-6 md:px-16 max-w-3xl">
+          {/* Hero text — centered */}
+          <div className="relative z-10 px-6 md:px-16 max-w-3xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -53,50 +82,43 @@ export default function ProjectsPage() {
               <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-none mb-4 md:mb-6">
                 Our Projects
               </h1>
-              <p className="text-[#aaa] text-base md:text-xl max-w-xl leading-relaxed">
+              <p className="text-[#aaa] text-base md:text-xl leading-relaxed">
                 From coming up with creative concepts to delivering outstanding campaigns — we&apos;re your crew ready to turn your project dreams into reality.
               </p>
             </motion.div>
           </div>
 
+          {/* Scroll indicator — absolute bottom left */}
+          <ScrollIndicator className="absolute bottom-4 left-6 md:left-16" />
         </section>
 
-        {/* ── Client names marquee ── */}
-        <div className="bg-[#f87800] py-4">
-          <Marquee gradient={false} speed={60}>
-            {[...CLIENT_MARQUEE, ...CLIENT_MARQUEE, ...CLIENT_MARQUEE].map((name, i) => (
-              <span key={i} className="mx-10 text-black text-sm font-bold tracking-widest uppercase flex items-center gap-10">
-                {name}
+        {/* ── Client names marquee — two rows, opposite directions ── */}
+        <div className="bg-[#f87800] py-3 overflow-hidden flex flex-col gap-2">
+          <Marquee gradient={false} speed={60} autoFill direction="left">
+            {PROJECTS.filter(p => !p.title.startsWith("Coming")).map((p) => (
+              <span key={p.slug} className="mx-10 text-black text-sm font-bold tracking-widest uppercase flex items-center gap-10">
+                {p.client}
+                <span className="text-black/40 text-lg">✦</span>
+              </span>
+            ))}
+          </Marquee>
+          <Marquee gradient={false} speed={60} autoFill direction="right">
+            {PROJECTS.filter(p => !p.title.startsWith("Coming")).map((p) => (
+              <span key={p.slug} className="mx-10 text-black text-sm font-bold tracking-widest uppercase flex items-center gap-10">
+                {p.client}
                 <span className="text-black/40 text-lg">✦</span>
               </span>
             ))}
           </Marquee>
         </div>
 
-        {/* ── Scroll indicator ── */}
-        <div className="flex flex-col items-center px-8 md:px-16 py-10 gap-3 w-fit">
-          <span
-            className="text-white text-[10px] font-bold tracking-[0.35em] uppercase"
-            style={{ writingMode: "vertical-lr" }}
-          >
-            Scroll
-          </span>
-          <motion.div
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3, repeat: Infinity, repeatType: "reverse" }}
-            style={{ originY: 0 }}
-            className="w-px h-16 bg-white/40"
-          />
-        </div>
-
         {/* ── Category filters ── */}
-        <section className="px-6 md:px-10 max-w-7xl mx-auto pt-14 mb-10">
+        <section id="projects-grid" className="px-6 md:px-10 max-w-7xl mx-auto pt-14 mb-10">
           <div className="flex flex-wrap gap-3">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActive(cat)}
+                onClick={() => cat === "Short Films" ? router.push("/projects/short-films") : cat === "Music Video" ? router.push("/projects/music-videos") : setActive(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                   active === cat
                     ? "bg-[#f87800] border-[#f87800] text-black"
@@ -169,5 +191,13 @@ export default function ProjectsPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function ProjectsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProjectsContent />
+    </Suspense>
   );
 }

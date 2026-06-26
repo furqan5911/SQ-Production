@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { FOOTER } from "@/lib/constants";
 
@@ -8,10 +9,23 @@ const fadeUp = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
+const CALENDLY_URL = "https://calendly.com/teamsq-business/30min";
+
 export default function ContactSection() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section className="pb-32 px-6 md:px-10 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12 items-start">
+
         {/* Contact details */}
         <motion.div
           variants={fadeUp}
@@ -60,57 +74,23 @@ export default function ContactSection() {
           </div>
         </motion.div>
 
-        {/* Contact form */}
-        <motion.form
+        {/* Calendly inline widget */}
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="bg-[#111] border border-[#222] rounded-2xl p-8 space-y-5"
-          onSubmit={(e) => e.preventDefault()}
+          className="rounded-2xl overflow-hidden border border-[#222]"
         >
-          <div className="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label className="text-[#555] text-xs tracking-widest uppercase block mb-2">Name</label>
-              <input
-                type="text"
-                placeholder="Your name"
-                className="w-full bg-[#0a0a0a] border border-[#333] rounded-xl px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-[#f87800] transition-colors"
-              />
-            </div>
-            <div>
-              <label className="text-[#555] text-xs tracking-widest uppercase block mb-2">Email</label>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full bg-[#0a0a0a] border border-[#333] rounded-xl px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-[#f87800] transition-colors"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="text-[#555] text-xs tracking-widest uppercase block mb-2">Subject</label>
-            <input
-              type="text"
-              placeholder="Project brief, pricing, general enquiry..."
-              className="w-full bg-[#0a0a0a] border border-[#333] rounded-xl px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-[#f87800] transition-colors"
-            />
-          </div>
-          <div>
-            <label className="text-[#555] text-xs tracking-widest uppercase block mb-2">Message</label>
-            <textarea
-              rows={5}
-              placeholder="Tell us about your project..."
-              className="w-full bg-[#0a0a0a] border border-[#333] rounded-xl px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-[#f87800] transition-colors resize-none"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-[#f87800] text-black font-bold py-3.5 rounded-full text-sm hover:bg-white transition-colors duration-200"
-          >
-            Send Message
-          </button>
-        </motion.form>
+          <div
+            id="book"
+            className="calendly-inline-widget"
+            data-url={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=111111&text_color=ffffff&primary_color=f87800`}
+            style={{ minWidth: "320px", height: "700px" }}
+          />
+        </motion.div>
+
       </div>
     </section>
   );

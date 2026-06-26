@@ -6,7 +6,7 @@ import { BRAND_LOGOS } from "@/lib/constants";
 
 export default function BrandPartners() {
   return (
-    <section id="partners" className="bg-[#0a0a0a] py-20 overflow-hidden">
+    <section id="partners" className="bg-transparent py-20 overflow-hidden">
       {/* heading */}
       <motion.div
         className="text-center mb-14 px-6"

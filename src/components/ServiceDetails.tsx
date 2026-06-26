@@ -168,7 +168,7 @@ function ServiceGroup({
 
   return (
     <div
-      className={groupIndex > 0 ? "pt-20 md:pt-28 border-t" : ""}
+      className={groupIndex > 0 ? "pt-12 md:pt-20 lg:pt-28 border-t" : ""}
       style={groupIndex > 0 ? { borderColor: "rgba(255,255,255,0.1)" } : undefined}
     >
       {/* Panel-wide rounded glass outline — wraps the whole two-column
@@ -176,23 +176,23 @@ function ServiceGroup({
           this on a ::after pseudo-element; a plain wrapping border reads
           identically. Pure outline: no background, no blur. */}
       <div
-        className="rounded-[40px] p-8 md:p-12"
+        className="rounded-[40px] p-5 sm:p-8 md:p-12 overflow-hidden"
         style={{ border: "1px solid rgba(255,255,255,0.3)" }}
       >
-      <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-20">
 
         {/* ── Left column ── flex col so mt-auto pushes marquee to bottom; order-last mirrors Production */}
-        <div className={`flex flex-col ${groupIndex % 2 === 1 ? "md:order-last" : ""}`}>
+        <div className={`flex flex-col min-w-0 ${groupIndex % 2 === 1 ? "md:order-last" : ""}`}>
           {/* inner — text pins; z-[1] keeps it above marquee; no background — real site is transparent */}
-          <div className="md:sticky md:top-[120px] z-[1]">
+          <div className="md:sticky md:top-[120px] z-[1] min-w-0">
             <h2
-              className="text-white mb-5"
+              className="text-white mb-5 break-words"
               style={{
-                fontSize: 30,
+                fontSize: "clamp(1.4rem, 5vw, 1.875rem)",
                 fontWeight: 600,
                 fontFamily: "Syne, sans-serif",
                 letterSpacing: "-1.5px",
-                lineHeight: "36px",
+                lineHeight: 1.2,
               }}
             >
               {group.title}
@@ -200,13 +200,14 @@ function ServiceGroup({
 
             {/* intro1 — small muted paragraph */}
             <p
-              className="mb-5"
+              className="mb-5 break-words"
               style={{
-                fontSize: 18,
+                fontSize: "clamp(0.9rem, 4vw, 1.125rem)",
                 fontWeight: 300,
                 color: "rgba(255,255,255,0.8)",
                 letterSpacing: "-0.36px",
-                lineHeight: "27px",
+                lineHeight: 1.6,
+                overflowWrap: "break-word",
               }}
             >
               {group.intro1}
@@ -214,12 +215,14 @@ function ServiceGroup({
 
             {/* intro2 — large display paragraph */}
             <p
+              className="break-words"
               style={{
-                fontSize: "clamp(1.5rem, 6vw, 2.25rem)",
+                fontSize: "clamp(1.1rem, 4.5vw, 2.25rem)",
                 fontWeight: 300,
                 color: "white",
-                letterSpacing: "-1.44px",
+                letterSpacing: "-0.5px",
                 lineHeight: 1.2,
+                overflowWrap: "break-word",
               }}
             >
               {group.intro2}
@@ -227,7 +230,7 @@ function ServiceGroup({
           </div>
 
           {/* mt-auto pushes marquee to bottom of stretched column — keeps it clear of pinned text */}
-          <div className="mt-auto">
+          <div className="mt-auto min-w-0 overflow-hidden">
             <MarqueeStrip images={group.images} direction={direction} speed={speed} />
           </div>
         </div>
@@ -247,7 +250,7 @@ function ServiceGroup({
 
 export default function ServiceDetails() {
   return (
-    <section id="service-details" className="bg-[#0a0a0a] py-24 md:py-32">
+    <section id="service-details" className="bg-transparent py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {SERVICE_DETAILS.map((group, i) => (
           <ServiceGroup key={group.title} group={group} groupIndex={i} />

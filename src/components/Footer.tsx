@@ -158,17 +158,17 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="bg-[#0a0a0a] border-t border-[#222]">
+    <footer id="footer" className="bg-transparent border-t border-[#222]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16">
         {/* Brand */}
-        <div className="rounded-[40px] px-8 py-8 mb-6" style={cardStyle}>
+        <div className="rounded-[40px] px-8 py-8 mb-6 text-center" style={cardStyle}>
           <Link href="/" className="text-2xl font-black tracking-tight text-white block mb-4">
             {SITE.name}
           </Link>
-          <p className="text-[#888] text-sm leading-relaxed max-w-sm mb-6">
+          <p className="text-[#888] text-sm leading-relaxed max-w-sm mb-6 mx-auto">
             {SITE.subtagline}
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center">
             {[
               { icon: <FacebookIcon />,  href: FOOTER.socials.facebook },
               { icon: <GmailIcon />,     href: FOOTER.socials.email },

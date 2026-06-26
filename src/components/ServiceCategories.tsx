@@ -164,13 +164,13 @@ function CategoryRow({
           aria-hidden
           className="absolute left-0 top-0 leading-none text-white select-none pointer-events-none"
           style={{
-            fontSize: "clamp(78px, 24vw, 230px)",
+            fontSize: "clamp(39px, 12vw, 115px)",
             fontWeight: 900,
             fontFamily: "Syne, sans-serif",
             letterSpacing: "-6px",
             opacity: 0.37,
-            y: -79,             // translateY(-79px) — same as framer-nma0ig
-            scale: numberScale, // scroll-driven — same as framer-1nf6ux6
+            y: -40,
+            scale: numberScale,
             transformOrigin: "top left",
             zIndex: 0,
           }}
@@ -188,7 +188,7 @@ function CategoryRow({
             minHeight: 170,
             /* Left padding positions the title on top of the number's right edge — matching
                the inspo where title appears overlaid on the number's right portion */
-            paddingLeft: "clamp(95px, 24vw, 215px)",
+            paddingLeft: "clamp(50px, 12vw, 110px)",
             paddingRight: "0.5rem",
           }}
         >
@@ -255,15 +255,15 @@ function CategoryRow({
             <Link
               href="/projects"
               target="_blank"
-              className="group relative block border-t"
-              style={{ borderColor: "rgba(255,255,255,0.08)", height: 290, paddingTop: 20 }}
+              className="group relative block border-t overflow-hidden"
+              style={{ borderColor: "rgba(255,255,255,0.08)", minHeight: 220, paddingTop: 20 }}
             >
               {/* Fix 5: overlay must be a sibling of the images INSIDE this
                   div, not a sibling of this div at the <Link> level —
                   otherwise its `absolute inset-0` resolves against the
                   full-width row instead of the photo. Sized to fit the
                   widest/tallest fan slot (Fix 8: back card is 380x253). */}
-              <div className="relative" style={{ width: 420, height: 260 }}>
+              <div className="relative" style={{ width: "min(420px, 100%)", height: 220 }}>
                 {fanImages.map((fan, idx) => (
                   <motion.img
                     key={idx}
@@ -327,7 +327,7 @@ function CategoryRow({
               exit={{ opacity: 0, y: 8, transition: { duration: 0.15 } }}
               className="pb-10 text-[#888] text-base md:text-lg leading-relaxed max-w-2xl"
               style={{
-                paddingLeft: "clamp(130px, 13vw, 215px)",
+                paddingLeft: "clamp(50px, 12vw, 110px)",
                 paddingRight: "0.5rem",
               }}
             >
@@ -364,7 +364,7 @@ export default function ServiceCategories() {
   };
 
   return (
-    <section id="service-categories" className="bg-[#0a0a0a] py-20 md:py-28">
+    <section id="service-categories" className="bg-transparent py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* ── Glass border box — wraps heading + all rows (Image #6) ── */}
@@ -400,7 +400,7 @@ export default function ServiceCategories() {
             className="relative z-10 px-6 md:px-16 pt-12 md:pt-16 pb-8 md:pb-10"
           >
             <h2
-              className="text-3xl md:text-4xl text-white mb-4 leading-tight"
+              className="text-lg md:text-xl text-white mb-2 leading-tight"
               style={{
                 fontFamily: "Syne, sans-serif",
                 fontWeight: 700,
@@ -410,7 +410,7 @@ export default function ServiceCategories() {
               We are your experts in these categories
             </h2>
             <p
-              className="text-[#888] text-base md:text-lg leading-relaxed max-w-xl"
+              className="text-[#888] text-xs md:text-sm leading-relaxed max-w-xl"
               style={{ fontWeight: 300 }}
             >
               Our creative toolbox overflows with video possibilities! From
