@@ -176,7 +176,7 @@ function ServiceGroup({
           this on a ::after pseudo-element; a plain wrapping border reads
           identically. Pure outline: no background, no blur. */}
       <div
-        className="rounded-[40px] p-5 sm:p-8 md:p-12 overflow-hidden"
+        className="rounded-[40px] p-5 sm:p-8 md:p-12 [overflow:clip]"
         style={{ border: "1px solid rgba(255,255,255,0.3)" }}
       >
       <div className="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-20">
