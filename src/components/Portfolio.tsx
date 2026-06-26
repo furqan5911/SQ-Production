@@ -16,8 +16,19 @@ function categoryHref(item: (typeof PROJECTS)[0]) {
   return `/projects?category=${encodeURIComponent(item.category)}`;
 }
 
-function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
+function ProjectCard({ item, shouldLoad = true }: { item: (typeof PROJECTS)[0]; shouldLoad?: boolean }) {
   const firstVideo = item.videos[0]?.src;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // When shouldLoad flips true, imperatively load + play so the video starts
+  // even though the src was undefined on initial mount.
+  useEffect(() => {
+    if (!shouldLoad || !firstVideo) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.load();
+    v.play().catch(() => {});
+  }, [shouldLoad, firstVideo]);
 
   return (
     <Link
@@ -25,15 +36,15 @@ function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
       className="group relative shrink-0 w-full max-w-[380px] mx-auto md:w-[400px] md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden bg-[#111] block"
     >
       {firstVideo ? (
-        /* Always-playing preview video — replaces the static thumbnail entirely */
         <video
-          src={firstVideo}
+          ref={videoRef}
+          src={shouldLoad ? firstVideo : undefined}
           poster={item.image}
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload={shouldLoad ? "auto" : "none"}
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
@@ -46,14 +57,12 @@ function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-      {/* Hover button */}
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <span className="bg-[#f87800] text-black text-xs font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full">
           View Project
         </span>
       </div>
 
-      {/* Label */}
       <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
         <span className="text-[#f87800] text-xs font-bold tracking-[0.25em] uppercase block">
           {item.category}
@@ -61,6 +70,34 @@ function ProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
         <h3 className="text-white font-bold text-lg mt-1">{item.title}</h3>
       </div>
     </Link>
+  );
+}
+
+// Mobile wrapper: loads video only when the card is 400px from the viewport
+function LazyMobileProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef}>
+      <ProjectCard item={item} shouldLoad={shouldLoad} />
+    </div>
   );
 }
 
@@ -85,7 +122,6 @@ function SeeAllProjectsBtn() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Inner dark pill — padding-left animates 0→20px on hover */}
       <div
         className="relative overflow-hidden flex items-center h-full"
         style={{
@@ -100,7 +136,6 @@ function SeeAllProjectsBtn() {
           borderRadius: 30,
         }}
       >
-        {/* Orb — default: fills button fully; hover: shrinks to tiny 4% strip at left:34px */}
         <div
           className="absolute pointer-events-none"
           style={{
@@ -114,7 +149,6 @@ function SeeAllProjectsBtn() {
             ),
           }}
         />
-        {/* Spotlight circle */}
         <div
           className="relative shrink-0 rounded-full overflow-hidden"
           style={{
@@ -145,7 +179,6 @@ function SeeAllProjectsBtn() {
             }}
           />
         </div>
-        {/* Text */}
         <span className="relative text-white text-sm font-bold whitespace-nowrap" style={{ zIndex: 1 }}>
           See All Projects
         </span>
@@ -155,40 +188,40 @@ function SeeAllProjectsBtn() {
 }
 
 export default function Portfolio() {
-  // Continuous scroll-scrub (same mechanism as the reference demo / videohut):
-  // the section pins via position:sticky and the card row's horizontal position
-  // is mapped 1:1 from how far the page has scrolled through the runway. It only
-  // READS scroll position — never blocks the wheel — so it stays smooth, can't
-  // get stuck, and cooperates with Lenis out of the box.
-  const wrapRef = useRef<HTMLDivElement>(null);
+  const wrapRef  = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Measure the row's REAL pixel overflow so the sweep ends flush at both edges
-  // (and self-corrects if the card count / widths / viewport change). This is
-  // the distance-based translate that replaces the old hardcoded percentages.
-  //
-  // The runway HEIGHT is derived from that same distance (one viewport to pin +
-  // 1.3× the sweep of pinned scroll) — so the section is only as tall as the
-  // sweep needs. A fixed 300vh left a long pinned "dead" stretch (black space)
-  // because the real sweep is far shorter than 300vh.
   const featured = PROJECTS.slice(0, 6);
 
-  const [distance, setDistance] = useState(0);
-  const [runway, setRunway] = useState(0);
-  const [startX, setStartX] = useState(0);
+  const [distance,    setDistance]    = useState(0);
+  const [runway,      setRunway]      = useState(0);
+  const [startX,      setStartX]      = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const CARD_W = 400;
-  const CARD_GAP = 24; // gap-6
-  const CARD_STEP = CARD_W + CARD_GAP; // 424
-  const PAD_L = 48; // px-12
+
+  const CARD_W    = 400;
+  const CARD_GAP  = 24;
+  const CARD_STEP = CARD_W + CARD_GAP;
+  const PAD_L     = 48;
+
+  // Desktop smart-loading: keep active card + next 2 loaded, never unload
+  const [loadedIndices, setLoadedIndices] = useState<Set<number>>(() => new Set([0, 1, 2]));
+
+  useEffect(() => {
+    setLoadedIndices(prev => {
+      const next = new Set(prev);
+      next.add(activeIndex);
+      if (activeIndex + 1 < featured.length) next.add(activeIndex + 1);
+      if (activeIndex + 2 < featured.length) next.add(activeIndex + 2);
+      return next;
+    });
+  }, [activeIndex, featured.length]);
 
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     const measure = () => {
-      const W = window.innerWidth;
-      const sx = W - PAD_L - CARD_W;
-      // end position: last card centered at W/2
+      const W   = window.innerWidth;
+      const sx  = W - PAD_L - CARD_W;
       const fullD = Math.max(0, PAD_L + (featured.length - 1) * CARD_STEP + CARD_W / 2 - W / 2) + CARD_STEP;
       setStartX(sx);
       setDistance(fullD);
@@ -211,16 +244,15 @@ export default function Portfolio() {
   const x = useTransform(scrollYProgress, [0, 1], [startX, -distance]);
 
   useMotionValueEvent(x, "change", (latest) => {
-    const W = window.innerWidth;
-    // card i is centered when x = W/2 - PAD_L - CARD_W/2 - i*CARD_STEP
+    const W           = window.innerWidth;
     const card0CenterX = W / 2 - PAD_L - CARD_W / 2;
-    const idx = Math.round((card0CenterX - latest) / CARD_STEP);
+    const idx          = Math.round((card0CenterX - latest) / CARD_STEP);
     setActiveIndex(Math.max(0, Math.min(featured.length - 1, idx)));
   });
 
   return (
     <>
-      {/* ── Mobile: simple centered heading + vertical card stack (no scroll-jack) ── */}
+      {/* ── Mobile: vertical card stack — each card lazy-loads its video ── */}
       <div className="md:hidden bg-transparent py-16">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -243,7 +275,7 @@ export default function Portfolio() {
 
           <div className="flex flex-col gap-6">
             {featured.map((item) => (
-              <ProjectCard key={item.slug} item={item} />
+              <LazyMobileProjectCard key={item.slug} item={item} />
             ))}
           </div>
         </div>
@@ -268,15 +300,13 @@ export default function Portfolio() {
         <SeeAllProjectsBtn />
       </motion.div>
 
-      {/* ── Desktop sticky card sweep — cards only, full viewport height ── */}
+      {/* ── Desktop sticky card sweep ── */}
       <div
         ref={wrapRef}
         style={{ height: runway ? `${runway}px` : "100vh" }}
         className="hidden md:block relative bg-transparent"
       >
         <div className="sticky top-0 h-screen flex items-center">
-
-          {/* Full-bleed sliding track */}
           <div className="overflow-x-clip w-full">
             <motion.div
               ref={trackRef}
@@ -293,12 +323,11 @@ export default function Portfolio() {
                     transformOrigin: "center center",
                   }}
                 >
-                  <ProjectCard item={item} />
+                  <ProjectCard item={item} shouldLoad={loadedIndices.has(i)} />
                 </div>
               ))}
             </motion.div>
           </div>
-
         </div>
       </div>
     </>

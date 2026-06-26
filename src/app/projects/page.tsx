@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLenis } from "lenis/react";
@@ -21,6 +21,89 @@ const cardVariants = {
     transition: { duration: 0.55, ease: "easeOut" as const, delay: i * 0.12 },
   }),
 };
+
+// Loads the card's video only when the card is within 600px of the viewport
+function LazyProjectCard({ item, i }: { item: (typeof PROJECTS)[0]; i: number }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef     = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "600px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.load();
+    v.play().catch(() => {});
+  }, [shouldLoad]);
+
+  const videoSrc = item.videos[0]?.src;
+
+  return (
+    <div ref={containerRef}>
+      <motion.div
+        custom={i}
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+      >
+        <Link href={`/projects/${item.slug}`} className="group block">
+          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#111]">
+            {videoSrc ? (
+              <video
+                ref={videoRef}
+                src={shouldLoad ? videoSrc : undefined}
+                poster={item.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload={shouldLoad ? "auto" : "none"}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="bg-[#f87800] text-black text-xs font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full">
+                View Project
+              </span>
+            </div>
+          </div>
+          <div className="mt-4 px-1">
+            <span className="text-[#f87800] text-xs font-bold tracking-[0.25em] uppercase">
+              {item.category}
+            </span>
+            <h3 className="text-white font-bold text-lg mt-1 group-hover:text-[#f87800] transition-colors duration-200">
+              {item.title}
+            </h3>
+          </div>
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
 
 function ProjectsContent() {
   const router = useRouter();
@@ -138,51 +221,7 @@ function ProjectsContent() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {filtered.map((item, i) => (
-                <motion.div
-                  key={item.slug}
-                  custom={i}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.15 }}
-                >
-                  <Link href={`/projects/${item.slug}`} className="group block">
-                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#111]">
-                      {item.videos[0]?.src ? (
-                        <video
-                          src={item.videos[0].src}
-                          poster={item.image}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="auto"
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                      ) : (
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="bg-[#f87800] text-black text-xs font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full">
-                          View Project
-                        </span>
-                      </div>
-                    </div>
-                    <div className="mt-4 px-1">
-                      <span className="text-[#f87800] text-xs font-bold tracking-[0.25em] uppercase">
-                        {item.category}
-                      </span>
-                      <h3 className="text-white font-bold text-lg mt-1 group-hover:text-[#f87800] transition-colors duration-200">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </Link>
-                </motion.div>
+                <LazyProjectCard key={item.slug} item={item} i={i} />
               ))}
             </div>
           )}

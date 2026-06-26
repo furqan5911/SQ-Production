@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Marquee from "react-fast-marquee";
 
@@ -154,6 +154,34 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 export default function Reels() {
   const [modal, setModal] = useState<{ src: string } | null>(null);
   const [play, setPlay] = useState(true);
+  const [reelsActive, setReelsActive] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Start loading reel videos only when the section is near the viewport
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setReelsActive(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // After React re-renders with the new preload value, imperatively play all reel videos
+  useEffect(() => {
+    if (!reelsActive || !sectionRef.current) return;
+    sectionRef.current.querySelectorAll<HTMLVideoElement>("video[data-reel]").forEach(v => {
+      v.load();
+      v.play().catch(() => {});
+    });
+  }, [reelsActive]);
 
   function handleCardMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -167,7 +195,7 @@ export default function Reels() {
   }
 
   return (
-    <section className="bg-transparent py-20 overflow-hidden">
+    <section ref={sectionRef} className="bg-transparent py-20 overflow-hidden">
 
       {/* Heading — centered, no "Reels" label */}
       <motion.div
@@ -200,6 +228,8 @@ export default function Reels() {
                   muted
                   loop
                   playsInline
+                  preload={reelsActive ? "auto" : "none"}
+                  data-reel
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/35 group-hover:bg-black/10 transition-colors duration-300" />
