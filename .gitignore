@@ -1,6 +1,7 @@
 # Reference and scratch folders
 reference-images/
 scratch/
+agent-knowledge/
 
 # Markdown files (all directories)
 *.md
