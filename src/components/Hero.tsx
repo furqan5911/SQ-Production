@@ -164,6 +164,9 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <ScrollIndicator className="absolute bottom-10 left-6 md:left-12" />
+
+      {/* Bottom fade into page background */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.7) 50%, #0a0a0a 100%)" }} />
     </section>
   );
 }

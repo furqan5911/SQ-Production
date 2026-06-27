@@ -23,7 +23,7 @@ export default function Home() {
         <Hero />
         <Reels />
         <BrandPartners />
-        <div className="bg-transparent h-20" />
+        <div className="bg-transparent h-4" />
         <Portfolio />
         <div className="bg-transparent h-20" />
         <Services />

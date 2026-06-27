@@ -222,10 +222,10 @@ export default function Portfolio() {
     const measure = () => {
       const W   = window.innerWidth;
       const sx  = W - PAD_L - CARD_W;
-      const fullD = Math.max(0, PAD_L + (featured.length - 1) * CARD_STEP + CARD_W / 2 - W / 2) + CARD_STEP;
+      const fullD = Math.max(0, PAD_L + (featured.length - 2) * CARD_STEP + CARD_W / 2 - W / 2);
       setStartX(sx);
       setDistance(fullD);
-      setRunway(window.innerHeight + (sx + fullD) * 1.3);
+      setRunway(window.innerHeight + (sx + fullD) * 1.05);
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -247,7 +247,7 @@ export default function Portfolio() {
     const W           = window.innerWidth;
     const card0CenterX = W / 2 - PAD_L - CARD_W / 2;
     const idx          = Math.round((card0CenterX - latest) / CARD_STEP);
-    setActiveIndex(Math.max(0, Math.min(featured.length - 1, idx)));
+    setActiveIndex(Math.max(0, Math.min(featured.length - 2, idx)));
   });
 
   return (
@@ -266,7 +266,7 @@ export default function Portfolio() {
               <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">
                 Portfolio
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+              <h2 className="text-[50px] font-black text-white leading-tight">
                 Our Handpicked<br />Featured Portfolio
               </h2>
             </div>
@@ -293,7 +293,7 @@ export default function Portfolio() {
           <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
             Portfolio
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
+          <h2 className="text-[50px] font-black text-white leading-tight">
             Our Handpicked<br />Featured Portfolio
           </h2>
         </div>

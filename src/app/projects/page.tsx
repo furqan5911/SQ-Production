@@ -201,7 +201,7 @@ function ProjectsContent() {
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => cat === "Short Films" ? router.push("/projects/short-films") : cat === "Music Video" ? router.push("/projects/music-videos") : setActive(cat)}
+                onClick={() => cat === "Short Films" ? router.push("/projects/short-films") : cat === "Music Video" ? router.push("/projects/music-videos") : cat === "Fashion Films" ? router.push("/projects/new-times-roman") : setActive(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                   active === cat
                     ? "bg-[#f87800] border-[#f87800] text-black"

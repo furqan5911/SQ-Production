@@ -7,7 +7,7 @@ export const SITE = {
   ctaPrimary: "Get Started",
   ctaShowreel: "PLAY SHOWREEL",
   showreelVideo: "/videos/showreel.mp4",
-  heroBg: "/images/hero-bg.jpg",
+  heroBg: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/home.png",
 };
 
 export const NAV_LINKS = [
@@ -42,10 +42,12 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic showcase of two landmark architectural projects by Bukhari Associates — capturing the transformation of residential spaces through open planning and bold design.",
-    image: "/images/portfolio/bukhari-associates.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/balogo.png",
     videos: [
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/rim-house.mp4",    label: "RIM HOUSE" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/we%20are%20back.mp4",  label: "We Are Back With a Bang" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/rim-house.mp4",              label: "RIM HOUSE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/Bhukhariassociates1.mp4",   label: "BUKHARI ASSOCIATES — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/Bhukhariassociates2.mp4",   label: "BUKHARI ASSOCIATES — FILM TWO" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/Bhukhariassociates3.mp4",   label: "BUKHARI ASSOCIATES — FILM THREE" },
     ],
     snaps: [
       "/images/portfolio/placeholder.png",
@@ -697,9 +699,12 @@ export const PROJECTS = [
       "Two music videos produced by SQ Productions — visually driven productions that bring the track to life with bold cinematography and sharp editing.",
     image: "/images/portfolio/placeholder.png",
     noMeta: true,
+    horizontalVideos: true,
     videos: [
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/music1.mp4", label: "Fanna",        youtubeUrl: "https://youtu.be/ofPcBInDFwo?si=a5iUbhgcLwqpEmfl" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/music2.mp4", label: "Kukkad Song", youtubeUrl: "https://youtu.be/_6CtixcoKGM?si=JtuAJUKNxb9LR8MF" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/music1.mp4",      label: "Fanna" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/music2.mp4",      label: "Kukkad Song" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/Teri%20yaad.mp4", label: "Teri Yaad" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/DILDARA.mp4",     label: "Dildara" },
     ],
     snaps: [],
     scopeOverview: "",
@@ -721,9 +726,10 @@ export const PROJECTS = [
       "Two original short films produced by SQ Productions — intimate, character-driven stories told with cinematic craft and a bold visual voice.",
     image: "/images/portfolio/placeholder.png",
     noMeta: true,
+    horizontalVideos: true,
     videos: [
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo1.mp4", label: "College Diaries", youtubeUrl: "https://youtu.be/tl4BVqTbUKc?si=ewS3dbAmqh5v8ig1",  poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/tumb2.jpeg" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo.mp4",  label: "The Good Man",   youtubeUrl: "https://youtu.be/i6lkJ6T80QA?si=0UBzUi8-P2IshHgV", poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/thumb.jpeg"  },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo1.mp4", label: "College Diaries", poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/tumb2.jpeg" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Shortfilms/ytvideo.mp4",  label: "The Good Man",   poster: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/thumb.jpeg"  },
     ],
     snaps: [
       "/images/portfolio/placeholder.png",
@@ -807,6 +813,8 @@ export const PROJECTS = [
     title: "New Times Roman",
     subtitle: "Fashion filmmaking at its finest.",
     category: "Fashion Films",
+    horizontalVideos: true,
+    noTitle: true,
     client: "New Times Roman",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
@@ -815,6 +823,7 @@ export const PROJECTS = [
     image: "/images/portfolio/placeholder.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fashion%20Films/fashion%20film.mp4", label: "NEW TIMES ROMAN" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fashion%20Films/Espico%20pink.mp4",  label: "ESPICO PINK" },
     ],
     snaps: [
       "/images/portfolio/placeholder.png",
@@ -997,22 +1006,186 @@ export const PROJECTS = [
     clientInstagram: "https://www.instagram.com/sanwal_crafts_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
   {
-    slug: "placeholder-5",
-    title: "Coming Soon",
-    subtitle: "Project placeholder.",
-    category: "Podcast",
-    client: "TBD",
+    slug: "bolt-cricket",
+    title: "Bolt Cricket",
+    subtitle: "Sports content built to energise.",
+    category: "Product",
+    client: "Bolt Cricket",
     year: "2025",
-    services: ["Cinematography", "Post Production"],
-    description: "Project details coming soon.",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two high-energy product films for Bolt Cricket — bold, fast-paced visuals built to showcase the brand and drive excitement across social and digital platforms.",
     image: "/images/portfolio/placeholder.png",
-    videos: [],
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bolt%20Cricket/bolt%20cricket1.mp4", label: "BOLT CRICKET — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bolt%20Cricket/bolt%20cricket2.mp4", label: "BOLT CRICKET — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two product films for Bolt Cricket, built to capture the energy and identity of the brand with bold visuals optimised for social media and digital use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a high-energy, sport-first visual style to match the brand.",
+          "Identified key product moments and brand themes to capture on camera.",
+          "Set the tone — bold, fast-paced, and impactful.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling for product-focused shots.",
+          "Shot list preparation for action and detail angles.",
+          "Lighting and camera setup planning for optimal product presentation.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-angle filming of the product in action and in detail.",
+          "Dynamic shots to convey the brand's sporting energy.",
+          "Multiple coverage options for a flexible edit.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Fast-paced editing into two distinct short-form product films.",
+          "Colour grading for a bold, high-impact look.",
+          "Sound design and motion graphics for titles and product highlights.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and digital use.",
+      "Gave Bolt Cricket a high-energy visual identity for their campaign.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "florabysheen",
+    title: "Flora by Sheen",
+    subtitle: "Elegant product films built to impress.",
+    category: "Product",
+    client: "Flora by Sheen",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "Two elegant product films for Flora by Sheen — clean, detail-driven visuals that showcase the brand's beauty and craftsmanship across social and retail platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/florabysheen/florabysheen1.mp4", label: "FLORA BY SHEEN — FILM ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/florabysheen/florabysheen2.mp4", label: "FLORA BY SHEEN — FILM TWO" },
+    ],
+    snaps: [
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+      "/images/portfolio/placeholder.png",
+    ],
+    scopeOverview:
+      "Full production of two product films for Flora by Sheen, designed to highlight the brand's elegance and quality with clean, detail-focused visuals for social and retail use.",
+    scopePhases: [
+      {
+        title: "Concept Development",
+        points: [
+          "Defined a clean, elegant visual style suited to the brand's identity.",
+          "Identified key product details and lifestyle moments to capture.",
+          "Set the tone — refined, minimal, and premium.",
+        ],
+      },
+      {
+        title: "Pre-Production",
+        points: [
+          "Set design and styling for product-focused shots.",
+          "Shot list preparation for macro and lifestyle angles.",
+          "Lighting setup planning for a soft, premium look.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Macro and multi-angle filming of the product.",
+          "Lifestyle shots showing the product in context.",
+          "Multiple coverage options for a flexible edit.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into two polished short-form product films.",
+          "Colour grading for a clean, elegant brand look.",
+          "Sound design and motion graphics for titles.",
+        ],
+      },
+    ],
+    timeline: "Completed over 2 weeks — pre-production, shooting, and post-production delivery.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered two polished product films ready for social and retail use.",
+      "Gave Flora by Sheen a refined visual identity across its content.",
+      "Content built for reuse across ads, product pages, and social platforms.",
+    ],
+    clientInstagram: "",
+  },
+  {
+    slug: "mukalma",
+    title: "Mukalma",
+    subtitle: "Conversations captured with intention.",
+    category: "Podcast",
+    client: "Mukalma",
+    year: "2025",
+    services: ["Cinematography", "Direction", "Post Production"],
+    description:
+      "A podcast production series for Mukalma — cinematic, conversation-driven content filmed and edited to engage audiences across digital and social platforms.",
+    image: "/images/portfolio/placeholder.png",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Mukalma/mukalma1.mp4", label: "MUKALMA — EPISODE ONE" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Mukalma/mukalma2.mp4", label: "MUKALMA — EPISODE TWO" },
+    ],
     snaps: ["/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png", "/images/portfolio/placeholder.png"],
-    scopeOverview: "Coming soon.",
-    scopePhases: [],
-    timeline: "TBD",
-    budget: "TBD",
-    outcomes: [],
+    scopeOverview:
+      "Full production of podcast episodes for Mukalma, designed to deliver clean, professional conversation content with cinematic visuals built for digital distribution.",
+    scopePhases: [
+      {
+        title: "Pre-Production",
+        points: [
+          "Set and lighting design for a clean, professional podcast environment.",
+          "Camera and audio setup for multi-angle coverage.",
+          "Planning for consistent visual identity across episodes.",
+        ],
+      },
+      {
+        title: "Production",
+        points: [
+          "Multi-camera filming of each podcast episode.",
+          "Professional audio capture for broadcast-quality sound.",
+          "Direction to ensure natural, engaging on-screen conversations.",
+        ],
+      },
+      {
+        title: "Post-Production",
+        points: [
+          "Editing into polished episode cuts optimised for digital platforms.",
+          "Colour grading for a consistent, professional look.",
+          "Sound mixing and motion graphics for titles and branding.",
+        ],
+      },
+    ],
+    timeline: "Ongoing production series.",
+    budget: "Budget details available upon request.",
+    outcomes: [
+      "Delivered polished podcast episodes ready for digital and social distribution.",
+      "Established a consistent visual identity for the Mukalma brand.",
+      "Content built for reuse across clips, promos, and full-length releases.",
+    ],
     clientInstagram: "",
   },
   {
@@ -1368,7 +1541,7 @@ export const ABOUT = {
   career: [],
 };
 
-export const TESTIMONIALS_BG = "";
+export const TESTIMONIALS_BG = "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/clientsection.png";
 
 export const TESTIMONIALS = [
   {

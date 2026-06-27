@@ -195,7 +195,7 @@ export default function Reels() {
   }
 
   return (
-    <section ref={sectionRef} className="bg-transparent py-20 overflow-hidden">
+    <section ref={sectionRef} className="bg-transparent pt-20 pb-0 overflow-hidden">
 
       {/* Heading — centered, no "Reels" label */}
       <motion.div
@@ -218,7 +218,7 @@ export default function Reels() {
             onClick={() => reel.src && setModal({ src: reel.src })}
             onMouseMove={handleCardMouseMove}
             onMouseLeave={handleCardMouseLeave}
-            className={`relative mx-3 w-[190px] md:w-[220px] h-[340px] md:h-[400px] rounded-2xl overflow-hidden bg-[#111] flex-shrink-0 ${reel.src ? "cursor-pointer group" : "cursor-default"}`}
+            className={`relative mx-3 w-[190px] md:w-[220px] aspect-[9/16] rounded-2xl overflow-hidden bg-[#111] flex-shrink-0 ${reel.src ? "cursor-pointer group" : "cursor-default"}`}
           >
             {reel.src ? (
               <>

@@ -204,9 +204,11 @@ export default function ProjectDetailPage() {
             <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-3">
               {project.category}
             </span>
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mx-auto">
-              {project.title}
-            </h1>
+            {!(project as Record<string, unknown>).noTitle && (
+              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mx-auto">
+                {project.title}
+              </h1>
+            )}
           </motion.div>
         </div>
 
@@ -255,14 +257,14 @@ export default function ProjectDetailPage() {
               viewport={{ once: true }}
               className="mb-20"
             >
-              {(project.videos[0] as { src: string; label: string; youtubeUrl?: string }).youtubeUrl ? (
+              {((project as Record<string, unknown>).horizontalVideos || (project.videos[0] as { src: string; label: string; youtubeUrl?: string }).youtubeUrl) ? (
                 /* Horizontal layout — short films with title + YouTube link */
                 <div className="flex flex-col gap-14">
                   {project.videos.map((v, i) => {
                     const vx = v as { src: string; label: string; youtubeUrl?: string; poster?: string };
                     return (
                       <div key={i} className="flex flex-col items-center gap-4">
-                        <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>
+                        {!(project as Record<string, unknown>).noMeta && vx.label && <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>}
                         <div className="relative w-full rounded-2xl overflow-hidden bg-[#111]" style={{ paddingBottom: "56.25%" }}>
                           <video
                             src={vx.src}

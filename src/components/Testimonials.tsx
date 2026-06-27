@@ -151,28 +151,15 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 overflow-hidden bg-transparent">
-        {TESTIMONIALS_BG ? (
-          <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={TESTIMONIALS_BG} alt="" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/55" />
-          </>
-        ) : (
-          <>
-            <div
-              className="absolute rounded-full"
-              style={{ width: 560, height: 560, top: "-12%", left: "6%", background: "rgb(255,171,66)", opacity: 0.45, filter: "blur(90px)" }}
-            />
-            <div
-              className="absolute rounded-full"
-              style={{ width: 620, height: 620, bottom: "-18%", right: "4%", background: "rgb(255,99,111)", opacity: 0.35, filter: "blur(100px)" }}
-            />
-          </>
-        )}
-      </div>
+      {TESTIMONIALS_BG && (
+        <div className="absolute inset-0 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={TESTIMONIALS_BG} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
+      )}
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,7 +174,11 @@ export default function Testimonials() {
           <motion.div
             animate={{ height }}
             transition={{ type: "spring", stiffness: 200, damping: 26 }}
-            style={{ overflow: "hidden" }}
+            style={{
+              overflow: "hidden",
+              maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            }}
           >
             <div ref={emblaRef} className="overflow-hidden">
               <div className="flex">
