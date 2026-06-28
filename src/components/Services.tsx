@@ -273,7 +273,7 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="bg-transparent pt-16 pb-10 md:pt-20 md:pb-14">
+    <section id="services" className="bg-transparent py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-[1fr_1.6fr] gap-12 md:gap-20 items-start">
 

@@ -148,7 +148,7 @@ function ProjectsContent() {
           {/* Background image */}
           <div className="absolute inset-0">
             <img
-              src="/images/hero-bg.jpg"
+              src="https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/our%20projects.jpeg"
               alt="Projects hero"
               className="w-full h-full object-cover object-center"
             />

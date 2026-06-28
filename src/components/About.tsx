@@ -82,16 +82,8 @@ export default function About() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section id="about" className="relative overflow-x-hidden bg-transparent pt-6 pb-20 md:pt-10 md:pb-28">
+    <section id="about" className="relative overflow-x-hidden bg-transparent py-16 md:py-24">
 
-      {/* Warm orange radial glow — echoes portrait */}
-      <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-3/4"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 70% at 0% 55%, rgba(248,120,0,0.09) 0%, transparent 65%)",
-        }}
-      />
 
       {/* About intro + stats — two-column layout */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
@@ -176,22 +168,48 @@ export default function About() {
         </div>
       </div>
 
-      {/* Watermark — centered, full viewport width — now BELOW stats */}
+      {/* MEET — centered */}
       <div className="w-full text-center mt-20 md:mt-28">
         <motion.p
-          initial={{ opacity: 0, y: -80 }}
+          initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-[12vw] sm:text-[10vw] md:text-[9.5vw] leading-none select-none pointer-events-none whitespace-nowrap uppercase"
-          style={{ color: "rgba(248,120,0,0.25)", fontFamily: "var(--font-poppins)", fontWeight: 900, letterSpacing: "-0.05em" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-[9vw] sm:text-[7.5vw] md:text-[7vw] leading-none select-none pointer-events-none whitespace-nowrap uppercase"
+          style={{ color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.05em" }}
         >
-          Meet Sheraz
+          MEET
         </motion.p>
       </div>
 
+      {/* SHERAZ — no gap, aligned to same container as image */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 overflow-hidden -mt-2 md:-mt-3" style={{ position: "relative", zIndex: 1 }}>
+        <div className="flex items-baseline justify-center">
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="leading-none select-none pointer-events-none uppercase"
+            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.03em" }}
+          >
+            SHE
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+            className="leading-none select-none pointer-events-none uppercase"
+            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.03em" }}
+          >
+            RAZ
+          </motion.p>
+        </div>
+      </div>
+
       {/* Main content — portrait + bio */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative mt-4">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative -mt-6 md:-mt-10" style={{ zIndex: 10 }}>
 
         {/* Two-column grid */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
@@ -205,7 +223,7 @@ export default function About() {
           >
             <div
               className="relative rounded-2xl overflow-hidden max-w-[420px] mx-auto md:mx-0"
-              style={{ aspectRatio: "3/4" }}
+              style={{ aspectRatio: "3/4", zIndex: 20, position: "relative" }}
             >
               {!imgError ? (
                 // eslint-disable-next-line @next/next/no-img-element

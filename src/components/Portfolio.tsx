@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 import { PROJECTS } from "@/lib/constants";
@@ -216,7 +217,7 @@ export default function Portfolio() {
     });
   }, [activeIndex, featured.length]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     const measure = () => {
@@ -236,6 +237,11 @@ export default function Portfolio() {
       window.removeEventListener("resize", measure);
     };
   }, []);
+
+  const lenis = useLenis();
+  useEffect(() => {
+    if (runway && lenis) lenis.resize();
+  }, [runway, lenis]);
 
   const { scrollYProgress } = useScroll({
     target: wrapRef,

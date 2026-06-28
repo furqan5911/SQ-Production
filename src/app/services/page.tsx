@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
-import StudioGallery from "@/components/StudioGallery";
-import ServiceDetails from "@/components/ServiceDetails";
+import ServiceAlbumCards from "@/components/ServiceAlbumCards";
 import ServiceCategories from "@/components/ServiceCategories";
 import FAQ from "@/components/FAQ";
 
@@ -17,8 +16,7 @@ export default function ServicesPage() {
       title="Our Services"
       subtitle="Join us on a journey where ideas transform into captivating video content, with a dash of creativity and a whole lot of fun."
     >
-      <StudioGallery />
-      <ServiceDetails />
+      <ServiceAlbumCards />
       <ServiceCategories />
       <FAQ />
     </PageShell>

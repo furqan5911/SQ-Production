@@ -83,7 +83,7 @@ export default function ChatBubble() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-[5.5rem] right-4 md:right-6 z-[9990] w-[calc(100vw-2rem)] max-w-sm flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-[#222]"
+            className="fixed bottom-[5.5rem] left-4 md:left-6 z-[9990] w-[calc(100vw-2rem)] max-w-sm flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-[#222]"
             style={{
               height: "min(520px, calc(100vh - 110px))",
               background: "#111",
@@ -184,7 +184,7 @@ export default function ChatBubble() {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close chat" : "Open chat"}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-[9990] w-14 h-14 rounded-full bg-[#f87800] text-black shadow-xl flex items-center justify-center transition-colors duration-200 hover:bg-white"
+        className="fixed bottom-4 md:bottom-6 left-4 md:left-6 z-[9990] w-14 h-14 rounded-full bg-[#f87800] text-black shadow-xl flex items-center justify-center transition-colors duration-200 hover:bg-white"
         style={{ boxShadow: "0 4px 24px rgba(248,120,0,0.4)" }}
       >
         <AnimatePresence mode="wait">

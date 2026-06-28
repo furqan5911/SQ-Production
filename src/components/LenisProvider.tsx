@@ -9,7 +9,16 @@ function ScrollToTop() {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (lenis) {
+    if (!lenis) return;
+    const hash = window.location.hash;
+    if (hash) {
+      // Navigate to a hash anchor — wait for page to render then scroll to it
+      const id = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) lenis.scrollTo(el as HTMLElement, { offset: -100 });
+      }, 350);
+      return () => clearTimeout(id);
+    } else {
       lenis.scrollTo(0, { immediate: true });
     }
   }, [pathname, lenis]);
@@ -26,7 +35,7 @@ function LenisWakeup() {
     const wake = () => lenis.start();
 
     // Tab regains visibility after being hidden
-    const onVisibility = () => { if (!document.hidden) wake(); };
+    const onVisibility = () => { if (!document.hidden) { wake(); lenis.resize(); } };
     document.addEventListener("visibilitychange", onVisibility);
 
     // User scrolls or touches after idle — lenis.start() is a no-op if already running

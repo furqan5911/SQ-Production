@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatBubble from "@/components/ChatBubble";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import CursorTrail from "@/components/CursorTrail";
 
 const spaceMono = Space_Mono({
@@ -47,6 +48,7 @@ export default function RootLayout({
           <LenisProvider>{children}</LenisProvider>
         </div>
         <ChatBubble />
+        <WhatsAppButton />
         <CursorTrail />
       </body>
     </html>

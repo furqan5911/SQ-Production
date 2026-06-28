@@ -82,7 +82,7 @@ function TestimonialCard({ item, active }: { item: typeof TESTIMONIALS[0]; activ
       />
 
       <div className="relative z-10 flex flex-col p-8 sm:p-10 md:p-12">
-        {!logoError && (
+        {!logoError && item.logo && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={item.logo}
@@ -92,8 +92,33 @@ function TestimonialCard({ item, active }: { item: typeof TESTIMONIALS[0]; activ
           />
         )}
 
+        {/* Star rating */}
+        <div className="flex items-center gap-1 mb-6">
+          {[1, 2, 3, 4, 5].map((i) => {
+            const filled = i <= Math.floor(item.stars);
+            const half = !filled && i === Math.ceil(item.stars) && item.stars % 1 !== 0;
+            return (
+              <svg key={i} width={18} height={18} viewBox="0 0 24 24">
+                {half ? (
+                  <>
+                    <defs>
+                      <linearGradient id={`half-${i}`}>
+                        <stop offset="50%" stopColor="#f87800" />
+                        <stop offset="50%" stopColor="rgba(255,255,255,0.2)" />
+                      </linearGradient>
+                    </defs>
+                    <path fill={`url(#half-${i})`} d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </>
+                ) : (
+                  <path fill={filled ? "#f87800" : "rgba(255,255,255,0.2)"} d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                )}
+              </svg>
+            );
+          })}
+        </div>
+
         <p
-          className="font-semibold text-xl sm:text-2xl md:text-[32px] leading-snug mb-6 md:mb-8"
+          className="font-semibold text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-8"
           style={{
             backgroundImage: QUOTE_GRADIENT,
             WebkitBackgroundClip: "text",
@@ -150,7 +175,7 @@ export default function Testimonials() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="testimonials" className="relative overflow-hidden py-24 md:py-32">
+    <section id="testimonials" className="relative overflow-hidden py-16 md:py-24">
       {TESTIMONIALS_BG && (
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}

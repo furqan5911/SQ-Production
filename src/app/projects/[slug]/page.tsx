@@ -64,6 +64,26 @@ function InstagramCTA({ href }: { href: string }) {
   );
 }
 
+function YouTubeChannelCTA({ href }: { href: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.05 : 1, backgroundColor: hovered ? "#ffffff" : "#f87800" }}
+      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      className="inline-flex items-center gap-2 text-black font-black text-sm uppercase px-8 py-4 rounded-full"
+      style={{ letterSpacing: hovered ? "0.22em" : "0.1em", transition: "letter-spacing 0.35s ease" }}
+    >
+      <span>Watch the Full Episodes on YT</span>
+      <EyeBlink hovered={hovered} />
+    </motion.a>
+  );
+}
+
 function WatchFullVideoCTA({ href }: { href: string }) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -244,7 +264,7 @@ export default function ProjectDetailPage() {
             className="py-14 text-center"
           >
             <p className="text-[#aaa] text-lg leading-relaxed max-w-3xl mx-auto">
-              {project.description}
+              {project.description as string}
             </p>
           </motion.div>
 
@@ -264,7 +284,7 @@ export default function ProjectDetailPage() {
                     const vx = v as { src: string; label: string; youtubeUrl?: string; poster?: string };
                     return (
                       <div key={i} className="flex flex-col items-center gap-4">
-                        {!(project as Record<string, unknown>).noMeta && vx.label && <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>}
+                        {vx.label && <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>}
                         <div className="relative w-full rounded-2xl overflow-hidden bg-[#111]" style={{ paddingBottom: "56.25%" }}>
                           <video
                             src={vx.src}
@@ -298,6 +318,29 @@ export default function ProjectDetailPage() {
                   ))}
                 </div>
               )}
+            </motion.div>
+          )}
+
+          {/* ── AI Image Grid ── */}
+          {!!(project as any).aiImages && ((project as any).aiImages as string[]).length > 0 && (
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mb-20"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {((project as Record<string, unknown>).aiImages as string[]).map((src, i) => (
+                  <div key={i} className="bg-[#111] rounded-2xl overflow-hidden border border-[#222]">
+                    <img
+                      src={src}
+                      alt={`${project.title} ${i + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </motion.div>
           )}
 
@@ -373,6 +416,20 @@ export default function ProjectDetailPage() {
             >
               <p className="text-[#555] text-sm">Liked what you saw? There&apos;s more where that came from.</p>
               <InstagramCTA href={project.clientInstagram} />
+            </motion.div>
+          )}
+
+          {/* ── YouTube Channel CTA ── */}
+          {!!(project as any).youtubeChannel && (
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mb-24 flex flex-col items-center gap-4 text-center"
+            >
+              <p className="text-[#555] text-sm">Want to see more? Catch the full series on YouTube.</p>
+              <YouTubeChannelCTA href={(project as Record<string, unknown>).youtubeChannel as string} />
             </motion.div>
           )}
 

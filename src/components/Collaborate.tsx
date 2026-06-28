@@ -40,7 +40,7 @@ function CollaborateButton() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(107.7% 333.3% at -11.8% 0%, #ffab42 33.33%, rgba(167,127,106,1) 52.07%, rgba(255,255,255,0.1) 69.35%)",
+              "radial-gradient(107.7% 333.3% at -11.8% 0%, #f87800 33.33%, rgba(180,90,30,1) 52.07%, rgba(255,255,255,0.1) 69.35%)",
           }}
         />
         {/* Hover glow — fades in from the center */}
@@ -50,7 +50,7 @@ function CollaborateButton() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           style={{
             background:
-              "radial-gradient(65% 65% at 50% 50%, var(--accent) 0%, rgba(255,171,66,0.35) 45%, transparent 80%)",
+              "radial-gradient(65% 65% at 50% 50%, var(--accent) 0%, rgba(248,120,0,0.35) 45%, transparent 80%)",
           }}
         />
 
@@ -81,13 +81,13 @@ function CollaborateButton() {
 
 export default function Collaborate() {
   return (
-    <section className="px-6 md:px-10 pb-20 md:pb-28">
+    <section className="px-6 md:px-10 pb-10 md:pb-14">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative max-w-7xl mx-auto rounded-[40px] overflow-hidden text-center px-6 md:px-16 py-16 md:py-24"
+        className="relative max-w-7xl mx-auto rounded-[40px] overflow-hidden text-center px-6 md:px-16 py-10 md:py-14"
         style={{
           background:
             "radial-gradient(132.5% 150% at 3.7% 0%, var(--accent) 0%, rgba(255,255,255,0.03) 38%)",

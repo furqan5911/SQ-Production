@@ -6,11 +6,7 @@ import { FAQS } from "@/lib/constants";
 
 const GLOW_REST = "radial-gradient(25% 75% at 0% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%)";
 const GLOW_HOVER = "radial-gradient(35% 85% at 22% 18%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)";
-
-const GRID_BG = `
-  linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
-`;
+const GRID_BG = `linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)`;
 
 function ChevronIcon() {
   return (
@@ -44,6 +40,7 @@ function FAQItem({
       }}
     >
       <div className="absolute inset-0 pointer-events-none" style={{ background: GLOW_REST }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: GRID_BG, backgroundSize: "48px 48px" }} />
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ background: GLOW_HOVER }}
@@ -106,11 +103,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-transparent py-24 md:py-32">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage: GRID_BG, backgroundSize: "48px 48px" }}
-      />
+    <section id="faq" className="relative overflow-hidden bg-transparent py-16 md:py-24">
 
       <div className="relative max-w-3xl mx-auto px-6 md:px-10">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white text-center leading-tight mb-16">

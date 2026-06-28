@@ -25,7 +25,7 @@ export default function Home() {
         <BrandPartners />
         <div className="bg-transparent h-4" />
         <Portfolio />
-        <div className="bg-transparent h-20" />
+        <div className="bg-transparent h-4" />
         <Services />
         <Industries />
         <About />

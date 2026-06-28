@@ -5,11 +5,12 @@ import { motion, AnimatePresence } from "motion/react";
 import Marquee from "react-fast-marquee";
 
 const REELS = [
-  { id: 1, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/we%20are%20back.mp4" },
-  { id: 2, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage1.mp4" },
-  { id: 3, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
-  { id: 4, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage3.mp4" },
-  { id: 5, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage4.mp4" },
+  { id: 1, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage1.mp4" },
+  { id: 2, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
+  { id: 3, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelh1.mp4" },
+  { id: 4, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelh2.mp4" },
+  { id: 5, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelh3.mp4" },
+  { id: 6, src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelh4.mp4" },
 ];
 
 function fmt(s: number) {

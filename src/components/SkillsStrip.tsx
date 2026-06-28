@@ -74,8 +74,7 @@ function SkillWord({ label, image }: { label: string; image: string }) {
       <span
         className="relative z-10 text-3xl md:text-5xl font-extrabold tracking-tight whitespace-nowrap"
         style={{
-          backgroundImage:
-            "radial-gradient(37% 50% at 50% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.12) 100%)",
+          backgroundImage: "radial-gradient(37% 50% at 50% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.12) 100%)",
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           color: "transparent",
