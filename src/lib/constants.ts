@@ -3,7 +3,7 @@
 export const SITE = {
   name: "SQ Productions",
   tagline: "Turning Video into Vibrant Conversations.",
-  subtagline: "We're your friendly video wizards creating fantastic commercials, corporate videos, and social ads that get results.",
+  subtagline: "Friendly video wizards crafting commercials, corporate videos, and social ads that get results.",
   ctaPrimary: "Get Started",
   ctaShowreel: "PLAY SHOWREEL",
   showreelVideo: "/videos/showreel.mp4",
@@ -19,16 +19,21 @@ export const NAV_LINKS = [
 ];
 
 export const BRAND_LOGOS: { name: string; src: string }[] = [
-  { name: "GreenWaves",     src: "/images/logos/greenwaves.svg" },
-  { name: "Eco-Warriors",   src: "/images/logos/eco-warriors.svg" },
-  { name: "Mystic Horizons",src: "/images/logos/mystic-horizons.svg" },
-  { name: "ModeElite",      src: "/images/logos/modeelite.svg" },
-  { name: "Pixel Fusion",   src: "/images/logos/pixelfusion.svg" },
-  { name: "Techno",         src: "/images/logos/techno.svg" },
-  { name: "EcoExplorer",    src: "/images/logos/ecoexplorer.svg" },
-  { name: "GreenEarth",     src: "/images/logos/greenearth.svg" },
-  { name: "Urban Uplift",   src: "/images/logos/urbanuplift.svg" },
-  { name: "MetroScape",     src: "/images/logos/metroscape.svg" },
+  { name: "Partner 1",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/1.png" },
+  { name: "Partner 2",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/2.png" },
+  { name: "Partner 3",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/3.png" },
+  { name: "Partner 4",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/4.png" },
+  { name: "Partner 5",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/5.png" },
+  { name: "Partner 6",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/6.png" },
+  { name: "Partner 7",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/7.png" },
+  { name: "Partner 8",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/8.png" },
+  { name: "Partner 9",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/9.png" },
+  { name: "Partner 10", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/10.png" },
+  { name: "Partner 11", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/11.png" },
+  { name: "Partner 12", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/12.png" },
+  { name: "Partner 13", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/13.png" },
+  { name: "Partner 14", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/14.png" },
+  { name: "Partner 15", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/9(1).png" },
 ];
 
 export const PROJECTS = [
@@ -109,7 +114,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A four-part branding series for The Next Dubai — cinematic, high-energy films that capture the vision, ambition, and identity of a brand shaping the future of Dubai.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/tndb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd.mp4",  label: "THE NEXT DUBAI — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Thenextdubai/tnd2.mp4", label: "THE NEXT DUBAI — FILM TWO" },
@@ -177,7 +182,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two clean, detail-driven product films for Esmel — built to highlight the product's quality and appeal across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/esmelb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Esmel/Esmel%201.mp4", label: "ESMEL — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Esmel/esmel%202.mp4", label: "ESMEL — FILM TWO" },
@@ -307,7 +312,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A product-focused campaign for Bounceway — two sharp, high-energy films designed to showcase the product in action and drive results across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/bouncewayb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bounceway/bounceway.mp4",  label: "BOUNCEWAY — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bounceway/bounceway2.mp4", label: "BOUNCEWAY — FILM TWO" },
@@ -372,7 +377,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two high-energy films produced for Ali Zafar — capturing his personality, presence, and brand with bold visuals built for social media and digital platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/alizafarb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Ali%20zafar/AZ%20GYM.mp4",           label: "ALI ZAFAR — GYM" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Ali%20zafar/Ali%20zafar%202.mp4",    label: "ALI ZAFAR — FILM TWO" },
@@ -439,7 +444,7 @@ export const PROJECTS = [
     services: ["Shoot", "Video Editing"],
     description:
       "A complete shoot and edit project for Saharnoon — an influencer-driven production where we handled everything from on-set filming to the final cut.",
-    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/saharnoonb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/saharnoon/saharnoon.mp4" },
@@ -462,7 +467,7 @@ export const PROJECTS = [
     services: ["AI Image Generation", "Creative Direction", "Visual Design"],
     description:
       "We used AI image generation models to create a series of bold, high-concept visuals for Billy X — pushing the boundaries of creative identity through machine intelligence and artistic direction.",
-    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi1.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/billyb.jpeg",
     noMeta: true,
     videos: [],
     aiImages: [
@@ -494,7 +499,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two standout films produced for Daniya Kanwal — vibrant, personality-driven content built to perform across social platforms and connect with her audience.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/kanwalb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Daniya%20kanwal/Shoqeen%20Kuri%20-%20Daniya.mp4", label: "SHOQEEN KURI" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Daniya%20kanwal/Daniya%20Kanwal%201.mp4",          label: "DANIYA KANWAL — FILM TWO" },
@@ -559,7 +564,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A product-focused campaign for Moxie, spotlighting their range of pens and stationery essentials with clean, detail-driven visuals built to perform across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/moxieb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/moxie/moxie1.mp4", label: "MOXIE — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/moxie/moxie2.mp4", label: "MOXIE — FILM TWO" },
@@ -624,7 +629,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two high-energy films produced for Ali Wasi Kazmi — capturing his presence and personality with bold visuals built for social media and digital platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/kazmib.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/kazmi/kazmi1.mp4",          label: "ALI WASI KAZMI — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage1.mp4",    label: "ALI WASI KAZMI — FILM TWO" },
@@ -810,7 +815,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two sleek branding films for Glome — cinematic, identity-driven visuals built to communicate the brand's personality and stand out across digital platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/glomeb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Glome/Glome%201.mp4", label: "GLOME — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Glome/Glome%202.mp4", label: "GLOME — FILM TWO" },
@@ -875,7 +880,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two fast-paced social media films for Capten AMZ — bold, energetic visuals crafted to capture attention and drive engagement across digital and social platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/captenamzb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/captenAMZ/CaptenAMZ1.mp4", label: "CAPTEN AMZ — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/captenAMZ/CaptenAMZ3.mp4", label: "CAPTEN AMZ — FILM TWO" },
@@ -965,7 +970,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two sharp, detail-driven product films for AL FATAH — clean visuals built to showcase the product and perform across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/alfatahb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Al%20fatah/Al%20fatah%201.mp4", label: "AL FATAH — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Al%20fatah/al%20fatah%202.mp4", label: "AL FATAH — FILM TWO" },
@@ -1095,7 +1100,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two high-energy product films for Bolt Cricket — bold, fast-paced visuals built to showcase the brand and drive excitement across social and digital platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/blotcricketb.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bolt%20Cricket/bolt%20cricket1.mp4", label: "BOLT CRICKET — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bolt%20Cricket/bolt%20cricket2.mp4", label: "BOLT CRICKET — FILM TWO" },
@@ -1154,13 +1159,13 @@ export const PROJECTS = [
     slug: "florabysheen",
     title: "Flora by Sheen",
     subtitle: "Elegant product films built to impress.",
-    category: "Product",
+    category: "Social Media",
     client: "Flora by Sheen",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two elegant product films for Flora by Sheen — clean, detail-driven visuals that showcase the brand's beauty and craftsmanship across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/florab.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/florabysheen/florabysheen1.mp4", label: "FLORA BY SHEEN — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/florabysheen/florabysheen2.mp4", label: "FLORA BY SHEEN — FILM TWO" },
@@ -1225,7 +1230,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A podcast production series for Mukalma — cinematic, conversation-driven content filmed and edited to engage audiences across digital and social platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/mukalmab.jpeg",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Mukalma/mukalma1.mp4", label: "MUKALMA — EPISODE ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Mukalma/mukalma2.mp4", label: "MUKALMA — EPISODE TWO" },
@@ -1799,14 +1804,14 @@ export const CLIENT_MARQUEE = [
 ];
 
 export const SKILLS_STRIP = [
-  { label: "VFX",             image: "/images/portfolio/placeholder.png" },
-  { label: "Filming",         image: "/images/portfolio/placeholder.png" },
-  { label: "Scriptwriting",   image: "/images/portfolio/placeholder.png" },
-  { label: "Sound Design",    image: "/images/portfolio/placeholder.png" },
-  { label: "Color Grading",   image: "/images/portfolio/placeholder.png" },
-  { label: "Motion Graphics", image: "/images/portfolio/placeholder.png" },
-  { label: "Editing",         image: "/images/portfolio/placeholder.png" },
-  { label: "Storyboarding",   image: "/images/portfolio/placeholder.png" },
+  { label: "Filming",          image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/filming.jpeg" },
+  { label: "Scriptwriting",    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/scriptwrting.jpeg" },
+  { label: "Color Grading",    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/colourgrading.jpeg" },
+  { label: "Motion Graphics",  image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/motiongraphics.jpeg" },
+  { label: "Editing",          image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/editing.jpeg" },
+  { label: "Content Creation", image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/content%20creation.jpeg" },
+  { label: "Social Media",     image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/socialmedia.jpeg" },
+  { label: "Generative AI",    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/ai.jpeg" },
 ];
 
 export const COLLABORATE = {

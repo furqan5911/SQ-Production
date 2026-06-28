@@ -149,13 +149,13 @@ export default function Footer() {
 
   return (
     <footer id="footer" className="bg-transparent">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-2 pb-8">
         {/* Brand */}
         <div className="mb-12 text-center">
-          <Link href="/" className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white block mb-2">
+          <Link href="/" className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white block mb-2">
             {SITE.name}
           </Link>
-          <p className="text-[#888] text-[20px] leading-relaxed max-w-sm mx-auto mb-8">
+          <p className="text-[#888] text-[20px] leading-relaxed max-w-lg mx-auto mb-8">
             {SITE.subtagline}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

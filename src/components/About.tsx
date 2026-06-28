@@ -4,7 +4,52 @@ import { useState } from "react";
 import Link from "next/link";
 import CountUp from "react-countup";
 import { motion } from "motion/react";
-import { ABOUT, STATS } from "@/lib/constants";
+import { ABOUT, STATS, FOOTER } from "@/lib/constants";
+
+function AboutSocialPill({ label, href, icon }: { label: string; href: string; icon: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ scale: hovered ? 1.02 : 1 }}
+      transition={{ type: "spring", stiffness: 220, damping: 16 }}
+      className="relative flex items-center justify-between w-full pl-2 pr-2 py-2 rounded-full overflow-hidden border border-white/30"
+    >
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.04)" }} />
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        style={{ background: "radial-gradient(65% 65% at 50% 50%, rgba(248,120,0,0.25) 0%, rgba(248,120,0,0.1) 45%, transparent 80%)" }}
+      />
+      {/* Light sweep */}
+      <motion.div
+        className="absolute pointer-events-none"
+        animate={{ left: hovered ? "112%" : "-16%" }}
+        transition={hovered ? { type: "spring", stiffness: 110, damping: 26 } : { type: "spring", stiffness: 70, damping: 16 }}
+        style={{ top: "-50%", width: "6%", height: "200%", rotate: 9, backdropFilter: "blur(3px)", WebkitBackdropFilter: "blur(3px)", background: "rgba(255,255,255,0.55)", zIndex: 5 }}
+      />
+      <span className="relative z-10 flex items-center gap-3 pl-4 text-white text-xs font-bold tracking-[0.15em] uppercase">
+        <span className="text-[#f87800] shrink-0">{icon}</span>
+        {label}
+      </span>
+      <motion.div
+        animate={{ rotate: hovered ? 0 : 90, backgroundColor: hovered ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.12)" }}
+        transition={{ type: "spring", stiffness: 240, damping: 20 }}
+        className="relative z-10 rounded-full flex items-center justify-center shrink-0"
+        style={{ width: 36, height: 36, padding: 8 }}
+      >
+        <svg viewBox="0 0 256 256" style={{ width: "100%", height: "100%", fill: "#fff" }}>
+          <path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"/>
+        </svg>
+      </motion.div>
+    </motion.a>
+  );
+}
 
 function KnowMoreBtn() {
   const [hovered, setHovered] = useState(false);
@@ -176,7 +221,7 @@ export default function About() {
           viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-[9vw] sm:text-[7.5vw] md:text-[7vw] leading-none select-none pointer-events-none whitespace-nowrap uppercase"
-          style={{ color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.05em" }}
+          style={{ fontWeight: 900, letterSpacing: "-0.05em", backgroundImage: "linear-gradient(135deg, #ff6a00 0%, #f87800 35%, #ffab42 65%, #ffe066 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
         >
           MEET
         </motion.p>
@@ -191,7 +236,7 @@ export default function About() {
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             className="leading-none select-none pointer-events-none uppercase"
-            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", fontWeight: 900, letterSpacing: "-0.03em", backgroundImage: "linear-gradient(135deg, #ff6a00 0%, #f87800 35%, #ffab42 65%, #ffe066 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
           >
             SHE
           </motion.p>
@@ -201,7 +246,7 @@ export default function About() {
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="leading-none select-none pointer-events-none uppercase"
-            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", color: "rgba(248,120,0,0.25)", fontWeight: 900, letterSpacing: "-0.03em" }}
+            style={{ fontSize: "clamp(1.5rem, 10vw, 8rem)", fontWeight: 900, letterSpacing: "-0.03em", backgroundImage: "linear-gradient(135deg, #ff6a00 0%, #f87800 35%, #ffab42 65%, #ffe066 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
           >
             RAZ
           </motion.p>
@@ -216,14 +261,14 @@ export default function About() {
 
           {/* LEFT — Portrait, slides from right */}
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.85, ease: "easeOut", delay: 0.15 }}
           >
             <div
-              className="relative rounded-2xl overflow-hidden max-w-[420px] mx-auto md:mx-0"
-              style={{ aspectRatio: "3/4", zIndex: 20, position: "relative" }}
+              className="relative rounded-2xl overflow-hidden max-w-[500px] mx-auto md:mx-0"
+              style={{ aspectRatio: "3/4", zIndex: 20, position: "relative", marginLeft: "60px" }}
             >
               {!imgError ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -238,51 +283,6 @@ export default function About() {
                   <span className="text-[#444] text-sm">Photo coming soon</span>
                 </div>
               )}
-
-              {/* Social icon buttons — bottom-left overlay */}
-              <div className="absolute bottom-4 left-4 flex gap-2 z-10">
-                <a
-                  href={ABOUT.founderLinkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10
-                             flex items-center justify-center text-white
-                             hover:bg-[#f87800] hover:border-[#f87800] transition-colors duration-200"
-                >
-                  <svg className="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.83v2.12h.06c.53-1 1.84-2.12 3.79-2.12C20.34 8.5 21 11.08 21 14.43V24h-4v-8.7c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8.5z"/>
-                  </svg>
-                </a>
-                <a
-                  href={ABOUT.founderInstagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10
-                             flex items-center justify-center text-white
-                             hover:bg-[#f87800] hover:border-[#f87800] transition-colors duration-200"
-                >
-                  <svg className="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                  </svg>
-                </a>
-                <a
-                  href={ABOUT.founderBehance}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Behance"
-                  className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10
-                             flex items-center justify-center text-white
-                             hover:bg-[#f87800] hover:border-[#f87800] transition-colors duration-200"
-                >
-                  <svg className="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M0 4.5h7.3c3.4 0 5.1 1.9 5.1 4.2 0 1.8-.9 2.9-2.3 3.5 1.8.5 2.9 1.8 2.9 3.7 0 2.6-1.9 4.6-5.3 4.6H0V4.5zm6.7 6.2c1.3 0 2.1-.6 2.1-1.6 0-1.1-.8-1.6-2.1-1.6H2.8v3.2h3.9zm.4 6.3c1.4 0 2.2-.6 2.2-1.8 0-1.2-.8-1.8-2.2-1.8H2.8v3.6h4.3zM15.5 9h6.5v1.25h-6.5V9zm7 7.2c-.4 1.3-1.7 2.8-4.3 2.8-2.6 0-4.7-1.6-4.7-5 0-3.3 2-5.15 4.65-5.15 2.6 0 4.2 1.5 4.55 3.75.08.44.1 1.04.08 1.84h-6.47c.1 2.73 3 2.82 3.92 1.72l2.27.04zm-6.13-3.08h3.86c-.07-.92-.67-1.5-1.91-1.5-1.07 0-1.72.56-1.95 1.5z"/>
-                  </svg>
-                </a>
-              </div>
             </div>
           </motion.div>
 
@@ -295,6 +295,7 @@ export default function About() {
             className="flex flex-col justify-center pt-6 md:pt-20"
           >
             <div className="mb-6">
+              <p className="text-white text-[18px] font-medium mb-1">Sheraz Qureshi</p>
               <h3 className="text-2xl sm:text-3xl md:text-[2.75rem] font-black text-white leading-tight mb-1">
                 {ABOUT.founderTitle}
               </h3>
@@ -306,6 +307,14 @@ export default function About() {
             <p className="text-[#888] leading-relaxed text-[15px]">
               {ABOUT.founderBio}
             </p>
+
+            {/* Social pill links — stacked below bio */}
+            <div className="flex flex-col gap-3 mt-8 mr-[50px]">
+              <AboutSocialPill label="Facebook"  href={FOOTER.socials.facebook}   icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>} />
+              <AboutSocialPill label="LinkedIn"  href={ABOUT.founderLinkedIn}      icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.83v2.12h.06c.53-1 1.84-2.12 3.79-2.12C20.34 8.5 21 11.08 21 14.43V24h-4v-8.7c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8.5z"/></svg>} />
+              <AboutSocialPill label="YouTube"   href={FOOTER.socials.youtube}     icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>} />
+              <AboutSocialPill label="Instagram" href={ABOUT.founderInstagram}     icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>} />
+            </div>
           </motion.div>
 
         </div>

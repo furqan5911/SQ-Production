@@ -81,7 +81,7 @@ function CollaborateButton() {
 
 export default function Collaborate() {
   return (
-    <section className="px-6 md:px-10 pb-10 md:pb-14">
+    <section className="px-6 md:px-10 pb-2 md:pb-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ export default function Collaborate() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt={SITE.name} className="h-[100px] w-auto mx-auto mb-8 opacity-90" />
+        <img src="/images/logo.png" alt={SITE.name} className="h-[200px] w-auto mx-auto mb-8 opacity-90" />
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-5">
           {COLLABORATE.heading.map((line) => (

@@ -39,9 +39,10 @@ export default function BrandPartners() {
             {BRAND_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center opacity-40 hover:opacity-90 transition-opacity duration-300 cursor-default"
+                className="opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-default"
                 style={{
-                  width: "172px",
+                  position: "relative",
+                  width: "190px",
                   height: "88px",
                   borderRight: "1px solid rgba(255,255,255,0.25)",
                   flexShrink: 0,
@@ -51,9 +52,17 @@ export default function BrandPartners() {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ height: "32px", width: "auto" }}
-                  className="select-none"
                   draggable={false}
+                  className="select-none"
+                  style={{
+                    position: "absolute",
+                    inset: "5px",
+                    width: "calc(100% - 10px)",
+                    height: "calc(100% - 10px)",
+                    objectFit: "contain",
+                    objectPosition: "center center",
+                    display: "block",
+                  }}
                 />
               </div>
             ))}
