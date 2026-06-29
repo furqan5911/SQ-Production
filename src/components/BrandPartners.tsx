@@ -30,7 +30,6 @@ export default function BrandPartners() {
           style={{
             height: "88px",
             borderRadius: "80px",
-            border: "1px solid rgba(255,255,255,0.25)",
             overflow: "hidden",
             position: "relative",
           }}
@@ -42,10 +41,11 @@ export default function BrandPartners() {
                 className="opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-default"
                 style={{
                   position: "relative",
-                  width: "190px",
+                  width: "210px",
                   height: "88px",
                   borderRight: "1px solid rgba(255,255,255,0.25)",
                   flexShrink: 0,
+                  overflow: "hidden",
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -56,12 +56,15 @@ export default function BrandPartners() {
                   className="select-none"
                   style={{
                     position: "absolute",
-                    inset: "5px",
-                    width: "calc(100% - 10px)",
-                    height: "calc(100% - 10px)",
+                    inset: "6px 10px",
+                    width: "calc(100% - 20px)",
+                    height: "calc(100% - 12px)",
                     objectFit: "contain",
-                    objectPosition: "center center",
+                    objectPosition: "center",
+                    mixBlendMode: "screen",
                     display: "block",
+                    pointerEvents: "none",
+                    userSelect: "none",
                   }}
                 />
               </div>

@@ -22,11 +22,11 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Parallax background */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center scale-110"
+        className="absolute inset-0 bg-cover bg-center scale-100 md:scale-110"
         style={{
           backgroundImage: `url(${SITE.heroBg})`,
           y: bgY,

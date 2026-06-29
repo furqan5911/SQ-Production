@@ -33,7 +33,9 @@ export const BRAND_LOGOS: { name: string; src: string }[] = [
   { name: "Partner 12", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/12.png" },
   { name: "Partner 13", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/13.png" },
   { name: "Partner 14", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/14.png" },
-  { name: "Partner 15", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/9(1).png" },
+  { name: "Lightinga",  src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/15.png" },
+  { name: "Partner 16", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/16.png" },
+  { name: "Partner 17", src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/logos/17.png" },
 ];
 
 export const PROJECTS = [

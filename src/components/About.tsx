@@ -254,7 +254,7 @@ export default function About() {
       </div>
 
       {/* Main content — portrait + bio */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative -mt-6 md:-mt-10" style={{ zIndex: 10 }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative mt-6 md:-mt-10" style={{ zIndex: 10 }}>
 
         {/* Two-column grid */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
@@ -267,8 +267,8 @@ export default function About() {
             transition={{ duration: 0.85, ease: "easeOut", delay: 0.15 }}
           >
             <div
-              className="relative rounded-2xl overflow-hidden max-w-[500px] mx-auto md:mx-0"
-              style={{ aspectRatio: "3/4", zIndex: 20, position: "relative", marginLeft: "60px" }}
+              className="relative rounded-2xl overflow-hidden max-w-[260px] sm:max-w-[340px] md:max-w-[500px] mx-auto md:mx-0 md:ml-[60px]"
+              style={{ aspectRatio: "3/4", zIndex: 20, position: "relative" }}
             >
               {!imgError ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -309,7 +309,7 @@ export default function About() {
             </p>
 
             {/* Social pill links — stacked below bio */}
-            <div className="flex flex-col gap-3 mt-8 mr-[50px]">
+            <div className="flex flex-col gap-3 mt-8 md:mr-[50px]">
               <AboutSocialPill label="Facebook"  href={FOOTER.socials.facebook}   icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>} />
               <AboutSocialPill label="LinkedIn"  href={ABOUT.founderLinkedIn}      icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.83v2.12h.06c.53-1 1.84-2.12 3.79-2.12C20.34 8.5 21 11.08 21 14.43V24h-4v-8.7c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8.5z"/></svg>} />
               <AboutSocialPill label="YouTube"   href={FOOTER.socials.youtube}     icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>} />

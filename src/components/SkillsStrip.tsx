@@ -2,14 +2,13 @@
 
 import { useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue } from "motion/react";
 import { SKILLS_STRIP } from "@/lib/constants";
 
 const MIN_SHOW_MS = 1200;
 
-// Landscape card shown above the scrolling text on hover
-const CARD_W = 400;
-const CARD_H = 220;
+const CARD_W = 300;
+const CARD_H = 240;
 
 function SkillWord({
   label,
@@ -29,8 +28,7 @@ function SkillWord({
       <span
         className="relative z-10 text-3xl md:text-5xl font-extrabold tracking-tight whitespace-nowrap"
         style={{
-          backgroundImage:
-            "radial-gradient(37% 50% at 50% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.12) 100%)",
+          backgroundImage: "linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.55) 100%)",
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           color: "transparent",
@@ -48,13 +46,20 @@ function SkillWord({
 }
 
 export default function SkillsStrip() {
-  const [active, setActive] = useState<{ label: string; image: string } | null>(
-    null
-  );
+  const [active, setActive] = useState<{ label: string; image: string } | null>(null);
   const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shownAt = useRef<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // useMotionValue updates outside React's render cycle — no setState, no re-render cascade
+  const cardX = useMotionValue(0);
 
   const doubled = [...SKILLS_STRIP, ...SKILLS_STRIP];
+
+  const activeIdx = active
+    ? SKILLS_STRIP.findIndex((s) => s.label === active.label)
+    : 0;
+  const rotDeg = activeIdx % 2 === 0 ? 7 : -7;
 
   function handleEnter(skill: { label: string; image: string }) {
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
@@ -71,43 +76,45 @@ export default function SkillsStrip() {
     }, remaining);
   }
 
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    // Clamp so card never overflows left or right, then offset by half card width
+    cardX.set(
+      Math.max(CARD_W / 2 + 16, Math.min(x, rect.width - CARD_W / 2 - 16)) - CARD_W / 2
+    );
+  }
+
   return (
     <section
-      className="relative pb-12 md:pb-16"
+      ref={sectionRef}
+      className="relative py-16 md:py-24"
+      onMouseMove={handleMouseMove}
       style={{
-        minHeight: "480px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
         background: "var(--bg)",
         overflow: "visible",
-        maskImage:
-          "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
-        WebkitMaskImage:
-          "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
       }}
     >
       {/*
-        Popup card — rendered here as a child of <section>, NOT inside the Marquee.
-        This is the key fix: keeping it outside rfm-marquee-container means
-        overflow-x:hidden on that container cannot clip this element.
-        It sits above the scrolling text, centered on the section.
+        Card is a sibling of the Marquee wrapper — outside rfm overflow clip.
+        x is a MotionValue so cursor tracking never triggers a React re-render.
+        left: 0 + x: cardX gives correct absolute position within the section.
       */}
       <AnimatePresence>
         {active && (
           <motion.div
             key={active.label}
-            initial={{ opacity: 0, rotate: -11, scale: 0.75, y: 16 }}
-            animate={{ opacity: 1, rotate: 7, scale: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 1.6, rotate: rotDeg * 0.4 }}
+            animate={{ opacity: 1, scale: 1, rotate: rotDeg, y: 0 }}
             exit={{
               opacity: 0,
-              rotate: -11,
-              scale: 0.75,
-              y: 16,
-              transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+              scale: 0.15,
+              rotate: rotDeg * 2,
+              transition: { duration: 0.4, ease: [0.55, 0, 1, 0.45] },
             }}
             transition={{
-              duration: 0.7,
+              duration: 0.65,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute pointer-events-none overflow-hidden"
@@ -119,8 +126,9 @@ export default function SkillsStrip() {
               border: "1px solid rgba(255,255,255,0.3)",
               boxShadow:
                 "0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(248,120,0,0.15)",
-              left: `calc(50% - ${CARD_W / 2}px)`,
-              top: "32px",
+              left: 0,
+              x: cardX,
+              top: 24,
               zIndex: 10,
             }}
           >
@@ -135,17 +143,28 @@ export default function SkillsStrip() {
         )}
       </AnimatePresence>
 
-      {/* Scrolling text strip — no popup inside here anymore */}
-      <Marquee gradient={false} speed={100}>
-        {doubled.map((skill, i) => (
-          <SkillWord
-            key={i}
-            label={skill.label}
-            onEnter={() => handleEnter(skill)}
-            onLeave={handleLeave}
-          />
-        ))}
-      </Marquee>
+      {/* maskImage on this wrapper only — never clips the card above */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 20,
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
+        }}
+      >
+        <Marquee gradient={false} speed={100}>
+          {doubled.map((skill, i) => (
+            <SkillWord
+              key={i}
+              label={skill.label}
+              onEnter={() => handleEnter(skill)}
+              onLeave={handleLeave}
+            />
+          ))}
+        </Marquee>
+      </div>
     </section>
   );
 }
