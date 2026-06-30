@@ -15,7 +15,11 @@ function ScrollToTop() {
       // Navigate to a hash anchor — wait for page to render then scroll to it
       const id = setTimeout(() => {
         const el = document.querySelector(hash);
-        if (el) lenis.scrollTo(el as HTMLElement, { offset: -100 });
+        if (el) {
+          lenis.scrollTo(el as HTMLElement, { offset: -100 });
+          // Strip the hash so a refresh lands at the top, not this anchor
+          history.replaceState(null, "", window.location.pathname);
+        }
       }, 350);
       return () => clearTimeout(id);
     } else {

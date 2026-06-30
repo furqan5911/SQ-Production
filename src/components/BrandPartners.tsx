@@ -34,7 +34,7 @@ export default function BrandPartners() {
             position: "relative",
           }}
         >
-          <Marquee gradient={false} speed={45} pauseOnHover style={{ height: "100%", overflow: "hidden" }}>
+          <Marquee gradient={false} speed={45} style={{ height: "100%", overflow: "hidden" }}>
             {BRAND_LOGOS.map((logo, i) => (
               <div
                 key={i}

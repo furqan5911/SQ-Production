@@ -11,6 +11,14 @@ export default function WhatsAppButton() {
       aria-label="Chat on WhatsApp"
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.08 }}
+      animate={{ scale: [1, 1.09, 0.97, 1.05, 1] }}
+      transition={{
+        duration: 0.55,
+        delay: 1,
+        repeat: Infinity,
+        repeatDelay: 2.8,
+        ease: "easeInOut",
+      }}
       className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-[9989] w-14 h-14 rounded-full flex items-center justify-center shadow-xl"
       style={{ background: "#f87800", boxShadow: "0 4px 24px rgba(248,120,0,0.4)" }}
     >

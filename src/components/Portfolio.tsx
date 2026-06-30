@@ -272,7 +272,7 @@ export default function Portfolio() {
               <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4">
                 Portfolio
               </span>
-              <h2 className="text-[50px] font-black text-white leading-tight">
+              <h2 className="text-[7vw] sm:text-[50px] font-black text-white leading-tight">
                 Our Handpicked<br />Featured Portfolio
               </h2>
             </div>

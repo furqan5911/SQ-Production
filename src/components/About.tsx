@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CountUp from "react-countup";
 import { motion } from "motion/react";
 import { ABOUT, STATS, FOOTER } from "@/lib/constants";
@@ -271,12 +272,14 @@ export default function About() {
               style={{ aspectRatio: "3/4", zIndex: 20, position: "relative" }}
             >
               {!imgError ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={ABOUT.founderImage}
                   alt="Sheraz — Founder of SQ Productions"
+                  fill
                   onError={() => setImgError(true)}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="object-cover"
+                  sizes="(max-width: 640px) 260px, (max-width: 768px) 340px, 500px"
+                  priority={false}
                 />
               ) : (
                 <div className="absolute inset-0 bg-[#111] flex items-center justify-center">

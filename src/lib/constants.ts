@@ -178,7 +178,7 @@ export const PROJECTS = [
     slug: "esmel",
     title: "Esmel",
     subtitle: "Product films crafted with precision.",
-    category: "Fashion",
+    category: "Social Media",
     client: "Esmel",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
@@ -243,13 +243,13 @@ export const PROJECTS = [
     slug: "fit-like-farah",
     title: "Fit Like Farah",
     subtitle: "High-energy fitness content built to move.",
-    category: "Fitness",
+    category: "Social Media",
     client: "Fit Like Farah",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A dynamic fitness content series for Fit Like Farah, capturing real training sessions with fast-paced, high-energy edits built for social-first audiences.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/Fitlikefarahbanner.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fitlikefarah/fitlikefarah.mp4", label: "FIT LIKE FARAH — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fitlikefarah/fitlikefarha2.mp4", label: "FIT LIKE FARAH — FILM TWO" },
@@ -437,61 +437,6 @@ export const PROJECTS = [
     clientInstagram: "https://www.instagram.com/ali_zafar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
   {
-    slug: "saharnoon",
-    title: "Saharnoon",
-    subtitle: "Shoot & edit crafted for a rising influencer.",
-    category: "Celebrity & Creator",
-    client: "Saharnoon",
-    year: "2025",
-    services: ["Shoot", "Video Editing"],
-    description:
-      "A complete shoot and edit project for Saharnoon — an influencer-driven production where we handled everything from on-set filming to the final cut.",
-    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/saharnoonb.jpeg",
-    videos: [
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/saharnoon/saharnoon.mp4" },
-    ],
-    snaps: [],
-    scopeOverview: "",
-    scopePhases: [],
-    timeline: "",
-    budget: "",
-    outcomes: [],
-    clientInstagram: "https://www.instagram.com/saharnoon/",
-  },
-  {
-    slug: "billy-x",
-    title: "Billy X",
-    subtitle: "AI-generated iconic visuals for a rising star.",
-    category: "Celebrity & Creator",
-    client: "Billy X",
-    year: "2025",
-    services: ["AI Image Generation", "Creative Direction", "Visual Design"],
-    description:
-      "We used AI image generation models to create a series of bold, high-concept visuals for Billy X — pushing the boundaries of creative identity through machine intelligence and artistic direction.",
-    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/billyb.jpeg",
-    noMeta: true,
-    videos: [],
-    aiImages: [
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi1.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi2.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi3.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi4.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi5.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi6.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi7.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi8.png",
-      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi9.png",
-    ],
-    snaps: [],
-    scopeOverview: "",
-    scopePhases: [],
-    timeline: "",
-    budget: "",
-    outcomes: [],
-    clientInstagram: "",
-  },
-  {
     slug: "daniya-kanwal",
     title: "Daniya Kanwal",
     subtitle: "Creator content with style and substance.",
@@ -555,6 +500,38 @@ export const PROJECTS = [
       "Content built for reuse across reels, ads, and digital platforms.",
     ],
     clientInstagram: "https://www.instagram.com/daniyakanwall?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+  },
+  {
+    slug: "billy-x",
+    title: "Billy X",
+    subtitle: "AI-generated iconic visuals for a rising star.",
+    category: "Celebrity & Creator",
+    client: "Billy X",
+    year: "2025",
+    services: ["AI Image Generation", "Creative Direction", "Visual Design"],
+    description:
+      "We used AI image generation models to create a series of bold, high-concept visuals for Billy X — pushing the boundaries of creative identity through machine intelligence and artistic direction.",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi1.png",
+    noMeta: true,
+    videos: [],
+    aiImages: [
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi1.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi2.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi3.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi4.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi5.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi6.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi7.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi8.png",
+      "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/billyx/billi9.png",
+    ],
+    snaps: [],
+    scopeOverview: "",
+    scopePhases: [],
+    timeline: "",
+    budget: "",
+    outcomes: [],
+    clientInstagram: "https://www.instagram.com/billyxmusic/",
   },
   {
     slug: "moxie",
@@ -687,6 +664,29 @@ export const PROJECTS = [
     clientInstagram: "https://www.instagram.com/aliwasikazmi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
   {
+    slug: "saharnoon",
+    title: "Sahar Noon",
+    subtitle: "Shoot & edit crafted for a rising influencer.",
+    category: "Celebrity & Creator",
+    client: "Sahar Noon",
+    year: "2025",
+    services: ["Shoot", "Video Editing"],
+    description:
+      "A complete shoot and edit project for Sahar Noon — an influencer-driven production where we handled everything from on-set filming to the final cut.",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/saharnoonb.jpeg",
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Reelhome/reelpage2.mp4" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/saharnoon/saharnoon.mp4" },
+    ],
+    snaps: [],
+    scopeOverview: "",
+    scopePhases: [],
+    timeline: "",
+    budget: "",
+    outcomes: [],
+    clientInstagram: "https://www.instagram.com/saharnoon/",
+  },
+  {
     slug: "roushan-builds",
     title: "Roushan Builds",
     subtitle: "Architectural storytelling built to inspire.",
@@ -761,7 +761,7 @@ export const PROJECTS = [
     services: ["Direction", "Cinematography", "Post Production"],
     description:
       "Two music videos produced by SQ Productions — visually driven productions that bring the track to life with bold cinematography and sharp editing.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
     noMeta: true,
     horizontalVideos: true,
     videos: [
@@ -788,7 +788,7 @@ export const PROJECTS = [
     services: ["Direction", "Cinematography", "Post Production"],
     description:
       "Two original short films produced by SQ Productions — intimate, character-driven stories told with cinematic craft and a bold visual voice.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
     noMeta: true,
     horizontalVideos: true,
     videos: [
@@ -897,17 +897,16 @@ export const PROJECTS = [
   },
   {
     slug: "new-times-roman",
-    title: "New Times Roman",
+    title: "Fashion Films",
     subtitle: "Fashion filmmaking at its finest.",
     category: "Fashion Films",
     horizontalVideos: true,
-    noTitle: true,
     client: "New Times Roman",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic fashion film for New Times Roman — bold, editorial visuals that bring the collection to life with movement, mood, and style.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fashion%20Films/fashion%20film.mp4", label: "NEW TIMES ROMAN" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Fashion%20Films/Espico%20pink.mp4",  label: "ESPICO PINK" },
@@ -1037,7 +1036,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "Two product films produced for Sanwal Crafts — clean, detail-driven visuals that showcase the craft and quality of the product across social and retail platforms.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/SanwalBanner.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/sanwal/sanwal%20(2).mp4", label: "SANWAL — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/sanwal/sanwal%20(1).mp4", label: "SANWAL — FILM TWO" },
@@ -1286,7 +1285,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic DVC for Broadway Jehlum — an architectural showcase film crafted to highlight the vision, design, and scale of the project with bold, professional visuals.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Commercial/comercial.mp4", label: "BROADWAY JEHLUM — DVC" },
     ],
@@ -1392,7 +1391,7 @@ export const SERVICES = [
 
 export const SERVICE_ALBUM_CARDS = [
   {
-    title: "AI Images & Video Generation",
+    title: "AI Content Creation",
     slug: "ai-generation",
     subtitle: "Where imagination meets intelligence.",
     img1: "/images/portfolio/placeholder.png",
@@ -1408,6 +1407,14 @@ export const SERVICE_ALBUM_CARDS = [
     img3: "/images/portfolio/placeholder.png",
   },
   {
+    title: "Content Creation",
+    slug: "content-creation",
+    subtitle: "From brief to brilliant, every time.",
+    img1: "/images/portfolio/beta-thumb.jpg",
+    img2: "/images/portfolio/alpha-thumb.jpg",
+    img3: "/images/portfolio/placeholder.png",
+  },
+  {
     title: "Social Media Management",
     slug: "social-media",
     subtitle: "Content that connects and converts.",
@@ -1416,7 +1423,7 @@ export const SERVICE_ALBUM_CARDS = [
     img3: "/images/portfolio/alpha-thumb.jpg",
   },
   {
-    title: "Graphic Design",
+    title: "Branding & Graphic Design",
     slug: "graphic-design",
     subtitle: "Visual identity that stands out.",
     img1: "/images/portfolio/placeholder.png",
@@ -1424,20 +1431,12 @@ export const SERVICE_ALBUM_CARDS = [
     img3: "/images/portfolio/alpha-thumb.jpg",
   },
   {
-    title: "Marketing",
+    title: "Performance Marketing",
     slug: "marketing",
     subtitle: "Campaigns that drive real results.",
     img1: "/images/portfolio/alpha-thumb.jpg",
     img2: "/images/portfolio/placeholder.png",
     img3: "/images/portfolio/beta-thumb.jpg",
-  },
-  {
-    title: "Content Creation",
-    slug: "content-creation",
-    subtitle: "From brief to brilliant, every time.",
-    img1: "/images/portfolio/beta-thumb.jpg",
-    img2: "/images/portfolio/alpha-thumb.jpg",
-    img3: "/images/portfolio/placeholder.png",
   },
 ];
 
@@ -1648,13 +1647,13 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const INDUSTRIES = [
-  { title: "Corporate Videos",          image: "/images/industries/corporate.svg",   description: "Enhance your brand's impact with our corporate video expertise. We create engaging content for businesses, from promotions to training materials." },
-  { title: "Podcast",                   image: "/images/industries/documentaries.svg", description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
-  { title: "Entertainment & Narrative", image: "/images/industries/narrative.svg",   description: "Immerse your audience in captivating stories. Our creative team brings your visions to life, whether it's a short film or a full-length feature." },
-  { title: "Commercials & Ads",         image: "/images/industries/commercials.svg", description: "Make a memorable impression. Our short, attention-grabbing videos showcase your products, services, or brand identity effectively." },
-  { title: "Shorts & Reels",            image: "/images/industries/reels.svg",       description: "Stay on-trend and engage your audience with our dynamic social media content designed for maximum impact and shareability on popular platforms." },
-  { title: "Event & Live Streaming",    image: "/images/industries/events.svg",      description: "Capture and share the excitement of live events. We provide multi-camera setups, live streaming, and post-event editing for unforgettable experiences." },
-  { title: "Animation & VFX",           image: "/images/industries/vfx.svg",         description: "Elevate your content with stunning visuals. Our animation and VFX artists use cutting-edge tech for breathtaking effects in films, commercials, and more." },
+  { title: "AI Content Creation",  image: "/images/industries/corporate.svg",      description: "Cutting-edge AI-powered content that pushes creative boundaries — from generated visuals to intelligent video production workflows." },
+  { title: "Podcast",              image: "/images/industries/documentaries.svg",   description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
+  { title: "Video Ads",            image: "/images/industries/commercials.svg",     description: "High-impact video ads built to grab attention, drive clicks, and convert — optimised for every platform and audience." },
+  { title: "Editing",              image: "/images/industries/narrative.svg",       description: "Sharp, precise editing that transforms raw footage into polished, compelling content ready for any screen." },
+  { title: "Commercials and Ads",  image: "/images/industries/reels.svg",           description: "Make a memorable impression. Our short, attention-grabbing commercials showcase your products, services, or brand identity effectively." },
+  { title: "Social Media",         image: "/images/industries/events.svg",          description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts — designed for maximum reach and shareability." },
+  { title: "Short Films",          image: "/images/industries/vfx.svg",             description: "Intimate, character-driven short films told with cinematic craft and a bold visual voice that resonates with audiences." },
 ];
 
 export const STATS = [
@@ -1825,8 +1824,8 @@ export const COLLABORATE = {
 
 export const FOOTER = {
   email: "teamsq.business@gmail.com",
-  phone: "+1 (555) 000-0000",
-  address: "123 Studio Lane, Los Angeles, CA",
+  phone: "+92 316 4479771",
+  address: "SQ Productions, 22 CCA, Z-block Sector Z DHA Phase 3, Lahore",
   hours: "Monday - Friday : 9am to 6pm",
   socials: {
     facebook:  "https://www.facebook.com/profile.php?id=61589987776707",

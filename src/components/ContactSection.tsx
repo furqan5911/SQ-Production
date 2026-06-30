@@ -24,7 +24,7 @@ export default function ContactSection() {
 
   return (
     <section className="pb-32 px-6 md:px-10 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid md:grid-cols-2 gap-12 items-stretch">
 
         {/* Contact details */}
         <motion.div
@@ -32,7 +32,7 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-8"
+          className="flex flex-col gap-8"
         >
           <div>
             <p className="text-[#555] text-xs tracking-[0.2em] uppercase mb-2">Email</p>
@@ -57,20 +57,14 @@ export default function ContactSection() {
             <p className="text-white text-xl font-bold">{FOOTER.address}</p>
           </div>
 
-          {/* Social links */}
-          <div>
-            <p className="text-[#555] text-xs tracking-[0.2em] uppercase mb-4">Follow Us</p>
-            <div className="flex flex-wrap gap-3">
-              {Object.entries(FOOTER.socials).map(([platform, href]) => (
-                <a
-                  key={platform}
-                  href={href}
-                  className="capitalize text-[#888] text-sm border border-[#333] px-4 py-2 rounded-full hover:border-[#f87800] hover:text-[#f87800] transition-colors duration-200"
-                >
-                  {platform}
-                </a>
-              ))}
-            </div>
+          {/* Logo — grows to fill remaining height */}
+          <div className="flex-1 flex items-center justify-center w-full rounded-2xl border border-[#222] bg-[#111] p-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="SQ Productions"
+              className="w-auto max-h-[200px] object-contain"
+            />
           </div>
         </motion.div>
 

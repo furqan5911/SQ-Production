@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { INDUSTRIES } from "@/lib/constants";
 
@@ -48,13 +49,14 @@ function IndustryCard({
         }}
       >
         {!imgError && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={item.image}
             alt=""
+            fill
             onError={() => setImgError(true)}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="object-cover"
             style={{ borderRadius: 20 }}
+            sizes="(max-width: 768px) 50vw, 30vw"
           />
         )}
         <div

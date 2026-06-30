@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import { PROJECTS, CLIENT_MARQUEE } from "@/lib/constants";
 import ScrollIndicator from "@/components/ScrollIndicator";
 
-const CATEGORIES = ["All", "AI Ads", "Architecture", "Celebrity & Creator", "Commercial", "Fashion", "Fashion Films", "Fitness", "Music Video", "Podcast", "Product", "Short Films", "Social Media"];
+const CATEGORIES = ["All", "AI Ads", "Architecture", "Celebrity & Creator", "Commercial", "Fashion Films", "Music Video", "Podcast", "Product", "Short Films", "Social Media"];
 
 const cardVariants = {
   hidden: { opacity: 0, x: -60 },
@@ -201,7 +201,7 @@ function ProjectsContent() {
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => cat === "Short Films" ? router.push("/projects/short-films") : cat === "Music Video" ? router.push("/projects/music-videos") : cat === "Fashion Films" ? router.push("/projects/new-times-roman") : setActive(cat)}
+                onClick={() => cat === "Short Films" ? router.push("/projects/short-films") : cat === "Music Video" ? router.push("/projects/music-videos") : cat === "Fashion Films" ? router.push("/projects/new-times-roman") : router.push(`/projects?category=${encodeURIComponent(cat)}`)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                   active === cat
                     ? "bg-[#f87800] border-[#f87800] text-black"

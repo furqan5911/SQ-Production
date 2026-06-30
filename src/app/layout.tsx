@@ -39,6 +39,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${syne.variable} ${spaceMono.variable} ${poppins.variable} h-full`}>
+      <head>
+        {/* Preload hero banner so it starts downloading before CSS parses the background-image */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/banner.png"
+          fetchPriority="high"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-bg text-text antialiased">
         <LoadingScreen />
         {/* Horizontal-overflow clipping (e.g. for off-screen marquee/sweep
