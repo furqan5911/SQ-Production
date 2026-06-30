@@ -57,13 +57,18 @@ export default function ContactSection() {
             <p className="text-white text-xl font-bold">{FOOTER.address}</p>
           </div>
 
-          {/* Logo — grows to fill remaining height */}
-          <div className="flex-1 flex items-center justify-center w-full rounded-2xl border border-[#222] bg-[#111] p-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo.png"
-              alt="SQ Productions"
-              className="w-auto max-h-[200px] object-contain"
+          {/* Map — grows to fill remaining height */}
+          <div className="flex-1 w-full rounded-2xl overflow-hidden border border-[#222] bg-[#111] min-h-[200px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.792607500145!2d74.37663587397944!3d31.474890749390486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190722845e93dd%3A0xd1c081ae6ea4d38a!2sSQ%20Productions!5e0!3m2!1sen!2s!4v1782845742938!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="SQ Productions location"
+              className="w-full h-full min-h-[200px]"
             />
           </div>
         </motion.div>

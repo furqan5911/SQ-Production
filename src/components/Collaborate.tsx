@@ -31,7 +31,7 @@ function CollaborateButton() {
     >
       <Link
         href={COLLABORATE.ctaHref}
-        className={`relative flex items-center gap-4 w-[85%] sm:w-[280px] md:w-[340px] h-16 px-3 rounded-full overflow-hidden border border-white ${
+        className={`relative flex items-center gap-4 w-[min(85vw,300px)] sm:w-[280px] md:w-[340px] h-16 px-3 rounded-full overflow-hidden border border-white ${
           hovered ? "justify-between" : "justify-center"
         }`}
       >

@@ -134,13 +134,10 @@ function TestimonialCard({ item, active }: { item: typeof TESTIMONIALS[0]; activ
         </div>
 
         <p
-          className="font-bold uppercase mb-1"
+          className="font-bold uppercase"
           style={{ fontSize: 20, letterSpacing: "-0.08em", color: "rgba(255,255,255,0.8)" }}
         >
           {item.name}
-        </p>
-        <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.5)" }}>
-          {item.title}
         </p>
       </div>
     </motion.div>

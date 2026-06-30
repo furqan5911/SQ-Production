@@ -1397,6 +1397,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/placeholder.png",
     img2: "/images/portfolio/alpha-thumb.jpg",
     img3: "/images/portfolio/beta-thumb.jpg",
+    overview:
+      "AI is a creative multiplier, not a shortcut. We pair the latest generative tools with real production craft to turn your ideas into polished, on-brand content fast — without losing the human touch.",
+    whatWeDo: [
+      { title: "AI Video Generation", description: "Concept-to-clip pieces built with current generative video models, refined by our editors before they ever ship." },
+      { title: "AI Voiceovers & Avatars", description: "Natural-sounding multilingual narration and digital presenters for content that scales without a studio day." },
+      { title: "Image-to-Video & Product Renders", description: "Turn static product shots into scroll-stopping motion content in a fraction of the usual turnaround." },
+      { title: "Rapid Iteration", description: "Multiple creative directions explored and delivered in days, so you can test and pick what actually works." },
+    ],
   },
   {
     title: "Video Editing",
@@ -1405,6 +1413,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/alpha-thumb.jpg",
     img2: "/images/portfolio/beta-thumb.jpg",
     img3: "/images/portfolio/placeholder.png",
+    overview:
+      "Great footage is only half the story. Our editors shape raw clips into sharp, story-driven videos built for how people actually watch today — fast-paced, vertical-first, and made to hold attention.",
+    whatWeDo: [
+      { title: "Narrative Editing", description: "Pacing, structure, and sound design that keep viewers watching to the very last frame." },
+      { title: "Short-Form Cuts", description: "Reels, Shorts, and TikTok edits built for scroll-stopping retention from the first second." },
+      { title: "Color Grading & Finishing", description: "A consistent, cinematic look applied across every deliverable, on every platform." },
+      { title: "Multi-Platform Versioning", description: "One shoot, reformatted and resized for every feed you actually publish to." },
+    ],
   },
   {
     title: "Content Creation",
@@ -1413,6 +1429,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/beta-thumb.jpg",
     img2: "/images/portfolio/alpha-thumb.jpg",
     img3: "/images/portfolio/placeholder.png",
+    overview:
+      "From concept to caption, we build content systems — not one-off posts. Every piece is planned around your brand voice and built to perform on the platforms your audience actually lives on.",
+    whatWeDo: [
+      { title: "Content Strategy & Planning", description: "Calendars and content pillars built around what's resonating right now, not last year's playbook." },
+      { title: "Photo & Video Production", description: "On-location and studio shoots covering everything your channels need in a single session." },
+      { title: "Copywriting", description: "Captions, scripts, and on-screen text that sound like your brand, not a generic template." },
+      { title: "Repurposing", description: "One shoot stretched into weeks of platform-ready content across every channel." },
+    ],
   },
   {
     title: "Social Media Management",
@@ -1421,6 +1445,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/beta-thumb.jpg",
     img2: "/images/portfolio/placeholder.png",
     img3: "/images/portfolio/alpha-thumb.jpg",
+    overview:
+      "Posting isn't a strategy. We manage the full loop — planning, publishing, community, and reporting — so your channels grow with intention instead of guesswork.",
+    whatWeDo: [
+      { title: "Platform Strategy", description: "Tailored playbooks for Instagram, TikTok, YouTube, and LinkedIn, built around your goals." },
+      { title: "Content Calendar & Publishing", description: "Consistent, on-time posting across every channel, planned weeks ahead." },
+      { title: "Community Management", description: "Real replies and engagement that build trust, not just impressions." },
+      { title: "Performance Reporting", description: "Clear, monthly insights on what's actually driving growth — and what to fix." },
+    ],
   },
   {
     title: "Branding & Graphic Design",
@@ -1429,6 +1461,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/placeholder.png",
     img2: "/images/portfolio/beta-thumb.jpg",
     img3: "/images/portfolio/alpha-thumb.jpg",
+    overview:
+      "Your brand is the first impression before anyone watches a single video. We build visual identities — logos, systems, and templates — that stay consistent everywhere your business shows up.",
+    whatWeDo: [
+      { title: "Logo & Identity Design", description: "Distinctive marks built to scale across every touchpoint, from app icon to billboard." },
+      { title: "Brand Guidelines", description: "Colors, type, and tone documented so your brand stays consistent as your team grows." },
+      { title: "Social & Marketing Templates", description: "On-brand layouts your team can reuse fast, without starting from scratch each time." },
+      { title: "Print & Digital Collateral", description: "Decks, packaging, and marketing assets that match your identity down to the pixel." },
+    ],
   },
   {
     title: "Performance Marketing",
@@ -1437,6 +1477,14 @@ export const SERVICE_ALBUM_CARDS = [
     img1: "/images/portfolio/alpha-thumb.jpg",
     img2: "/images/portfolio/placeholder.png",
     img3: "/images/portfolio/beta-thumb.jpg",
+    overview:
+      "Creative only matters if it converts. We pair production with performance marketing — running, testing, and optimizing campaigns so your content turns views into real business results.",
+    whatWeDo: [
+      { title: "Paid Social Campaigns", description: "Meta, TikTok, and YouTube ads planned, launched, and managed end-to-end." },
+      { title: "Creative Testing", description: "Multiple hooks and edits tested side-by-side to find what actually converts." },
+      { title: "Audience Targeting", description: "Campaigns built around the people most likely to buy, not just broad reach." },
+      { title: "ROI Reporting", description: "Transparent metrics tied directly to spend, leads, and revenue — no vanity numbers." },
+    ],
   },
 ];
 
