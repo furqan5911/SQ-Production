@@ -1394,9 +1394,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "AI Content Creation",
     slug: "ai-generation",
     subtitle: "Where imagination meets intelligence.",
-    img1: "/images/portfolio/placeholder.png",
-    img2: "/images/portfolio/alpha-thumb.jpg",
-    img3: "/images/portfolio/beta-thumb.jpg",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/AI%20CONTENT%20CREATION.png",
     overview:
       "AI is a creative multiplier, not a shortcut. We pair the latest generative tools with real production craft to turn your ideas into polished, on-brand content fast — without losing the human touch.",
     whatWeDo: [
@@ -1410,9 +1408,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "Video Editing",
     slug: "video-editing",
     subtitle: "Every cut tells a story.",
-    img1: "/images/portfolio/alpha-thumb.jpg",
-    img2: "/images/portfolio/beta-thumb.jpg",
-    img3: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/editing.png",
     overview:
       "Great footage is only half the story. Our editors shape raw clips into sharp, story-driven videos built for how people actually watch today — fast-paced, vertical-first, and made to hold attention.",
     whatWeDo: [
@@ -1426,9 +1422,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "Content Creation",
     slug: "content-creation",
     subtitle: "From brief to brilliant, every time.",
-    img1: "/images/portfolio/beta-thumb.jpg",
-    img2: "/images/portfolio/alpha-thumb.jpg",
-    img3: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Content%20Creation.png",
     overview:
       "From concept to caption, we build content systems — not one-off posts. Every piece is planned around your brand voice and built to perform on the platforms your audience actually lives on.",
     whatWeDo: [
@@ -1442,9 +1436,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "Social Media Management",
     slug: "social-media",
     subtitle: "Content that connects and converts.",
-    img1: "/images/portfolio/beta-thumb.jpg",
-    img2: "/images/portfolio/placeholder.png",
-    img3: "/images/portfolio/alpha-thumb.jpg",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Social%20Media%20Management.png",
     overview:
       "Posting isn't a strategy. We manage the full loop — planning, publishing, community, and reporting — so your channels grow with intention instead of guesswork.",
     whatWeDo: [
@@ -1458,9 +1450,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "Branding & Graphic Design",
     slug: "graphic-design",
     subtitle: "Visual identity that stands out.",
-    img1: "/images/portfolio/placeholder.png",
-    img2: "/images/portfolio/beta-thumb.jpg",
-    img3: "/images/portfolio/alpha-thumb.jpg",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Branding%20%26%20Graphic%20Design.png",
     overview:
       "Your brand is the first impression before anyone watches a single video. We build visual identities — logos, systems, and templates — that stay consistent everywhere your business shows up.",
     whatWeDo: [
@@ -1474,9 +1464,7 @@ export const SERVICE_ALBUM_CARDS = [
     title: "Performance Marketing",
     slug: "marketing",
     subtitle: "Campaigns that drive real results.",
-    img1: "/images/portfolio/alpha-thumb.jpg",
-    img2: "/images/portfolio/placeholder.png",
-    img3: "/images/portfolio/beta-thumb.jpg",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Performance%20marketing.png",
     overview:
       "Creative only matters if it converts. We pair production with performance marketing — running, testing, and optimizing campaigns so your content turns views into real business results.",
     whatWeDo: [
@@ -1484,6 +1472,20 @@ export const SERVICE_ALBUM_CARDS = [
       { title: "Creative Testing", description: "Multiple hooks and edits tested side-by-side to find what actually converts." },
       { title: "Audience Targeting", description: "Campaigns built around the people most likely to buy, not just broad reach." },
       { title: "ROI Reporting", description: "Transparent metrics tied directly to spend, leads, and revenue — no vanity numbers." },
+    ],
+  },
+  {
+    title: "Content Strategies",
+    slug: "content-strategies",
+    subtitle: "A plan behind every post.",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Content%20Strategies.png",
+    overview:
+      "Random posting doesn't build a brand. We build the strategy behind the content — the plan, the pillars, and the direction — so everything you publish moves toward a clear goal instead of chasing trends.",
+    whatWeDo: [
+      { title: "Brand & Content Audits", description: "A clear-eyed look at what's working, what isn't, and where the real opportunity is." },
+      { title: "Content Pillars & Messaging", description: "A defined framework for what you post and why, so every piece reinforces the same story." },
+      { title: "Platform Roadmaps", description: "A tailored plan for where to show up and how, matched to where your audience actually spends time." },
+      { title: "Growth Frameworks", description: "Ongoing strategy reviews that adapt to real performance data, not guesswork." },
     ],
   },
 ];
@@ -1695,13 +1697,13 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const INDUSTRIES = [
-  { title: "AI Content Creation",  image: "/images/industries/corporate.svg",      description: "Cutting-edge AI-powered content that pushes creative boundaries — from generated visuals to intelligent video production workflows." },
-  { title: "Podcast",              image: "/images/industries/documentaries.svg",   description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
-  { title: "Video Ads",            image: "/images/industries/commercials.svg",     description: "High-impact video ads built to grab attention, drive clicks, and convert — optimised for every platform and audience." },
-  { title: "Editing",              image: "/images/industries/narrative.svg",       description: "Sharp, precise editing that transforms raw footage into polished, compelling content ready for any screen." },
-  { title: "Commercials and Ads",  image: "/images/industries/reels.svg",           description: "Make a memorable impression. Our short, attention-grabbing commercials showcase your products, services, or brand identity effectively." },
-  { title: "Social Media",         image: "/images/industries/events.svg",          description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts — designed for maximum reach and shareability." },
-  { title: "Short Films",          image: "/images/industries/vfx.svg",             description: "Intimate, character-driven short films told with cinematic craft and a bold visual voice that resonates with audiences." },
+  { title: "AI Content Creation",  image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/AI%20Content%20CReationh.jpeg",  description: "Cutting-edge AI-powered content that pushes creative boundaries — from generated visuals to intelligent video production workflows." },
+  { title: "Podcast",              image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/short%20filmsh.jpeg",              description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
+  { title: "Video Ads",            image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Social%20mediah.jpeg",             description: "High-impact video ads built to grab attention, drive clicks, and convert — optimised for every platform and audience." },
+  { title: "Editing",              image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Editingh.jpeg",                     description: "Sharp, precise editing that transforms raw footage into polished, compelling content ready for any screen." },
+  { title: "Commercials and Ads",  image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Commercials%26Adsh.jpeg",          description: "Make a memorable impression. Our short, attention-grabbing commercials showcase your products, services, or brand identity effectively." },
+  { title: "Social Media",         image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/video%20adsh.jpeg",                description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts — designed for maximum reach and shareability." },
+  { title: "Short Films",          image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/short%20filmsh.jpeg",              description: "Intimate, character-driven short films told with cinematic craft and a bold visual voice that resonates with audiences." },
 ];
 
 export const STATS = [
@@ -1882,6 +1884,7 @@ export const FOOTER = {
     youtube:   "https://www.youtube.com/@SherazQureshiOfficial",
     instagram: "https://www.instagram.com/sq.productions.co/",
     behance:   "https://www.behance.net/sqproductions",
+    tiktok:    "#",
   },
   links: {
     company: [
@@ -1903,6 +1906,7 @@ export const FOOTER = {
       { label: "YouTube",   href: "https://www.youtube.com/@SherazQureshiOfficial" },
       { label: "Instagram", href: "https://www.instagram.com/sq.productions.co/" },
       { label: "Behance",   href: "https://www.behance.net/sqproductions" },
+      { label: "TikTok",    href: "#" },
     ],
   },
 };

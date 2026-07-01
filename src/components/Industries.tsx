@@ -39,12 +39,12 @@ function IndustryCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Background image — barely visible by default, brightens on hover */}
+      {/* Background image — fully visible by default, fades out on hover */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           borderRadius: 20,
-          opacity: hovered ? 0.22 : 0.06,
+          opacity: hovered ? 0 : 1,
           transition: "opacity 0.5s ease",
         }}
       >
@@ -69,10 +69,27 @@ function IndustryCard({
         />
       </div>
 
+      {/* Light sweep — thin blurred glare bar, same effect as the Meet Sheraz social pills */}
+      <motion.div
+        className="absolute pointer-events-none"
+        animate={{ left: hovered ? "112%" : "-16%", opacity: hovered ? 1 : 0 }}
+        transition={hovered ? { type: "spring", stiffness: 110, damping: 26 } : { type: "spring", stiffness: 70, damping: 16 }}
+        style={{
+          top: "-50%",
+          width: "6%",
+          height: "200%",
+          rotate: 9,
+          backdropFilter: "blur(3px)",
+          WebkitBackdropFilter: "blur(3px)",
+          background: "rgba(255,255,255,0.55)",
+          zIndex: 6,
+        }}
+      />
+
       {/* Diagonal glass panel — full-card wipe from LEFT on hover */}
       <motion.div
         className="absolute pointer-events-none"
-        animate={{ x: hovered ? "0%" : "-200%" }}
+        animate={{ x: hovered ? "0%" : "-200%", opacity: hovered ? 1 : 0 }}
         transition={{ type: "spring", stiffness: 220, damping: 28 }}
         style={{
           top: "-60%",
@@ -87,29 +104,34 @@ function IndustryCard({
         }}
       />
 
-      {/* Title — white default, orange gradient after glass wipes in */}
-      <div className="relative z-10 p-4 sm:p-5 md:p-7 lg:p-8">
+      {/* Title — always visible (white), shifts down + right and switches to orange gradient on hover */}
+      <div
+        className="relative z-10 p-4 sm:p-5 md:p-7 lg:p-8"
+        style={{
+          transform: hovered ? "translate(10px, 10px)" : "translate(0px, 0px)",
+          transition: "transform 0.3s ease 0.22s",
+        }}
+      >
         <h3
-          className="font-bold text-base sm:text-lg md:text-xl leading-snug"
+          className="font-bold text-[20px] sm:text-[22.5px] md:text-[25px] leading-snug"
           style={{
             backgroundImage: hovered ? TITLE_GRADIENT : "none",
             WebkitBackgroundClip: hovered ? "text" : "unset",
             WebkitTextFillColor: hovered ? "transparent" : "white",
             backgroundClip: hovered ? "text" : "unset",
             color: hovered ? "transparent" : "white",
-            transition: "color 0.25s ease 0.22s, -webkit-text-fill-color 0.25s ease 0.22s",
           }}
         >
           {item.title}
         </h3>
       </div>
 
-      {/* Description — fades in after glass finishes wiping */}
+      {/* Description — fades in after glass finishes wiping, shifts right on hover */}
       <div
         className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5 md:p-7 lg:p-8"
         style={{
           opacity: hovered ? 1 : 0,
-          transform: hovered ? "translateY(0px)" : "translateY(8px)",
+          transform: hovered ? "translate(10px, 0px)" : "translate(0px, 8px)",
           transition: "opacity 0.3s ease 0.28s, transform 0.3s ease 0.28s",
         }}
       >
@@ -160,7 +182,7 @@ function CategoriesBtn() {
         <div
           className="absolute pointer-events-none"
           style={{
-            background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(201,145,109) 75.4%, rgb(255,99,111) 100%)",
+            background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(255,140,50) 75.4%, rgb(255,106,0) 100%)",
             borderRadius: 103,
             zIndex: 0,
             transition: "all 0.35s ease-out",

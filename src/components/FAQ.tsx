@@ -4,8 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FAQS } from "@/lib/constants";
 
-const GLOW_REST = "radial-gradient(25% 75% at 0% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%)";
-const GLOW_HOVER = "radial-gradient(35% 85% at 22% 18%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)";
+const GLOW_REST = "radial-gradient(25% 75% at 0% 0%, rgba(255,171,66,0.18) 0%, rgba(255,171,66,0) 100%)";
+const GLOW_HOVER = "radial-gradient(35% 85% at 22% 18%, rgba(255,140,50,0.28) 0%, rgba(255,140,50,0) 100%)";
 const GRID_BG = `linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)`;
 
 function ChevronIcon() {

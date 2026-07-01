@@ -96,17 +96,35 @@ export default function Collaborate() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/logo.png" alt={SITE.name} className="h-[200px] w-auto mx-auto mb-8 opacity-90" />
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-5">
-          {COLLABORATE.heading.map((line) => (
-            <span key={line} className="block">{line}</span>
-          ))}
-        </h2>
+        {/* New card wrapping heading + subtext + CTA button, with its own
+            border and the same faint line-grid pattern used on the footer cards */}
+        <div
+          className="relative overflow-hidden rounded-[32px] px-6 md:px-16 py-10 md:py-14"
+          style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+        >
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(to right, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 12.5%)",
+            }}
+          />
 
-        <p className="text-white/80 text-base md:text-lg max-w-xl mx-auto mb-10">
-          {COLLABORATE.subtext}
-        </p>
+          <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-5">
+            {COLLABORATE.heading.map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
+          </h2>
 
-        <CollaborateButton />
+          <p className="relative z-10 text-white/80 text-base md:text-lg max-w-xl mx-auto mb-10">
+            {COLLABORATE.subtext}
+          </p>
+
+          <div className="relative z-10">
+            <CollaborateButton />
+          </div>
+        </div>
       </motion.div>
     </section>
   );

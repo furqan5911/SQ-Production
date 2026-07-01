@@ -91,7 +91,7 @@ function KnowMoreBtn() {
         <div
           className="absolute pointer-events-none"
           style={{
-            background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(201,145,109) 75.4%, rgb(255,99,111) 100%)",
+            background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(255,140,50) 75.4%, rgb(255,106,0) 100%)",
             borderRadius: 103,
             zIndex: 0,
             transition: "all 0.35s ease-out",

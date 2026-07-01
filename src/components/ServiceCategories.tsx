@@ -162,7 +162,7 @@ function CategoryRow({
               scroll-driven scale 1.38 → 1.20             ── */}
         <motion.div
           aria-hidden
-          className="absolute left-0 top-0 leading-none text-white select-none pointer-events-none"
+          className="absolute left-0 top-0 leading-none select-none pointer-events-none"
           style={{
             fontSize: "clamp(39px, 12vw, 115px)",
             fontWeight: 900,
@@ -173,6 +173,11 @@ function CategoryRow({
             scale: numberScale,
             transformOrigin: "top left",
             zIndex: 0,
+            backgroundImage: "linear-gradient(135deg, #ff6a00 0%, #f87800 35%, #ffab42 65%, #ffe066 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            color: "transparent",
           }}
         >
           {item.number}
@@ -249,21 +254,31 @@ function CategoryRow({
             }}
             className="overflow-hidden"
           >
-            {/* Fanned 3-photo "card deck" + static EXPLORE affordance, links out.
-                Real-site target is /category/<slug> in a new tab; until that
-                filtered-archive route exists, this points at /projects. */}
-            <Link
-              href="/projects"
-              target="_blank"
-              className="group relative block border-t overflow-hidden"
-              style={{ borderColor: "rgba(255,255,255,0.08)", minHeight: 220, paddingTop: 20 }}
+            {/* Fanned 3-photo "card deck" + EXPLORE affordance on the left,
+                description text on the right of it. Real-site target is
+                /category/<slug> in a new tab; until that filtered-archive
+                route exists, the deck links to /projects. */}
+            <div
+              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 border-t"
+              style={{
+                borderColor: "rgba(255,255,255,0.08)",
+                paddingTop: 20,
+                paddingBottom: 40,
+                paddingLeft: "clamp(50px, 12vw, 110px)",
+                paddingRight: "0.5rem",
+              }}
             >
               {/* Fix 5: overlay must be a sibling of the images INSIDE this
-                  div, not a sibling of this div at the <Link> level —
-                  otherwise its `absolute inset-0` resolves against the
-                  full-width row instead of the photo. Sized to fit the
-                  widest/tallest fan slot (Fix 8: back card is 380x253). */}
-              <div className="relative" style={{ width: "min(420px, 100%)", height: 220 }}>
+                  element, not a sibling of it — otherwise its `absolute
+                  inset-0` resolves against the full-width row instead of the
+                  photo. Sized to fit the widest/tallest fan slot (Fix 8: back
+                  card is 380x253). */}
+              <Link
+                href="/projects"
+                target="_blank"
+                className="group relative block shrink-0 overflow-hidden"
+                style={{ width: "min(420px, 100%)", height: 220 }}
+              >
                 {fanImages.map((fan, idx) => (
                   <motion.img
                     key={idx}
@@ -313,26 +328,22 @@ function CategoryRow({
                     EXPLORE
                   </span>
                 </div>
-              </div>
-            </Link>
+              </Link>
 
-            {/* Description — opacity + y fade-in */}
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.12, duration: 0.3, ease: "easeOut" },
-              }}
-              exit={{ opacity: 0, y: 8, transition: { duration: 0.15 } }}
-              className="pb-10 text-[#888] text-base md:text-lg leading-relaxed max-w-2xl"
-              style={{
-                paddingLeft: "clamp(50px, 12vw, 110px)",
-                paddingRight: "0.5rem",
-              }}
-            >
-              {item.description}
-            </motion.p>
+              {/* Description — opacity + y fade-in, now beside the deck instead of below it */}
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 0.12, duration: 0.3, ease: "easeOut" },
+                }}
+                exit={{ opacity: 0, y: 8, transition: { duration: 0.15 } }}
+                className="text-[#888] text-base md:text-lg leading-relaxed max-w-md"
+              >
+                {item.description}
+              </motion.p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

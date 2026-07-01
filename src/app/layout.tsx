@@ -6,6 +6,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import ChatBubble from "@/components/ChatBubble";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CursorTrail from "@/components/CursorTrail";
+import AmbientGlow from "@/components/AmbientGlow";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-bg text-text antialiased">
+        <AmbientGlow />
         <LoadingScreen />
         {/* Horizontal-overflow clipping (e.g. for off-screen marquee/sweep
             animations) scoped to this wrapper instead of html/body — putting

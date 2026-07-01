@@ -6,12 +6,8 @@ import { motion } from "motion/react";
 import { SERVICE_ALBUM_CARDS } from "@/lib/constants";
 
 // How the hover effect works:
-// 3 absolutely-positioned image layers stacked inside overflow:hidden container.
-// At rest  : all 3 layers cover the full card — only layer 3 (front) is visible.
+// A single full-bleed image per card, gently zooming on hover.
 // On hover (desktop) / always (mobile) :
-//   Layer 3 slides left 80px, narrows to 88% from left edge (transformOrigin left).
-//   Layer 2 slides left 40px, narrows to 94%.
-//   Layer 1 stays still — revealed on the right as layers 2 and 3 retract.
 //   Gradient, title+subtitle, circular button all fade in (opacity 0 → 1).
 
 function AlbumCard({ card }: { card: (typeof SERVICE_ALBUM_CARDS)[0] }) {
@@ -36,57 +32,17 @@ function AlbumCard({ card }: { card: (typeof SERVICE_ALBUM_CARDS)[0] }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Layer 1 — back, always visible, never moves */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Single image layer, subtle zoom on hover */}
+      <motion.div
+        className="absolute inset-0 overflow-hidden"
+        animate={{ scale: hovered ? 1.06 : 1 }}
+        transition={{ type: "spring", stiffness: 240, damping: 30 }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={card.img1}
+          src={card.image}
           alt=""
           className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Layer 2 — middle, slides left 40px on spread */}
-      <motion.div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          boxShadow: "-10px 0 28px rgba(0,0,0,0.4)",
-          transformOrigin: "left center",
-        }}
-        animate={{
-          x: spread ? -40 : 0,
-          scaleX: spread ? 0.94 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 240, damping: 30 }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={card.img2}
-          alt=""
-          className="absolute inset-0 h-full object-cover"
-          style={{ width: "115%", right: 0, left: "auto" }}
-        />
-      </motion.div>
-
-      {/* Layer 3 — front (topmost), slides left 80px on spread */}
-      <motion.div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          boxShadow: "-10px 0 28px rgba(0,0,0,0.4)",
-          transformOrigin: "left center",
-        }}
-        animate={{
-          x: spread ? -80 : 0,
-          scaleX: spread ? 0.88 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 240, damping: 30 }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={card.img3}
-          alt=""
-          className="absolute inset-0 h-full object-cover"
-          style={{ width: "115%", right: 0, left: "auto" }}
         />
       </motion.div>
 

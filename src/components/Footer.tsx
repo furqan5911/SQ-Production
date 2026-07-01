@@ -39,6 +39,11 @@ const InstagramIcon = () => (
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 );
+const TikTokIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M16.6 5.82a4.28 4.28 0 0 1-2.63-2.63V3h-3.32v13.4a2.6 2.6 0 1 1-1.83-2.48v-3.4a5.93 5.93 0 1 0 5.15 5.88V9.03a7.6 7.6 0 0 0 4.05 1.17V6.88a4.3 4.3 0 0 1-1.42-1.06z"/>
+  </svg>
+);
 const ArrowUp = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style={{ width: "100%", height: "100%", display: "block", fill: "#fff" }}>
     <path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z" />
@@ -51,11 +56,24 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   YouTube: <YouTubeIcon />,
   Instagram: <InstagramIcon />,
   Behance: <BehanceIcon />,
+  TikTok: <TikTokIcon />,
 };
 
 const cardStyle: React.CSSProperties = {
   background: "rgba(255,255,255,0.04)",
   border: "1px solid rgba(255,255,255,0.3)",
+};
+
+/* Same card, but with an orange gradient wash instead of a flat tint */
+const cardGradientStyle: React.CSSProperties = {
+  background: "radial-gradient(120% 130% at 0% 0%, rgba(255,140,50,0.16) 0%, rgba(255,255,255,0.04) 55%)",
+  border: "1px solid rgba(255,255,255,0.3)",
+};
+
+/* Faint vertical line grid — same pattern used behind the Services glass box */
+const LINES_BG: React.CSSProperties = {
+  backgroundImage:
+    "repeating-linear-gradient(to right, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 12.5%)",
 };
 
 function FooterLink({ href, label }: { href: string; label: string }) {
@@ -172,62 +190,59 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contact card + Quick Links / Legal / Social Medias card */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div className="rounded-[40px] px-7 py-7 space-y-3" style={cardStyle}>
-            <p className="text-white text-sm leading-relaxed">
-              <strong className="font-bold">Address:</strong> {FOOTER.address}
-            </p>
-            <p className="text-white text-sm leading-relaxed">
-              <strong className="font-bold">Email:</strong>{" "}
-              <a href={`mailto:${FOOTER.email}`} className="hover:text-[#f87800] transition-colors">
-                {FOOTER.email}
-              </a>
-            </p>
-            <p className="text-white text-sm leading-relaxed">
-              <strong className="font-bold">Phone:</strong> {FOOTER.phone}
-            </p>
-            <p className="text-white text-sm leading-relaxed">
-              <strong className="font-bold">Business Hours:</strong> {FOOTER.hours}
-            </p>
+        {/* One big outer container wrapping the contact card, quick links/legal
+            card, and the social pill row — same inner cards/gap as before,
+            just all nested under one shared outer border. */}
+        <div className="rounded-[40px] p-5 sm:p-6 mb-12" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+          {/* Contact card + Quick Links / Legal / Social Medias card */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="relative overflow-hidden rounded-[40px] px-7 py-7 space-y-3" style={cardGradientStyle}>
+              <div className="absolute inset-0 pointer-events-none" aria-hidden style={LINES_BG} />
+              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
+                <strong className="font-bold">Address:</strong> {FOOTER.address}
+              </p>
+              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
+                <strong className="font-bold">Email:</strong>{" "}
+                <a href={`mailto:${FOOTER.email}`} className="hover:text-[#f87800] transition-colors">
+                  {FOOTER.email}
+                </a>
+              </p>
+              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
+                <strong className="font-bold">Phone:</strong> {FOOTER.phone}
+              </p>
+            </div>
+
+            <div className="relative overflow-hidden rounded-[40px] px-6 py-6 sm:px-8 sm:py-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8" style={cardGradientStyle}>
+              <div className="absolute inset-0 pointer-events-none" aria-hidden style={LINES_BG} />
+              <div className="relative z-10">
+                <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Quick Links</h4>
+                <ul className="space-y-3">
+                  {FOOTER.links.company.map((l) => (
+                    <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
+                  ))}
+                </ul>
+              </div>
+              <div className="relative z-10">
+                <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Social Medias</h4>
+                <ul className="space-y-3">
+                  {FOOTER.links.social.map((l) => (
+                    <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <div className="rounded-[40px] px-6 py-6 sm:px-8 sm:py-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8" style={cardStyle}>
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Quick Links</h4>
-              <ul className="space-y-3">
-                {FOOTER.links.company.map((l) => (
-                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Legal</h4>
-              <ul className="space-y-3 mb-6">
-                {FOOTER.links.legal.map((l) => (
-                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
-                ))}
-              </ul>
-              <h4 className="text-white font-semibold mb-4 text-sm tracking-widest uppercase">Social Medias</h4>
-              <ul className="space-y-3">
-                {FOOTER.links.social.map((l) => (
-                  <li key={l.label}><FooterLink href={l.href} label={l.label} /></li>
-                ))}
-              </ul>
-            </div>
+          {/* Social pill links */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {FOOTER.links.social.map((s) => (
+              <SocialPillLink key={s.label} label={s.label} href={s.href} />
+            ))}
           </div>
         </div>
 
-        {/* Social pill links */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-          {FOOTER.links.social.map((s) => (
-            <SocialPillLink key={s.label} label={s.label} href={s.href} />
-          ))}
-        </div>
-
-        <div className="border-t border-[#222] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[#222] pt-8 flex flex-col items-center gap-4">
           <p className="text-[#555] text-sm">© {year} {SITE.name}. All rights reserved.</p>
-          <p className="text-[#555] text-sm">Built with Next.js + Tailwind</p>
         </div>
       </div>
     </footer>
