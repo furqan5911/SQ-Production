@@ -255,9 +255,10 @@ function CategoryRow({
             className="overflow-hidden"
           >
             {/* Fanned 3-photo "card deck" + EXPLORE affordance on the left,
-                description text on the right of it. Real-site target is
-                /category/<slug> in a new tab; until that filtered-archive
-                route exists, the deck links to /projects. */}
+                description text on the right of it. Links to that category's
+                specific project page when one is assigned (item.projectSlug
+                in constants.ts); categories without one yet still fall back
+                to the general /projects listing. */}
             <div
               className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 border-t"
               style={{
@@ -274,7 +275,7 @@ function CategoryRow({
                   photo. Sized to fit the widest/tallest fan slot (Fix 8: back
                   card is 380x253). */}
               <Link
-                href="/projects"
+                href={item.projectSlug ? `/projects/${item.projectSlug}` : "/projects"}
                 target="_blank"
                 className="group relative block shrink-0 overflow-hidden"
                 style={{ width: "min(420px, 100%)", height: 220 }}

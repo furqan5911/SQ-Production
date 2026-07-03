@@ -8,6 +8,7 @@ import Services      from "@/components/Services";
 import Industries    from "@/components/Industries";
 import About         from "@/components/About";
 import Footer        from "@/components/Footer";
+import HomeSectionGlow from "@/components/HomeSectionGlow";
 
 // Below-fold sections: JS bundles downloaded only when needed
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
@@ -18,17 +19,23 @@ const Collaborate  = dynamic(() => import("@/components/Collaborate"));
 export default function Home() {
   return (
     <>
+      <HomeSectionGlow />
       <Navbar />
       <main>
         <Hero />
         <Reels />
         <BrandPartners />
         <div className="bg-transparent h-4" />
+        {/* Gradient glow range starts here — see HomeSectionGlow.tsx */}
+        <div id="home-glow-start" />
         <Portfolio />
         <div className="bg-transparent h-4" />
-        <Services />
         <Industries />
-        <About />
+        <Services />
+        {/* Gradient glow fades out by the middle of this wrapper */}
+        <div id="home-glow-end-wrap">
+          <About />
+        </div>
         <Testimonials />
         <FAQ />
         <SkillsStrip />

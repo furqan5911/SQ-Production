@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import PageShell from "@/components/PageShell";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
+
+// Below-fold sections: JS bundles downloaded only when needed
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const FAQ          = dynamic(() => import("@/components/FAQ"));
 
 export const metadata: Metadata = {
   title: "About — VideoHut",
@@ -11,11 +14,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageShell
-      eyebrow="Est. 2015"
-      title="About Our Agency"
-      subtitle="We have dedicated ourselves to crafting captivating visual narratives that help brands tell their story — from concept to final cut."
-    >
+    <PageShell heroImage="https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png">
       <About />
       <Testimonials />
       <FAQ />

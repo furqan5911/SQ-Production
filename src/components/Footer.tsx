@@ -76,6 +76,38 @@ const LINES_BG: React.CSSProperties = {
     "repeating-linear-gradient(to right, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 12.5%)",
 };
 
+function FooterGetStartedBtn() {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <Link
+      href="/contact"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex sm:inline-flex items-center justify-center overflow-hidden rounded-full w-full sm:w-auto"
+      style={{
+        height: 52,
+        padding: "0 28px",
+        backdropFilter: "blur(13px)",
+        WebkitBackdropFilter: "blur(13px)",
+        backgroundColor: "rgba(0,0,0,0.55)",
+        border: "1px solid rgba(255,255,255,0.2)",
+      }}
+    >
+      <span
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(127.9% 258% at -40.3% 0%, rgb(255,171,66) 51.7%, rgb(255,140,50) 75.4%, rgb(255,106,0) 100%)",
+          opacity: hovered ? 0.9 : 0.7,
+          transition: "opacity 0.3s ease",
+        }}
+      />
+      <span className="relative z-10 text-white text-sm font-bold tracking-wide whitespace-nowrap">Get Started</span>
+    </Link>
+  );
+}
+
 function FooterLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
@@ -100,7 +132,7 @@ function SocialCircleIcon({ icon, href }: { icon: React.ReactNode; href: string 
       animate={{ scale: hovered ? 1.1 : 1 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 260, damping: 16 }}
-      className="w-14 h-14 rounded-full flex items-center justify-center text-black shrink-0"
+      className="w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center text-black shrink-0"
       style={{
         background: "#f87800",
         boxShadow: hovered ? "0 4px 20px rgba(248,120,0,0.5)" : "0 4px 24px rgba(248,120,0,0.35)",
@@ -176,7 +208,7 @@ export default function Footer() {
           <p className="text-[#888] text-[20px] leading-relaxed max-w-lg mx-auto mb-8">
             {SITE.subtagline}
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-nowrap sm:flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center">
             {[
               { icon: <FacebookIcon />,  href: FOOTER.socials.facebook },
               { icon: <GmailIcon />,     href: FOOTER.socials.email },
@@ -184,6 +216,7 @@ export default function Footer() {
               { icon: <YouTubeIcon />,   href: FOOTER.socials.youtube },
               { icon: <InstagramIcon />, href: FOOTER.socials.instagram },
               { icon: <BehanceIcon />,   href: FOOTER.socials.behance },
+              { icon: <TikTokIcon />,    href: FOOTER.socials.tiktok },
             ].map((s, i) => (
               <SocialCircleIcon key={i} icon={s.icon} href={s.href} />
             ))}
@@ -196,20 +229,32 @@ export default function Footer() {
         <div className="rounded-[40px] p-5 sm:p-6 mb-12" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
           {/* Contact card + Quick Links / Legal / Social Medias card */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="relative overflow-hidden rounded-[40px] px-7 py-7 space-y-3" style={cardGradientStyle}>
+            <div className="relative overflow-hidden rounded-[40px] px-7 py-7 flex flex-col" style={cardGradientStyle}>
               <div className="absolute inset-0 pointer-events-none" aria-hidden style={LINES_BG} />
-              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
-                <strong className="font-bold">Address:</strong> {FOOTER.address}
-              </p>
-              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
-                <strong className="font-bold">Email:</strong>{" "}
-                <a href={`mailto:${FOOTER.email}`} className="hover:text-[#f87800] transition-colors">
-                  {FOOTER.email}
-                </a>
-              </p>
-              <p className="relative z-10 text-white text-base md:text-lg leading-relaxed">
-                <strong className="font-bold">Phone:</strong> {FOOTER.phone}
-              </p>
+              <div className="relative z-10 space-y-3">
+                <p className="text-white text-base md:text-lg leading-relaxed">
+                  <strong className="font-bold">Address:</strong> {FOOTER.address}
+                </p>
+                <p className="text-white text-base md:text-lg leading-relaxed">
+                  <strong className="font-bold">Email:</strong>{" "}
+                  <a href={`mailto:${FOOTER.email}`} className="hover:text-[#f87800] transition-colors">
+                    {FOOTER.email}
+                  </a>
+                </p>
+                <p className="text-white text-base md:text-lg leading-relaxed">
+                  <strong className="font-bold">Phone:</strong> {FOOTER.phone}
+                </p>
+              </div>
+
+              {/* Hook + CTA — fills the leftover space below the contact
+                  info, pushed to the bottom when this card stretches to
+                  match the taller Quick Links card next to it on desktop. */}
+              <div className="relative z-10 mt-8 md:mt-auto pt-6 border-t border-white/10">
+                <p className="text-white font-bold text-lg md:text-xl mb-4">
+                  Ready to start your project?
+                </p>
+                <FooterGetStartedBtn />
+              </div>
             </div>
 
             <div className="relative overflow-hidden rounded-[40px] px-6 py-6 sm:px-8 sm:py-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8" style={cardGradientStyle}>

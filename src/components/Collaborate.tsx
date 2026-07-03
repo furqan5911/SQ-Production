@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { SITE, COLLABORATE } from "@/lib/constants";
 
@@ -26,12 +27,12 @@ function CollaborateButton() {
       onMouseLeave={() => setHovered(false)}
       animate={{ scale: hovered ? 1.08 : 1 }}
       transition={{ type: "spring", stiffness: 220, damping: 16 }}
-      className="inline-block"
+      className="block sm:inline-block"
       style={{ transformOrigin: "center" }}
     >
       <Link
         href={COLLABORATE.ctaHref}
-        className={`relative flex items-center gap-4 w-[min(85vw,300px)] sm:w-[280px] md:w-[340px] h-16 px-3 rounded-full overflow-hidden border border-white ${
+        className={`relative flex items-center gap-4 w-full sm:w-[280px] md:w-[340px] h-16 px-3 rounded-full overflow-hidden border border-white ${
           hovered ? "justify-between" : "justify-center"
         }`}
       >
@@ -93,8 +94,13 @@ export default function Collaborate() {
             "radial-gradient(132.5% 150% at 3.7% 0%, var(--accent) 0%, rgba(255,255,255,0.03) 38%)",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt={SITE.name} className="h-[200px] w-auto mx-auto mb-8 opacity-90" />
+        <Image
+          src="/images/logo.png"
+          alt={SITE.name}
+          width={500}
+          height={500}
+          className="h-[70px] sm:h-[130px] md:h-[200px] w-auto mx-auto mb-4 sm:mb-6 md:mb-8 opacity-90"
+        />
 
         {/* New card wrapping heading + subtext + CTA button, with its own
             border and the same faint line-grid pattern used on the footer cards */}

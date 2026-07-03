@@ -63,7 +63,13 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-    if (window.location.pathname !== "/") {
+    // Only bounce back to home on an actual page refresh — not on a fresh
+    // navigation (new tab, direct URL, target="_blank" links like the
+    // service-category EXPLORE links). The Navigation Timing API tells them
+    // apart: refresh reports type "reload", everything else "navigate".
+    const [navEntry] = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    const isReload = navEntry?.type === "reload";
+    if (isReload && window.location.pathname !== "/") {
       router.replace("/");
     }
   }, [router]);

@@ -15,6 +15,7 @@ export const NAV_LINKS = [
   { label: "About",    href: "/#about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
+  { label: "AI Ads",   href: "/projects/ai-ads" },
   { label: "Contact",  href: "/contact" },
 ];
 
@@ -49,7 +50,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic showcase of two landmark architectural projects by Bukhari Associates — capturing the transformation of residential spaces through open planning and bold design.",
-    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/balogo.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/Bukhariassociatesh.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/rim-house.mp4",              label: "RIM HOUSE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Bukhari%20Associates/Bhukhariassociates1.mp4",   label: "BUKHARI ASSOCIATES — FILM ONE" },
@@ -696,7 +697,7 @@ export const PROJECTS = [
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic showcase for Roushan Builds — two powerful films capturing the craftsmanship, scale, and vision behind their architectural projects.",
-    image: "/images/portfolio/placeholder.png",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/projectbanner/roushanbuildsh.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Roushan%20Builds/Roushan%20Builds%201.mp4", label: "ROUSHAN BUILDS — FILM ONE" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Roushan%20Builds/Roushan%20Builds%202.mp4", label: "ROUSHAN BUILDS — FILM TWO" },
@@ -769,6 +770,39 @@ export const PROJECTS = [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/music2.mp4",      label: "Kukkad Song" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/Teri%20yaad.mp4", label: "Teri Yaad" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/music%20video/DILDARA.mp4",     label: "Dildara" },
+    ],
+    snaps: [],
+    scopeOverview: "",
+    scopePhases: [],
+    timeline: "",
+    budget: "",
+    outcomes: [],
+    clientInstagram: "",
+  },
+  {
+    slug: "ai-ads",
+    title: "AI Ads",
+    subtitle: "AI-powered video ads that convert.",
+    category: "AI Ads",
+    client: "SQ Productions",
+    year: "2025",
+    services: ["AI Production", "Motion Graphics", "Post Production"],
+    description:
+      "A collection of AI-powered video ads produced by SQ Productions — fast, visually compelling short-form content built for digital platforms and brand campaigns.",
+    image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
+    noMeta: true,
+    gridVideos: true,
+    videos: [
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/0418(1).mp4",                label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/1019.mov",                   label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Bang%20bang.mp4",            label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Cera%20Ve%20Ad.mp4",        label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Flora%20Product%20reel.mp4", label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Khasara.mp4",               label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Love%20Horror.mp4",         label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/MIX%20Ai.mp4",             label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Members%20Card%20reel%20-%20Glome.mp4", label: "" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Red%20Dress%20AI(1).mp4",  label: "" },
     ],
     snaps: [],
     scopeOverview: "",
@@ -1280,6 +1314,7 @@ export const PROJECTS = [
     title: "Broadway Jehlum Architectural DVC",
     subtitle: "Architecture brought to life on screen.",
     category: "Commercial",
+    horizontalVideos: true,
     client: "Broadway Jehlum",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
@@ -1682,23 +1717,21 @@ const CATEGORY_PLACEHOLDER_IMAGES = [
 ];
 
 export const SERVICE_CATEGORIES = [
-  { number: "01", title: "Corporate Video",      description: "Polished internal and external videos that communicate your brand, culture, and message with clarity and confidence.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "02", title: "Commercial Video",     description: "Short, impactful visual narratives that promote products, services, or brands with strong storytelling and persuasive visuals.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "03", title: "Podcast",              description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "04", title: "Product Video",        description: "Clean, detail-driven product films that highlight features, craftsmanship, and use-cases to drive conversions.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "05", title: "Animation",            description: "From motion graphics to full 2D/3D animation, we turn complex ideas into clear, engaging visual stories.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "06", title: "Event Video",          description: "Multi-camera coverage and same-day edits that capture the energy of conferences, launches, and live events.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "07", title: "Educational Video",    description: "Training and e-learning content designed to inform clearly and keep learners engaged from start to finish.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "08", title: "Entertainment Video",  description: "Narrative-driven content built for impact — from short films to branded entertainment series.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "09", title: "Fashion Video",        description: "Stylish, fast-paced visuals that showcase collections and campaigns with editorial polish.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "10", title: "Lifestyle",            description: "Authentic lifestyle content that captures real moments and connects with audiences on a personal level.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "11", title: "Interview Video",      description: "Professionally lit, multi-angle interviews edited into compelling testimonials and feature pieces.", images: CATEGORY_PLACEHOLDER_IMAGES },
-  { number: "12", title: "Social Media Video",   description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts.", images: CATEGORY_PLACEHOLDER_IMAGES },
+  { number: "01", title: "Commercial Video",     description: "Short, impactful visual narratives that promote products, services, or brands with strong storytelling and persuasive visuals.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "broadway-jehlum" },
+  { number: "02", title: "Podcast",              description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "mukalma" },
+  { number: "03", title: "Product Video",        description: "Clean, detail-driven product films that highlight features, craftsmanship, and use-cases to drive conversions.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "bounceway" },
+  { number: "04", title: "Real Estate Video",    description: "Cinematic property walkthroughs and listing videos that showcase every space and help homes sell faster.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "bukhari-associates" },
+  { number: "05", title: "Event Video",          description: "Multi-camera coverage and same-day edits that capture the energy of conferences, launches, and live events.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "ali-zafar" },
+  { number: "06", title: "Educational Video",    description: "Training and e-learning content designed to inform clearly and keep learners engaged from start to finish.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "capten-amz" },
+  { number: "07", title: "Fashion Video",        description: "Stylish, fast-paced visuals that showcase collections and campaigns with editorial polish.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "new-times-roman" },
+  { number: "08", title: "Music Video",          description: "Bold, artist-driven music videos built around concept, choreography, and visual storytelling that matches the sound.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "music-videos" },
+  { number: "09", title: "Lifestyle",            description: "Authentic lifestyle content that captures real moments and connects with audiences on a personal level.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "saharnoon" },
+  { number: "10", title: "Social Media Video",   description: "Platform-native, fast-cut content built to perform across Reels, TikTok, and YouTube Shorts.", images: CATEGORY_PLACEHOLDER_IMAGES, projectSlug: "the-next-dubai" },
 ];
 
 export const INDUSTRIES = [
   { title: "AI Content Creation",  image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/AI%20Content%20CReationh.jpeg",  description: "Cutting-edge AI-powered content that pushes creative boundaries — from generated visuals to intelligent video production workflows." },
-  { title: "Podcast",              image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/short%20filmsh.jpeg",              description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
+  { title: "Podcast",              image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Podcasth.jpeg",              description: "From concept to audio-visual production, we craft podcast content that connects, informs, and keeps your audience coming back for every episode." },
   { title: "Video Ads",            image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Social%20mediah.jpeg",             description: "High-impact video ads built to grab attention, drive clicks, and convert — optimised for every platform and audience." },
   { title: "Editing",              image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Editingh.jpeg",                     description: "Sharp, precise editing that transforms raw footage into polished, compelling content ready for any screen." },
   { title: "Commercials and Ads",  image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/Commercials%26Adsh.jpeg",          description: "Make a memorable impression. Our short, attention-grabbing commercials showcase your products, services, or brand identity effectively." },

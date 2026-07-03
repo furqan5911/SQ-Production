@@ -104,17 +104,28 @@ function IndustryCard({
         }}
       />
 
+      {/* Mobile-only bottom gradient so description text reads against the image */}
+      <div
+        className="absolute bottom-0 left-0 right-0 sm:hidden pointer-events-none"
+        style={{
+          height: "70%",
+          background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%)",
+          zIndex: 7,
+        }}
+      />
+
       {/* Title — always visible (white), shifts down + right and switches to orange gradient on hover */}
       <div
-        className="relative z-10 p-4 sm:p-5 md:p-7 lg:p-8"
+        className="relative z-10 p-2.5 sm:p-4 md:p-7 lg:p-8"
         style={{
           transform: hovered ? "translate(10px, 10px)" : "translate(0px, 0px)",
           transition: "transform 0.3s ease 0.22s",
         }}
       >
         <h3
-          className="font-bold text-[20px] sm:text-[22.5px] md:text-[25px] leading-snug"
+          className="font-bold leading-snug"
           style={{
+            fontSize: "clamp(11px, 3.5vw, 25px)",
             backgroundImage: hovered ? TITLE_GRADIENT : "none",
             WebkitBackgroundClip: hovered ? "text" : "unset",
             WebkitTextFillColor: hovered ? "transparent" : "white",
@@ -126,16 +137,17 @@ function IndustryCard({
         </h3>
       </div>
 
-      {/* Description — fades in after glass finishes wiping, shifts right on hover */}
+      {/* Description — always visible on mobile, hover-only on sm+ */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5 md:p-7 lg:p-8"
+        className={`absolute bottom-0 left-0 right-0 z-10 p-2.5 sm:p-4 md:p-7 lg:p-8 ${
+          hovered ? "opacity-100" : "opacity-100 sm:opacity-0"
+        }`}
         style={{
-          opacity: hovered ? 1 : 0,
-          transform: hovered ? "translate(10px, 0px)" : "translate(0px, 8px)",
+          transform: hovered ? "translate(10px, 0px)" : "translate(0px, 0px)",
           transition: "opacity 0.3s ease 0.28s, transform 0.3s ease 0.28s",
         }}
       >
-        <p className="text-[rgba(255,255,255,0.8)] text-sm leading-relaxed">
+        <p className="text-[rgba(255,255,255,0.85)] text-[10px] sm:text-sm leading-snug line-clamp-2 sm:line-clamp-none">
           {item.description}
         </p>
       </div>

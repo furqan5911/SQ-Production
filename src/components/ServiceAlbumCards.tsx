@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { SERVICE_ALBUM_CARDS } from "@/lib/constants";
 
@@ -38,11 +39,12 @@ function AlbumCard({ card }: { card: (typeof SERVICE_ALBUM_CARDS)[0] }) {
         animate={{ scale: hovered ? 1.06 : 1 }}
         transition={{ type: "spring", stiffness: 240, damping: 30 }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={card.image}
           alt=""
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

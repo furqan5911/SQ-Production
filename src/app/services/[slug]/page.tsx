@@ -25,6 +25,8 @@ export default async function ServiceSlugPage({ params }: Props) {
       eyebrow="What We Do"
       title={card.title}
       subtitle={card.subtitle}
+      heroImage={card.image}
+      centered
     >
       <div className="max-w-5xl mx-auto px-6 md:px-10">
 

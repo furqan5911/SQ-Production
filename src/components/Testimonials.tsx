@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "motion/react";
 import { TESTIMONIALS, TESTIMONIALS_BG } from "@/lib/constants";
@@ -175,8 +176,7 @@ export default function Testimonials() {
     <section id="testimonials" className="relative overflow-hidden py-16 md:py-24">
       {TESTIMONIALS_BG && (
         <div className="absolute inset-0 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={TESTIMONIALS_BG} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <Image src={TESTIMONIALS_BG} alt="" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/55" />
         </div>
       )}

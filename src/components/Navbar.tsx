@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { SITE, NAV_LINKS } from "@/lib/constants";
@@ -18,7 +19,7 @@ export default function Navbar() {
   }, []);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    href === "/" ? pathname === "/" : pathname === href || (href !== "/projects" && pathname.startsWith(href));
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pl-6 pr-6 md:pl-52 md:pr-32 pt-4">
@@ -34,8 +35,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.png" alt={SITE.name} className="h-20 md:h-24 w-auto" />
+          <Image src="/images/logo.png" alt={SITE.name} width={500} height={500} priority className="h-20 md:h-24 w-auto" />
         </Link>
 
         {/* Desktop nav */}

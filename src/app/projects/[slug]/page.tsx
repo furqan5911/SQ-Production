@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -207,10 +208,13 @@ export default function ProjectDetailPage() {
 
         {/* ── Hero ── */}
         <div className="relative w-full h-[60vh] md:h-[75vh] overflow-hidden">
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
         </div>
@@ -277,7 +281,21 @@ export default function ProjectDetailPage() {
               viewport={{ once: true }}
               className="mb-20"
             >
-              {((project as Record<string, unknown>).horizontalVideos || (project.videos[0] as { src: string; label: string; youtubeUrl?: string }).youtubeUrl) ? (
+              {(project as Record<string, unknown>).gridVideos ? (
+                /* 3-column vertical grid — AI Ads */
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                  {project.videos.map((v, i) => (
+                    <div key={i} className="relative w-full bg-[#111] rounded-2xl overflow-hidden" style={{ paddingBottom: "177.78%" }}>
+                      <video
+                        src={v.src}
+                        controls
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : ((project as Record<string, unknown>).horizontalVideos || (project.videos[0] as { src: string; label: string; youtubeUrl?: string }).youtubeUrl) ? (
                 /* Horizontal layout — short films with title + YouTube link */
                 <div className="flex flex-col gap-14">
                   {project.videos.map((v, i) => {
@@ -332,11 +350,13 @@ export default function ProjectDetailPage() {
             >
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {((project as Record<string, unknown>).aiImages as string[]).map((src, i) => (
-                  <div key={i} className="bg-[#111] rounded-2xl overflow-hidden border border-[#222]">
-                    <img
+                  <div key={i} className="relative aspect-square bg-[#111] rounded-2xl overflow-hidden border border-[#222]">
+                    <Image
                       src={src}
                       alt={`${project.title} ${i + 1}`}
-                      className="w-full h-full object-contain"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-contain"
                     />
                   </div>
                 ))}
@@ -437,7 +457,7 @@ export default function ProjectDetailPage() {
 
         {/* ── Related Projects ── */}
         {related.length > 0 && (
-          <section className="border-t border-[#222] py-24 px-6 md:px-10">
+          <section className="py-24 px-6 md:px-10">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-end justify-between mb-12">
                 <div>

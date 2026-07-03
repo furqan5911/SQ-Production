@@ -229,7 +229,7 @@ export default function Reels() {
                   muted
                   loop
                   playsInline
-                  preload={reelsActive ? "auto" : "none"}
+                  preload={reelsActive ? "metadata" : "none"}
                   data-reel
                   className="absolute inset-0 w-full h-full object-cover"
                 />
