@@ -104,37 +104,6 @@ export default function HomeSectionGlow() {
         />
       </div>
 
-      {/* Mobile/tablet (below xl) — no side margins exist there, so instead
-          of the side blobs, soft horizontal glow bands bleed in from the top
-          and bottom edges. Same scroll range and color cycle as desktop. */}
-      <div className="xl:hidden fixed inset-0 pointer-events-none" style={{ zIndex: -1 }} aria-hidden>
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            left: "50%",
-            x: "-50%",
-            top: "-30vw",
-            width: "140vw",
-            height: "55vw",
-            background: leftColor,
-            opacity,
-            filter: "blur(70px)",
-          }}
-        />
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            left: "50%",
-            x: "-50%",
-            bottom: "-30vw",
-            width: "140vw",
-            height: "55vw",
-            background: rightColor,
-            opacity,
-            filter: "blur(70px)",
-          }}
-        />
-      </div>
     </>
   );
 }

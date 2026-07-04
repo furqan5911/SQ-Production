@@ -348,7 +348,7 @@ export default function ProjectDetailPage() {
               viewport={{ once: true }}
               className="mb-20"
             >
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {((project as Record<string, unknown>).aiImages as string[]).map((src, i) => (
                   <div key={i} className="relative aspect-[3/4] bg-[#111] rounded-2xl overflow-hidden">
                     <Image
@@ -356,7 +356,7 @@ export default function ProjectDetailPage() {
                       alt={`${project.title} ${i + 1}`}
                       fill
                       priority={i < 3}
-                      sizes="(max-width: 768px) 33vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       quality={70}
                       className="object-cover object-top"
                     />
