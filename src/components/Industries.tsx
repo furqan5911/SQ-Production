@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -20,6 +20,16 @@ function IndustryCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+
+  // On touch devices there's no real hover, so tapping the card toggles the
+  // reveal instead — text stays hidden (only the image shows) until tapped.
+  const revealed = isTouch ? clicked : hovered;
 
   return (
     <motion.div
@@ -33,18 +43,19 @@ function IndustryCard({
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
         background: CARD_BG,
-        border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0)"}`,
+        border: `1px solid ${revealed ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0)"}`,
         transition: "border-color 0.4s ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => { if (isTouch) setClicked((c) => !c); }}
     >
-      {/* Background image — fully visible by default, fades out on hover */}
+      {/* Background image — fully visible by default, fades out on reveal */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           borderRadius: 20,
-          opacity: hovered ? 0 : 1,
+          opacity: revealed ? 0 : 1,
           transition: "opacity 0.5s ease",
         }}
       >
@@ -72,8 +83,8 @@ function IndustryCard({
       {/* Light sweep — thin blurred glare bar, same effect as the Meet Sheraz social pills */}
       <motion.div
         className="absolute pointer-events-none"
-        animate={{ left: hovered ? "112%" : "-16%", opacity: hovered ? 1 : 0 }}
-        transition={hovered ? { type: "spring", stiffness: 110, damping: 26 } : { type: "spring", stiffness: 70, damping: 16 }}
+        animate={{ left: revealed ? "112%" : "-16%", opacity: revealed ? 1 : 0 }}
+        transition={revealed ? { type: "spring", stiffness: 110, damping: 26 } : { type: "spring", stiffness: 70, damping: 16 }}
         style={{
           top: "-50%",
           width: "6%",
@@ -86,10 +97,10 @@ function IndustryCard({
         }}
       />
 
-      {/* Diagonal glass panel — full-card wipe from LEFT on hover */}
+      {/* Diagonal glass panel — full-card wipe from LEFT on reveal */}
       <motion.div
         className="absolute pointer-events-none"
-        animate={{ x: hovered ? "0%" : "-200%", opacity: hovered ? 1 : 0 }}
+        animate={{ x: revealed ? "0%" : "-200%", opacity: revealed ? 1 : 0 }}
         transition={{ type: "spring", stiffness: 220, damping: 28 }}
         style={{
           top: "-60%",
@@ -104,21 +115,23 @@ function IndustryCard({
         }}
       />
 
-      {/* Mobile-only bottom gradient so description text reads against the image */}
+      {/* Mobile-only bottom gradient so description text reads against the image — only when revealed (tapped) */}
       <div
         className="absolute bottom-0 left-0 right-0 sm:hidden pointer-events-none"
         style={{
           height: "70%",
           background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%)",
           zIndex: 7,
+          opacity: revealed ? 1 : 0,
+          transition: "opacity 0.3s ease",
         }}
       />
 
-      {/* Title — always visible (white), shifts down + right and switches to orange gradient on hover */}
+      {/* Title — always visible (white), shifts down + right and switches to orange gradient on reveal */}
       <div
         className="relative z-10 p-2.5 sm:p-4 md:p-7 lg:p-8"
         style={{
-          transform: hovered ? "translate(10px, 10px)" : "translate(0px, 0px)",
+          transform: revealed ? "translate(10px, 10px)" : "translate(0px, 0px)",
           transition: "transform 0.3s ease 0.22s",
         }}
       >
@@ -126,24 +139,23 @@ function IndustryCard({
           className="font-bold leading-snug"
           style={{
             fontSize: "clamp(11px, 3.5vw, 25px)",
-            backgroundImage: hovered ? TITLE_GRADIENT : "none",
-            WebkitBackgroundClip: hovered ? "text" : "unset",
-            WebkitTextFillColor: hovered ? "transparent" : "white",
-            backgroundClip: hovered ? "text" : "unset",
-            color: hovered ? "transparent" : "white",
+            backgroundImage: revealed ? TITLE_GRADIENT : "none",
+            WebkitBackgroundClip: revealed ? "text" : "unset",
+            WebkitTextFillColor: revealed ? "transparent" : "white",
+            backgroundClip: revealed ? "text" : "unset",
+            color: revealed ? "transparent" : "white",
           }}
         >
           {item.title}
         </h3>
       </div>
 
-      {/* Description — always visible on mobile, hover-only on sm+ */}
+      {/* Description — hidden until hovered (desktop) or tapped (touch) */}
       <div
-        className={`absolute bottom-0 left-0 right-0 z-10 p-2.5 sm:p-4 md:p-7 lg:p-8 ${
-          hovered ? "opacity-100" : "opacity-100 sm:opacity-0"
-        }`}
+        className="absolute bottom-0 left-0 right-0 z-10 p-2.5 sm:p-4 md:p-7 lg:p-8"
         style={{
-          transform: hovered ? "translate(10px, 0px)" : "translate(0px, 0px)",
+          opacity: revealed ? 1 : 0,
+          transform: revealed ? "translate(10px, 0px)" : "translate(0px, 0px)",
           transition: "opacity 0.3s ease 0.28s, transform 0.3s ease 0.28s",
         }}
       >

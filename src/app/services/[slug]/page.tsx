@@ -59,6 +59,49 @@ export default async function ServiceSlugPage({ params }: Props) {
           </div>
         </div>
 
+        {/* ── Why section (optional) ── */}
+        {"whyPoints" in card && Array.isArray((card as Record<string, unknown>).whyPoints) && (
+          <div className="pb-20">
+            <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4 text-center">
+              The Advantage
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-12 text-center">
+              Why AI Content?
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {((card as Record<string, unknown>).whyPoints as { title: string; description: string }[]).map((item) => (
+                <div key={item.title} className="bg-[#111] border border-[#222] rounded-2xl p-7">
+                  <h3 className="text-[#f87800] font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-[#888] text-sm leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── Process section (optional) ── */}
+        {"process" in card && Array.isArray((card as Record<string, unknown>).process) && (
+          <div className="pb-20">
+            <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4 text-center">
+              How It Works
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-12 text-center">
+              Our Process
+            </h2>
+            <div className="flex flex-col gap-4">
+              {((card as Record<string, unknown>).process as { step: string; title: string; description: string }[]).map((item) => (
+                <div key={item.step} className="flex gap-6 bg-[#111] border border-[#222] rounded-2xl p-7">
+                  <span className="text-[#f87800] font-black text-3xl shrink-0 leading-none">{item.step}</span>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
+                    <p className="text-[#888] text-sm leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ── CTA ── */}
         <div className="pb-20 text-center">
           <Link

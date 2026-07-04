@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { BLOG_POSTS } from "@/lib/constants";
 
@@ -26,13 +25,13 @@ function BlogCard({ post, index }: { post: typeof BLOG_POSTS[0]; index: number }
     >
       <div className="relative aspect-video overflow-hidden bg-[#0d0d0d]">
         {!imgError && (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={post.image}
             alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
+            loading="lazy"
             onError={() => setImgError(true)}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
         {imgError && (

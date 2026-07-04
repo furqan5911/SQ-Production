@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -57,22 +57,15 @@ function LenisWakeup() {
 }
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-    // Only bounce back to home on an actual page refresh — not on a fresh
-    // navigation (new tab, direct URL, target="_blank" links like the
-    // service-category EXPLORE links). The Navigation Timing API tells them
-    // apart: refresh reports type "reload", everything else "navigate".
-    const [navEntry] = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
-    const isReload = navEntry?.type === "reload";
-    if (isReload && window.location.pathname !== "/") {
-      router.replace("/");
-    }
-  }, [router]);
+    // No forced redirect on refresh — every page (home, about, services,
+    // projects, ...) just reloads itself and stays put. The home page
+    // landing back at the hero/top on refresh is handled separately by
+    // ScrollToTop below (lenis.scrollTo(0) when there's no hash).
+  }, []);
 
   return (
     <ReactLenis

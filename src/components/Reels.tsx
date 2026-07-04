@@ -152,11 +152,16 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   );
 }
 
+const REEL_STAGGER_MS = 220; // delay between each additional reel's download start
+const REEL_INITIAL_BATCH = 2; // reels visible immediately in the strip — these load together
+
 export default function Reels() {
   const [modal, setModal] = useState<{ src: string } | null>(null);
   const [play, setPlay] = useState(true);
   const [reelsActive, setReelsActive] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(REEL_INITIAL_BATCH);
   const sectionRef = useRef<HTMLElement>(null);
+  const armedRef = useRef<Set<number>>(new Set());
 
   // Start loading reel videos only when the section is near the viewport
   useEffect(() => {
@@ -175,14 +180,33 @@ export default function Reels() {
     return () => observer.disconnect();
   }, []);
 
-  // After React re-renders with the new preload value, imperatively play all reel videos
+  // Stagger the remaining reels in one at a time instead of firing every
+  // video's download simultaneously — 6 videos hitting the network at once
+  // was why the last ones in the strip took 10+ seconds to start playing.
+  useEffect(() => {
+    if (!reelsActive || loadedCount >= REELS.length) return;
+    const t = setTimeout(
+      () => setLoadedCount((c) => Math.min(c + 1, REELS.length)),
+      REEL_STAGGER_MS
+    );
+    return () => clearTimeout(t);
+  }, [reelsActive, loadedCount]);
+
+  // Load + play newly-armed reels (and their autoFill clones), each index only once
   useEffect(() => {
     if (!reelsActive || !sectionRef.current) return;
-    sectionRef.current.querySelectorAll<HTMLVideoElement>("video[data-reel]").forEach(v => {
-      v.load();
-      v.play().catch(() => {});
-    });
-  }, [reelsActive]);
+    for (let i = 0; i < loadedCount; i++) {
+      if (armedRef.current.has(i)) continue;
+      armedRef.current.add(i);
+      const reel = REELS[i];
+      sectionRef.current
+        .querySelectorAll<HTMLVideoElement>(`video[data-reel-index="${reel.id}"]`)
+        .forEach((v) => {
+          v.load();
+          v.play().catch(() => {});
+        });
+    }
+  }, [loadedCount, reelsActive]);
 
   function handleCardMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -213,7 +237,9 @@ export default function Reels() {
 
       {/* Continuous marquee strip — autoFill removes the loop gap */}
       <Marquee gradient={false} speed={70} autoFill play={play}>
-        {REELS.map((reel) => (
+        {REELS.map((reel, i) => {
+          const shouldLoad = reelsActive && i < loadedCount;
+          return (
           <div
             key={reel.id}
             onClick={() => reel.src && setModal({ src: reel.src })}
@@ -224,13 +250,13 @@ export default function Reels() {
             {reel.src ? (
               <>
                 <video
-                  src={reel.src}
+                  src={shouldLoad ? reel.src : undefined}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload={reelsActive ? "metadata" : "none"}
-                  data-reel
+                  preload={shouldLoad ? "auto" : "none"}
+                  data-reel-index={reel.id}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/35 group-hover:bg-black/10 transition-colors duration-300" />
@@ -252,7 +278,8 @@ export default function Reels() {
               </div>
             )}
           </div>
-        ))}
+          );
+        })}
       </Marquee>
 
       {/* Custom video modal */}

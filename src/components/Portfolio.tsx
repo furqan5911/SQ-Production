@@ -204,18 +204,36 @@ export default function Portfolio() {
   const CARD_STEP = CARD_W + CARD_GAP;
   const PAD_L     = 48;
 
-  // Desktop smart-loading: keep active card + next 2 loaded, never unload
-  const [loadedIndices, setLoadedIndices] = useState<Set<number>>(() => new Set([0, 1, 2]));
+  // Desktop smart-loading: keep active card + next card loaded, never unload.
+  // New cards are queued and armed one at a time (not the instant activeIndex
+  // jumps ahead) so a fast scroll never fires two large video downloads in
+  // the same tick — same fix applied to the Reels marquee.
+  const CARD_STAGGER_MS = 250;
+  const [loadedIndices, setLoadedIndices] = useState<Set<number>>(() => new Set([0, 1]));
+  const armedRef = useRef<Set<number>>(new Set([0, 1]));
+  const queueRef = useRef<number[]>([]);
 
   useEffect(() => {
-    setLoadedIndices(prev => {
-      const next = new Set(prev);
-      next.add(activeIndex);
-      if (activeIndex + 1 < featured.length) next.add(activeIndex + 1);
-      if (activeIndex + 2 < featured.length) next.add(activeIndex + 2);
-      return next;
+    const wanted = [activeIndex, activeIndex + 1].filter((i) => i >= 0 && i < featured.length);
+    wanted.forEach((i) => {
+      if (!armedRef.current.has(i) && !queueRef.current.includes(i)) queueRef.current.push(i);
     });
   }, [activeIndex, featured.length]);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const next = queueRef.current.shift();
+      if (next === undefined) return;
+      armedRef.current.add(next);
+      setLoadedIndices((prev) => {
+        if (prev.has(next)) return prev;
+        const copy = new Set(prev);
+        copy.add(next);
+        return copy;
+      });
+    }, CARD_STAGGER_MS);
+    return () => clearInterval(id);
+  }, []);
 
   useLayoutEffect(() => {
     const el = trackRef.current;

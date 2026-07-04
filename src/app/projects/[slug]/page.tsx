@@ -348,15 +348,17 @@ export default function ProjectDetailPage() {
               viewport={{ once: true }}
               className="mb-20"
             >
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-3">
                 {((project as Record<string, unknown>).aiImages as string[]).map((src, i) => (
-                  <div key={i} className="relative aspect-square bg-[#111] rounded-2xl overflow-hidden border border-[#222]">
+                  <div key={i} className="relative aspect-[3/4] bg-[#111] rounded-2xl overflow-hidden">
                     <Image
                       src={src}
                       alt={`${project.title} ${i + 1}`}
                       fill
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                      className="object-contain"
+                      priority={i < 3}
+                      sizes="(max-width: 768px) 33vw, 33vw"
+                      quality={70}
+                      className="object-cover object-top"
                     />
                   </div>
                 ))}
@@ -364,66 +366,6 @@ export default function ProjectDetailPage() {
             </motion.div>
           )}
 
-          {/* ── Project Scope ── */}
-          {project.scopePhases.length > 0 && (
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mb-20"
-            >
-              <span className="text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase block mb-4 text-center">Scope</span>
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-6 text-center">Project Scope</h2>
-              <p className="text-[#888] text-base leading-relaxed mb-12 max-w-3xl mx-auto text-center">
-                {project.scopeOverview}
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                {project.scopePhases.map((phase, i) => (
-                  <motion.div
-                    key={phase.title}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-[#111] border border-[#222] rounded-2xl p-7"
-                  >
-                    <h3 className="text-white font-bold text-lg mb-4">{phase.title}</h3>
-                    <ul className="space-y-2">
-                      {phase.points.map((point, j) => (
-                        <li key={j} className="flex gap-3 text-[#888] text-sm leading-relaxed">
-                          <span className="text-[#f87800] mt-1 shrink-0">→</span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-10 grid md:grid-cols-2 gap-8">
-                <div className="bg-[#111] border border-[#222] rounded-2xl p-7">
-                  <h3 className="text-white font-bold text-lg mb-3">Project Timeline</h3>
-                  <p className="text-[#888] text-sm leading-relaxed">{project.timeline}</p>
-                </div>
-                {project.outcomes.length > 0 && (
-                  <div className="bg-[#111] border border-[#222] rounded-2xl p-7">
-                    <h3 className="text-white font-bold text-lg mb-4">Expected Outcomes</h3>
-                    <ul className="space-y-2">
-                      {project.outcomes.map((o, i) => (
-                        <li key={i} className="flex gap-3 text-[#888] text-sm leading-relaxed">
-                          <span className="text-[#f87800] mt-1 shrink-0">→</span>
-                          {o}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          )}
 
           {/* ── Watch More Work CTA ── */}
           {project.clientInstagram && (

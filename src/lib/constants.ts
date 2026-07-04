@@ -15,7 +15,7 @@ export const NAV_LINKS = [
   { label: "About",    href: "/#about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "AI Ads",   href: "/projects/ai-ads" },
+  { label: "AI Work",  href: "/projects/ai-ads" },
   { label: "Contact",  href: "/contact" },
 ];
 
@@ -800,9 +800,7 @@ export const PROJECTS = [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Flora%20Product%20reel.mp4", label: "" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Khasara.mp4",               label: "" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Love%20Horror.mp4",         label: "" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/MIX%20Ai.mp4",             label: "" },
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Members%20Card%20reel%20-%20Glome.mp4", label: "" },
-      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/AI%20Ads/Red%20Dress%20AI(1).mp4",  label: "" },
     ],
     snaps: [],
     scopeOverview: "",
@@ -1431,12 +1429,25 @@ export const SERVICE_ALBUM_CARDS = [
     subtitle: "Where imagination meets intelligence.",
     image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Serviceimages/AI%20CONTENT%20CREATION.png",
     overview:
-      "AI is a creative multiplier, not a shortcut. We pair the latest generative tools with real production craft to turn your ideas into polished, on-brand content fast — without losing the human touch.",
+      "AI-powered content isn't a gimmick — it's the fastest way to produce more, test faster, and scale smarter. At SQ Productions, we combine the latest generative models with real production expertise to deliver content that looks hand-crafted, converts like it's data-driven, and reaches your audience faster than traditional production ever could. From AI-generated product videos to synthetic presenters and rapid creative testing, we turn your brief into polished, platform-ready output — with your brand voice intact throughout.",
     whatWeDo: [
-      { title: "AI Video Generation", description: "Concept-to-clip pieces built with current generative video models, refined by our editors before they ever ship." },
-      { title: "AI Voiceovers & Avatars", description: "Natural-sounding multilingual narration and digital presenters for content that scales without a studio day." },
-      { title: "Image-to-Video & Product Renders", description: "Turn static product shots into scroll-stopping motion content in a fraction of the usual turnaround." },
-      { title: "Rapid Iteration", description: "Multiple creative directions explored and delivered in days, so you can test and pick what actually works." },
+      { title: "AI Video Generation", description: "We use cutting-edge generative video models to take a concept from brief to finished clip in days, not weeks. Every output is reviewed and refined by our human editors before it ships — AI builds the foundation, our team makes it brand-ready and impossible to ignore." },
+      { title: "AI Voiceovers & Avatars", description: "Natural-sounding multilingual narration and digital presenters that speak your brand's language across every market. Choose from a wide range of voices, accents, and on-screen avatars that scale globally — no talent booking, no studio day, no scheduling headaches." },
+      { title: "Image-to-Video & Product Renders", description: "Turn your existing product photography into motion-rich, scroll-stopping content. We animate static assets into short-form ads and product showcases built for Instagram, TikTok, and beyond — no reshoots required, no additional production cost, just results." },
+      { title: "Rapid Iteration & A/B Testing", description: "Brief to first creative batch in 48 hours. We explore multiple hooks, formats, and visual directions in parallel so you can test fast, identify what's working, and scale the winners — without burning your production budget on guesswork." },
+    ],
+    whyPoints: [
+      { title: "Scale Without the Overhead", description: "Produce significantly more content volume without multiplying your production cost. AI lets us build at scale while keeping quality high and budgets lean — more output, less spend." },
+      { title: "Faster Time to Market", description: "Traditional production cycles take weeks. Our AI-first workflow gets polished content in front of your audience in days — so you stay relevant while competitors are still stuck in pre-production." },
+      { title: "Multilingual by Default", description: "One brief, multiple languages and markets. AI voiceovers and localisation mean your content travels globally without the cost of separate shoots, separate talent, or separate post-production runs for every region." },
+      { title: "Data-Driven Creative", description: "Test more angles, more hooks, and more formats in a single sprint. Real audience performance data — not gut feeling — decides which creative direction you double down on and scale." },
+    ],
+    process: [
+      { step: "01", title: "Brief & Discovery", description: "We start by understanding your brand identity, campaign goals, target audience, and the platforms you're publishing to. The clearer the brief, the sharper and faster the output." },
+      { step: "02", title: "Concept & Direction", description: "Our creative team maps out the visual direction, messaging, and format strategy tailored to your audience. You review and approve the concept before a single frame is generated." },
+      { step: "03", title: "AI Production", description: "We run your approved concept through the right generative tools — video models, voice synthesis, render pipelines — producing the raw creative output at a speed traditional production simply can't match." },
+      { step: "04", title: "Human Refinement", description: "Our editors review every AI output for brand alignment, quality, and platform fit. AI gets us there fast; human craft and creative judgment close the final gap and make it polished." },
+      { step: "05", title: "Delivery & Optimisation", description: "Final content is delivered in all required formats and resolutions. We track early performance data and use those real-world insights to brief the next round of content smarter and sharper." },
     ],
   },
   {
