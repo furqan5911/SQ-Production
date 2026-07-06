@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: "easeOut" as const }}
           className="inline-block text-[#f87800] text-xs font-bold tracking-[0.3em] uppercase mb-6"
         >
-          Video Production Agency
+          Cinematic Content Production Agency
         </motion.span>
 
         <motion.h1

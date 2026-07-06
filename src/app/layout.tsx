@@ -7,6 +7,7 @@ import ChatBubble from "@/components/ChatBubble";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CursorTrail from "@/components/CursorTrail";
 import AmbientGlow from "@/components/AmbientGlow";
+import { SITE_URL } from "@/lib/constants";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -29,10 +30,32 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const title = "SQ Productions — Video Production Agency";
+const description =
+  "We craft commercials, corporate videos, and social ads that spark engagement. From concept to final cut.";
+
 export const metadata: Metadata = {
-  title: "SQ Productions — Video Production Agency",
-  description:
-    "We craft commercials, corporate videos, and social ads that spark engagement. From concept to final cut.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: title,
+    template: "%s — SQ Productions",
+  },
+  description,
+  openGraph: {
+    title,
+    description,
+    url: SITE_URL,
+    siteName: "SQ Productions",
+    images: [{ url: "/icon.png" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/icon.png"],
+  },
 };
 
 export default function RootLayout({

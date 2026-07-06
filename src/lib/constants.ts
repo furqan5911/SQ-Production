@@ -1,5 +1,9 @@
 // â"€â"€â"€ SWAP ALL CONTENT HERE â€" no need to touch individual components â"€â"€â"€
 
+// Base URL for the deployed site — used by metadataBase, OG tags, and sitemap.xml.
+// Swap this to the real production domain once it's purchased/connected.
+export const SITE_URL = "https://sqproductions.co";
+
 export const SITE = {
   name: "SQ Productions",
   tagline: "Turning Video into Vibrant Conversations.",

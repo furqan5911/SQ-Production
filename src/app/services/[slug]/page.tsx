@@ -12,7 +12,17 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const card = SERVICE_ALBUM_CARDS.find((c) => c.slug === slug);
-  return { title: card ? `${card.title} — SQ Productions` : "Service" };
+  if (!card) return { title: "Service" };
+
+  const title = card.title;
+  const description = card.overview.length > 160 ? `${card.overview.slice(0, 157)}...` : card.overview;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, images: [{ url: card.image }], type: "website" },
+    twitter: { card: "summary_large_image", title, description, images: [card.image] },
+  };
 }
 
 export default async function ServiceSlugPage({ params }: Props) {

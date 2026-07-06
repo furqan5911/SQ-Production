@@ -7,9 +7,14 @@ import ServiceAlbumCards from "@/components/ServiceAlbumCards";
 const ServiceCategories = dynamic(() => import("@/components/ServiceCategories"));
 const FAQ                = dynamic(() => import("@/components/FAQ"));
 
+const title = "Services";
+const description = "End-to-end video production: pre-production, production, and post-production services.";
+
 export const metadata: Metadata = {
-  title: "Services — SQ Productions",
-  description: "End-to-end video production: pre-production, production, and post-production services.",
+  title,
+  description,
+  openGraph: { title, description, type: "website" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function ServicesPage() {
