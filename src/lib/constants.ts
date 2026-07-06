@@ -1771,6 +1771,7 @@ export const ABOUT = {
   founderBio:
     "Sheraz is a video production specialist focused on crafting bold, story-driven content that connects brands with audiences. He works with creative teams and businesses to build standout visual narratives and seamless digital experiences. He balances technical precision with creative vision — and enjoys pushing the boundaries of cinematography and motion design.",
   founderImage: "/images/about/founder.png",
+  founderFacebook: "https://www.facebook.com/profile.php?id=61590513173920",
   founderLinkedIn: "https://www.linkedin.com/in/sheraz-qureshi410/",
   founderInstagram: "https://www.instagram.com/call_me_sheraz/",
   founderBehance: "https://www.behance.net/sqproductions",
@@ -1932,7 +1933,7 @@ export const FOOTER = {
     youtube:   "https://www.youtube.com/@SherazQureshiOfficial",
     instagram: "https://www.instagram.com/sq.productions.co/",
     behance:   "https://www.behance.net/sqproductions",
-    tiktok:    "#",
+    tiktok:    "https://www.tiktok.com/@sqproductions410",
   },
   links: {
     company: [
@@ -1954,7 +1955,7 @@ export const FOOTER = {
       { label: "YouTube",   href: "https://www.youtube.com/@SherazQureshiOfficial" },
       { label: "Instagram", href: "https://www.instagram.com/sq.productions.co/" },
       { label: "Behance",   href: "https://www.behance.net/sqproductions" },
-      { label: "TikTok",    href: "#" },
+      { label: "TikTok",    href: "https://www.tiktok.com/@sqproductions410" },
     ],
   },
 };
