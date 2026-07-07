@@ -30,7 +30,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const title = "SQ Productions — Video Production Agency";
+const title = "SQ Productions — Cinematic Content Production Agency";
 const description =
   "We craft commercials, corporate videos, and social ads that spark engagement. From concept to final cut.";
 
