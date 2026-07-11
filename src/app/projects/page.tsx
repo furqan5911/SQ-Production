@@ -38,7 +38,7 @@ function LazyProjectCard({ item, i }: { item: (typeof PROJECTS)[0]; i: number })
           observer.disconnect();
         }
       },
-      { rootMargin: "600px" }
+      { rootMargin: "400px" }
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Syne, Space_Mono, Poppins } from "next/font/google";
+import { Syne, Space_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -20,13 +20,6 @@ const syne = Syne({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-syne",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -62,7 +55,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${spaceMono.variable} ${poppins.variable} h-full`}>
+    <html lang="en" className={`${syne.variable} ${spaceMono.variable} h-full`}>
       <head>
         {/* Preload hero banner so it starts downloading before CSS parses the background-image */}
         <link

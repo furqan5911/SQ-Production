@@ -55,6 +55,17 @@ body {
   cursor: none !important;
 }
 
+/* Native browser fullscreen on a <video> keeps whatever object-fit the
+   component set (usually `cover`), which stretches/crops vertical 9:16
+   clips to fill a landscape screen. Force `contain` in fullscreen so
+   portrait videos letterbox instead of distorting. */
+video:fullscreen,
+video:-webkit-full-screen,
+video:-moz-full-screen {
+  object-fit: contain;
+  background: #000;
+}
+
 /* Hide scrollbar inside react-fast-marquee */
 .rfm-marquee-container {
   overflow: hidden !important;

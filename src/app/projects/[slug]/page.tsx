@@ -182,6 +182,18 @@ export default function ProjectDetailPage() {
   const slug    = params?.slug as string;
   const project = PROJECTS.find((p) => p.slug === slug);
 
+  // Only one project video should play at a time — starting a new one
+  // pauses whichever other video (if any) was already playing.
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const registerVideoRef = (i: number) => (el: HTMLVideoElement | null) => {
+    videoRefs.current[i] = el;
+  };
+  const pauseOtherVideos = (current: HTMLVideoElement) => {
+    videoRefs.current.forEach((v) => {
+      if (v && v !== current) v.pause();
+    });
+  };
+
   if (!project) {
     return (
       <>
@@ -287,6 +299,8 @@ export default function ProjectDetailPage() {
                   {project.videos.map((v, i) => (
                     <div key={i} className="relative w-full bg-[#111] rounded-2xl overflow-hidden" style={{ paddingBottom: "177.78%" }}>
                       <video
+                        ref={registerVideoRef(i)}
+                        onPlay={(e) => pauseOtherVideos(e.currentTarget)}
                         src={v.src}
                         controls
                         playsInline
@@ -305,6 +319,8 @@ export default function ProjectDetailPage() {
                         {vx.label && <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>}
                         <div className="relative w-full rounded-2xl overflow-hidden bg-[#111]" style={{ paddingBottom: "56.25%" }}>
                           <video
+                            ref={registerVideoRef(i)}
+                            onPlay={(e) => pauseOtherVideos(e.currentTarget)}
                             src={vx.src}
                             poster={vx.poster}
                             controls
@@ -326,6 +342,8 @@ export default function ProjectDetailPage() {
                     <div key={i} className="flex flex-col gap-3">
                       <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
                         <video
+                          ref={registerVideoRef(i)}
+                          onPlay={(e) => pauseOtherVideos(e.currentTarget)}
                           src={v.src}
                           controls
                           playsInline

@@ -3,8 +3,8 @@ import PageShell from "@/components/PageShell";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Contact — VideoHut",
-  description: "Let's collaborate. Get in touch with the VideoHut team.",
+  title: "Contact",
+  description: "Let's collaborate. Get in touch with the SQ Productions team.",
 };
 
 export default function ContactPage() {

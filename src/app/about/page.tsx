@@ -8,7 +8,7 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"));
 const FAQ          = dynamic(() => import("@/components/FAQ"));
 
 export const metadata: Metadata = {
-  title: "About — VideoHut",
+  title: "About",
   description: "Established in 2015, we craft captivating visual narratives that help brands tell their story.",
 };
 

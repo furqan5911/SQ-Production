@@ -14,6 +14,8 @@ const fadeUp = {
 function categoryHref(item: (typeof PROJECTS)[0]) {
   if (item.category === "Music Video") return "/projects/music-videos";
   if (item.category === "Short Films") return "/projects/short-films";
+  if (item.category === "Fashion Films") return "/projects/new-times-roman";
+  if (item.category === "AI Ads") return "/projects/ai-ads";
   return `/projects?category=${encodeURIComponent(item.category)}`;
 }
 
