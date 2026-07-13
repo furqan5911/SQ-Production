@@ -9,7 +9,7 @@ const FAQ          = dynamic(() => import("@/components/FAQ"));
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Established in 2015, we craft captivating visual narratives that help brands tell their story.",
+  description: "Established in 2020, we craft captivating visual narratives that help brands tell their story.",
 };
 
 export default function AboutPage() {
