@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
-  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0d0d20"/><stop offset="100%" style="stop-color:#0a0a0a"/></linearGradient></defs>
-  <rect width="600" height="450" fill="url(#g)"/>
-  <polygon points="300,140 340,210 420,210 360,255 382,325 300,280 218,325 240,255 180,210 260,210" fill="none" stroke="#c8ff00" stroke-width="1.5" opacity="0.6"/>
-  <polygon points="300,165 328,215 388,215 342,246 360,300 300,265 240,300 258,246 212,215 272,215" fill="#c8ff00" opacity="0.08"/>
-  <text x="300" y="370" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="white" text-anchor="middle" opacity="0.9">ANIMATION &amp; VFX</text>
-</svg>
