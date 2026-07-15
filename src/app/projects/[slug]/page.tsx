@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback, type SyntheticEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -177,6 +177,95 @@ function LazyRelatedCard({ item }: { item: (typeof PROJECTS)[0] }) {
   );
 }
 
+const PREVIEW_LOOP_SECONDS = 3;
+
+// Shows a short muted loop (first PREVIEW_LOOP_SECONDS) once visible, like a
+// silent GIF preview, instead of a static poster or the full video autoplaying.
+// Since the R2 files are faststart-encoded, looping just the first few seconds
+// only ever buffers those few seconds — not the whole file. Click/tap switches
+// to the full video with sound and native controls.
+function LazyVideo({
+  src,
+  poster,
+  className,
+  videoRef,
+  onPlay,
+  onWantsLoad,
+}: {
+  src: string;
+  poster?: string;
+  className?: string;
+  videoRef: (el: HTMLVideoElement | null) => void;
+  onPlay: (e: SyntheticEvent<HTMLVideoElement>) => void;
+  onWantsLoad: (release: () => void) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLVideoElement | null>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [activated, setActivated] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          onWantsLoad(() => setShouldLoad(true));
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [onWantsLoad]);
+
+  function handleTimeUpdate(e: SyntheticEvent<HTMLVideoElement>) {
+    if (!activated && e.currentTarget.currentTime >= PREVIEW_LOOP_SECONDS) {
+      e.currentTarget.currentTime = 0;
+    }
+  }
+
+  function activate() {
+    if (activated) return;
+    setActivated(true);
+    const v = innerRef.current;
+    if (!v) return;
+    v.muted = false;
+    v.loop = false;
+    v.currentTime = 0;
+    v.play().catch(() => {});
+  }
+
+  return (
+    <div ref={containerRef} className="absolute inset-0" onClick={activated ? undefined : activate}>
+      <video
+        ref={(el) => { innerRef.current = el; videoRef(el); }}
+        onPlay={onPlay}
+        onTimeUpdate={handleTimeUpdate}
+        src={shouldLoad ? src : undefined}
+        poster={poster}
+        controls={activated}
+        autoPlay={shouldLoad}
+        muted={!activated}
+        loop={!activated}
+        playsInline
+        preload={shouldLoad ? "metadata" : "none"}
+        className={className}
+      />
+      {shouldLoad && !activated && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+            <svg className="w-6 h-6 fill-white" viewBox="0 0 256 256">
+              <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"/>
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ProjectDetailPage() {
   const params  = useParams();
   const slug    = params?.slug as string;
@@ -193,6 +282,22 @@ export default function ProjectDetailPage() {
       if (v && v !== current) v.pause();
     });
   };
+
+  // Stagger preview-loop starts across all videos on the page — pages like
+  // AI Ads have 8 videos that'd otherwise all start buffering their preview
+  // loop at once the moment the page loads (same fix as Reels/Portfolio).
+  const VIDEO_STAGGER_MS = 400;
+  const loadQueueRef = useRef<Array<() => void>>([]);
+  const queueVideoLoad = useCallback((release: () => void) => {
+    loadQueueRef.current.push(release);
+  }, []);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const release = loadQueueRef.current.shift();
+      if (release) release();
+    }, VIDEO_STAGGER_MS);
+    return () => clearInterval(id);
+  }, []);
 
   if (!project) {
     return (
@@ -298,12 +403,11 @@ export default function ProjectDetailPage() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                   {project.videos.map((v, i) => (
                     <div key={i} className="relative w-full bg-[#111] rounded-2xl overflow-hidden" style={{ paddingBottom: "177.78%" }}>
-                      <video
-                        ref={registerVideoRef(i)}
+                      <LazyVideo
+                        videoRef={registerVideoRef(i)}
                         onPlay={(e) => pauseOtherVideos(e.currentTarget)}
+                        onWantsLoad={queueVideoLoad}
                         src={v.src}
-                        controls
-                        playsInline
                         className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
@@ -318,13 +422,12 @@ export default function ProjectDetailPage() {
                       <div key={i} className="flex flex-col items-center gap-4">
                         {vx.label && <h3 className="text-white font-black text-3xl md:text-4xl text-center">{vx.label}</h3>}
                         <div className="relative w-full rounded-2xl overflow-hidden bg-[#111]" style={{ paddingBottom: "56.25%" }}>
-                          <video
-                            ref={registerVideoRef(i)}
+                          <LazyVideo
+                            videoRef={registerVideoRef(i)}
                             onPlay={(e) => pauseOtherVideos(e.currentTarget)}
+                            onWantsLoad={queueVideoLoad}
                             src={vx.src}
                             poster={vx.poster}
-                            controls
-                            playsInline
                             className="absolute inset-0 w-full h-full object-cover"
                           />
                         </div>
@@ -341,12 +444,11 @@ export default function ProjectDetailPage() {
                   {project.videos.map((v, i) => (
                     <div key={i} className="flex flex-col gap-3">
                       <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
-                        <video
-                          ref={registerVideoRef(i)}
+                        <LazyVideo
+                          videoRef={registerVideoRef(i)}
                           onPlay={(e) => pauseOtherVideos(e.currentTarget)}
+                          onWantsLoad={queueVideoLoad}
                           src={v.src}
-                          controls
-                          playsInline
                           className="absolute inset-0 w-full h-full object-cover rounded-2xl bg-[#111]"
                         />
                       </div>

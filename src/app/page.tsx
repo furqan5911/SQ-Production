@@ -1,6 +1,7 @@
 ﻿import dynamic from "next/dynamic";
 import Navbar        from "@/components/Navbar";
 import Hero          from "@/components/Hero";
+import { SITE }      from "@/lib/constants";
 import Reels         from "@/components/Reels";
 import BrandPartners from "@/components/BrandPartners";
 import Portfolio     from "@/components/Portfolio";
@@ -19,6 +20,11 @@ const Collaborate  = dynamic(() => import("@/components/Collaborate"));
 export default function Home() {
   return (
     <>
+      {/* Preload hero banner so it starts downloading before CSS parses the
+          background-image — homepage-only, since Hero (and heroBg) only
+          render here; a global preload in the root layout would force this
+          download on every page, delaying LCP elsewhere. */}
+      <link rel="preload" as="image" href={SITE.heroBg} fetchPriority="high" />
       <HomeSectionGlow />
       <Navbar />
       <main>

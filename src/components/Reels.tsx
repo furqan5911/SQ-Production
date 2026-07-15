@@ -152,8 +152,9 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   );
 }
 
-const REEL_STAGGER_MS = 220; // delay between each additional reel's download start
-const REEL_INITIAL_BATCH = 2; // reels visible immediately in the strip — these load together
+const REEL_STAGGER_MS = 900; // delay between each additional reel's download start
+const REEL_INITIAL_BATCH = 1; // reels visible immediately in the strip — these load together
+const CLONE_STAGGER_MS = 250; // delay between each marquee autoFill duplicate of the same reel
 
 export default function Reels() {
   const [modal, setModal] = useState<{ src: string } | null>(null);
@@ -192,19 +193,26 @@ export default function Reels() {
     return () => clearTimeout(t);
   }, [reelsActive, loadedCount]);
 
-  // Load + play newly-armed reels (and their autoFill clones), each index only once
+  // Load + play newly-armed reels (and their autoFill clones), each index only once.
+  // Marquee's autoFill renders several duplicate copies of the whole strip to
+  // make the loop seamless, so a single reel index can match multiple <video>
+  // elements at once — stagger those too, or they all hit the network together
+  // even though the reel-to-reel stagger above already spread out the indices.
   useEffect(() => {
     if (!reelsActive || !sectionRef.current) return;
     for (let i = 0; i < loadedCount; i++) {
       if (armedRef.current.has(i)) continue;
       armedRef.current.add(i);
       const reel = REELS[i];
-      sectionRef.current
-        .querySelectorAll<HTMLVideoElement>(`video[data-reel-index="${reel.id}"]`)
-        .forEach((v) => {
+      const clones = sectionRef.current.querySelectorAll<HTMLVideoElement>(
+        `video[data-reel-index="${reel.id}"]`
+      );
+      clones.forEach((v, cloneIdx) => {
+        setTimeout(() => {
           v.load();
           v.play().catch(() => {});
-        });
+        }, cloneIdx * CLONE_STAGGER_MS);
+      });
     }
   }, [loadedCount, reelsActive]);
 

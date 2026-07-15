@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
@@ -76,8 +76,17 @@ function ProjectCard({ item, shouldLoad = true }: { item: (typeof PROJECTS)[0]; 
   );
 }
 
-// Mobile wrapper: loads video only when the card is 400px from the viewport
-function LazyMobileProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
+// Mobile wrapper: becomes eligible to load once the card is 400px from the
+// viewport, then waits its turn in the shared queue (onWantsLoad) — several
+// cards can satisfy the 400px check together on a tall mobile stack, and
+// without a shared queue they'd all start downloading video at once.
+function LazyMobileProjectCard({
+  item,
+  onWantsLoad,
+}: {
+  item: (typeof PROJECTS)[0];
+  onWantsLoad: (release: () => void) => void;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -87,7 +96,7 @@ function LazyMobileProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldLoad(true);
+          onWantsLoad(() => setShouldLoad(true));
           observer.disconnect();
         }
       },
@@ -95,7 +104,7 @@ function LazyMobileProjectCard({ item }: { item: (typeof PROJECTS)[0] }) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [onWantsLoad]);
 
   return (
     <div ref={containerRef}>
@@ -237,6 +246,23 @@ export default function Portfolio() {
     return () => clearInterval(id);
   }, []);
 
+  // Mobile card stack: same staggering idea as the desktop queue above, but
+  // driven by each card's own IntersectionObserver instead of scroll index.
+  const MOBILE_CARD_STAGGER_MS = 700;
+  const mobileQueueRef = useRef<Array<() => void>>([]);
+
+  const queueMobileLoad = useCallback((release: () => void) => {
+    mobileQueueRef.current.push(release);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const release = mobileQueueRef.current.shift();
+      if (release) release();
+    }, MOBILE_CARD_STAGGER_MS);
+    return () => clearInterval(id);
+  }, []);
+
   useLayoutEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -301,7 +327,7 @@ export default function Portfolio() {
 
           <div className="flex flex-col gap-6">
             {featured.map((item) => (
-              <LazyMobileProjectCard key={item.slug} item={item} />
+              <LazyMobileProjectCard key={item.slug} item={item} onWantsLoad={queueMobileLoad} />
             ))}
           </div>
         </div>
