@@ -1314,6 +1314,7 @@ export const PROJECTS = [
   {
     slug: "broadway-jehlum",
     title: "Broadway Jehlum Architectural DVC",
+    heroTitle: "DVC",
     subtitle: "Architecture brought to life on screen.",
     category: "Commercial",
     horizontalVideos: true,

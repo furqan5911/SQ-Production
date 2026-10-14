@@ -347,7 +347,7 @@ export default function ProjectDetailPage() {
             </span>
             {!(project as Record<string, unknown>).noTitle && (
               <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mx-auto">
-                {project.title}
+                {((project as Record<string, unknown>).heroTitle as string | undefined) ?? project.title}
               </h1>
             )}
           </motion.div>
