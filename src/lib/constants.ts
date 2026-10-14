@@ -1318,8 +1318,8 @@ export const PROJECTS = [
     subtitle: "Architecture brought to life on screen.",
     category: "Commercial",
     horizontalVideos: true,
-    client: "Broadway Jehlum, Imtiaz, Hyundai, Bank Alfalah",
-    year: "2025",
+    client: "DVC, Imtiaz, Hyundai, Bank Alfalah",
+    year: "2025, 2026",
     services: ["Cinematography", "Direction", "Post Production"],
     description:
       "A cinematic DVC for Broadway Jehlum — an architectural showcase film crafted to highlight the vision, design, and scale of the project with bold, professional visuals.",
