@@ -96,7 +96,7 @@ function LazyProjectCard({ item, i }: { item: (typeof PROJECTS)[0]; i: number })
               {item.category}
             </span>
             <h3 className="text-white font-bold text-lg mt-1 group-hover:text-[#f87800] transition-colors duration-200">
-              {item.title}
+              {((item as Record<string, unknown>).heroTitle as string | undefined) ?? item.title}
             </h3>
           </div>
         </Link>
