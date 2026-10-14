@@ -1325,6 +1325,9 @@ export const PROJECTS = [
     image: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Siteimages/SQ%20productions%20banner.png",
     videos: [
       { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Commercial/comercial.mp4", label: "BROADWAY JEHLUM — DVC" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Commercial/Imtiaz.mp4", label: "IMTIAZ" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Commercial/hyundai.mp4", label: "HYUNDAI" },
+      { src: "https://pub-b15bbd49746c4d96b2482593b2520339.r2.dev/Commercial/Surf%20Excel.mp4", label: "BANK ALFALAH" },
     ],
     snaps: [
       "/images/portfolio/placeholder.png",
@@ -1924,7 +1927,7 @@ export const COLLABORATE = {
 export const FOOTER = {
   email: "teamsq.business@gmail.com",
   phone: "+92 316 4479771",
-  address: "SQ Productions, 22 CCA, Z-block Sector Z DHA Phase 3, Lahore",
+  address: "Plot CCA, SQ Productions, 257, Sector FF Dha Phase 4, FF, Lahore, 54920",
   hours: "Monday - Friday : 9am to 6pm",
   socials: {
     facebook:  "https://www.facebook.com/profile.php?id=61589987776707",
