@@ -16,6 +16,7 @@ function categoryHref(item: (typeof PROJECTS)[0]) {
   if (item.category === "Short Films") return "/projects/short-films";
   if (item.category === "Fashion Films") return "/projects/new-times-roman";
   if (item.category === "AI Ads") return "/projects/ai-ads";
+  if (item.category === "Commercial") return "/projects/broadway-jehlum";
   return `/projects?category=${encodeURIComponent(item.category)}`;
 }
 
