@@ -1318,7 +1318,7 @@ export const PROJECTS = [
     subtitle: "Architecture brought to life on screen.",
     category: "Commercial",
     horizontalVideos: true,
-    client: "Broadway Jehlum",
+    client: "Broadway Jehlum, Imtiaz, Hyundai, Bank Alfalah",
     year: "2025",
     services: ["Cinematography", "Direction", "Post Production"],
     description:
