@@ -1759,7 +1759,7 @@ export const INDUSTRIES = [
 ];
 
 export const STATS = [
-  { value: 15,  suffix: "+", label: "Years Experience" },
+  { value: 9,  suffix: "+", label: "Years Experience" },
   { value: 200, suffix: "+", label: "Repeated Clients" },
   { value: 478, suffix: "",  label: "Completed Projects" },
   { value: 350, suffix: "+", label: "Happy Clients" },
